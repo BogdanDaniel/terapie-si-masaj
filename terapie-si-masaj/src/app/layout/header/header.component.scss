@@ -1,0 +1,22 @@
+.header {
+    .navbar {
+        height: 75px;
+        // width: 100%;
+        // background-color: #fff;
+        // &.navbar-light {
+        //     background-color: ;
+        // }
+    }
+}
+
+.best {
+    height: 200px;
+    width: 100%;
+    .img2 {
+        cursor: pointer;
+        height: inherit;
+        background-image: url("../../../assets/best.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+}

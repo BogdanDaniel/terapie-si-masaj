@@ -1,0 +1,44 @@
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  // ---------------------------------------------
+  // HTML, BODY: STYLES
+  html, body {
+    width: 100%;
+    min-height: 100vh; // TODO: find alternative for IE 10-11 support
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    height: 100%;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    min-width: 1200px;
+    position: relative;
+  }
+  
+  .iw-body {
+    // font-family: $font-family-sans-serif, 'iwnext';
+    // font-size: $font-size-base;
+    // font-weight: normal;
+    // color: $textColor;
+  }
+  
+  app-root,
+  app-main {
+      width: 100%;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: stretch;
+      height: calc(100vh - 75px);
+      overflow: auto;
+  }
