@@ -1,13 +1,13 @@
 <div class="stepsdemo-content">
     <p-card>
         <ng-template pTemplate="title">
-            Personal Information
+            Alege perioada
         </ng-template>
         <ng-template pTemplate="subtitle">
-            Enter your personal information
+            Selecteaza ziua si ora dorita
         </ng-template>
         <ng-template pTemplate="content">
-            <div class="p-fluid">
+            <!-- <div class="p-fluid">
                 <div class="p-field">
                     <label for="firstname">Firstname</label>
                     <input #firstname="ngModel" id="firstname" type="text" required pInputText [(ngModel)]="personalInformation.firstname" [ngClass]="{'ng-dirty': (firstname.invalid && submitted) || (firstname.dirty && firstname.invalid)}">
@@ -23,10 +23,10 @@
                     <input #age="ngModel" id="age" type="number" required pInputText [(ngModel)]="personalInformation.age" [ngClass]="{'ng-dirty': (age.invalid && submitted) || (age.dirty && age.invalid)}">
                     <small class="p-error" *ngIf="(age.invalid && submitted) || (age.dirty && age.invalid)">Age is required.</small>
                 </div>
-            </div>
+            </div> -->
         </ng-template>
         <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-end">
+            <div class="d-flex flex-wrap justify-content-end">
                 <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
             </div>
         </ng-template>
