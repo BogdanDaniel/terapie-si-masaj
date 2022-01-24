@@ -71,41 +71,12 @@
       padding-bottom: 20px;
       // #00d2d3 #feca57 #fbc531 #A3CB38 #78e08f #12CBC4
     }
-
-   
-  }
-
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff !important;
-    display: flex;
-    flex-direction: column;
-
-    .h1 {
-      font-size: 6rem;
-      font-family: Marcellus !important;
-      font-weight: 400 !important;
-      line-height: 80% !important;
-      text-shadow: 3px 5px 24px rgb(0 0 0 / 44%) !important;
-      letter-spacing: 2px !important;
-      margin-bottom: 28px !important;
-    }
-
-    .h2 {
-      font-size: 1.5rem;
-      padding-left: 35px;
-      font-family: Lato !important;
-      font-weight: 300 !important;
-      line-height: 80% !important;
-      text-shadow: 3px 5px 24px rgb(0 0 0 / 44%) !important;
-      letter-spacing: 2px !important;
-      margin-bottom: 28px !important;
-    }
   }
 }
+
+
+
+
 
 .main {
   .store-items {
