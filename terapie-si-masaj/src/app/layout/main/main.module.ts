@@ -8,6 +8,8 @@ import {CardModule} from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { HomeComponent } from '../home/home.component';
+import {DropdownModule} from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +26,9 @@ import { HomeComponent } from '../home/home.component';
     MainRoutingModule,
     ButtonModule,
     CardModule,
-    RouterModule
+    RouterModule,
+    DropdownModule,
+    FormsModule
   ]
 })
 export class MainModule { }
