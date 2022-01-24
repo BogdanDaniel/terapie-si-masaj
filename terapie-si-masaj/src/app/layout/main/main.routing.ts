@@ -21,6 +21,7 @@ import { MainComponent } from './main.component';
                     }]
             }
         ])
-    ]
+    ],
+    exports: [RouterModule]
 })
 export class MainRoutingModule { }
