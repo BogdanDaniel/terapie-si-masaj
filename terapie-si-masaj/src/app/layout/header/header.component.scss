@@ -7,6 +7,38 @@
     //     background-color: ;
     // }
 
+    .navbar-container {
+      max-width: 1200px;
+
+      .navbar-collapse:not(.show) {
+        background-color: white;
+        .navbar-nav {
+          margin-left: auto;
+          padding-right: 50px;
+
+          .nav-item {
+            &:not(:last-child) {
+              padding-right: 20px;
+            }
+
+            .nav-link {
+              font-size: 1.1rem;
+              color: #ecb100;
+            }
+
+            transition: transform .5s;
+
+
+            &:hover {
+              transform: scale(1.5);
+
+            }
+          }
+        }
+
+      }
+    }
+
     .navbar-brand {
       color: #ecb100;
       font-size: 1.5rem;
@@ -18,40 +50,13 @@
         transition: transform .5s;
 
         &:hover {
-            transform: scale(1.5);
+          transform: scale(1.5);
         }
       }
 
       ::ng-deep .p-button-icon {
         font-size: 1.1rem;
       }
-    }
-
-
-    .navbar-nav {
-      margin-left: auto;
-      padding-right: 50px;
-
-      .nav-item {
-        &:not(:last-child) {
-          padding-right: 20px;
-        }
-
-        .nav-link {
-          font-size: 1.1rem;
-          color: #ecb100;
-        }
-
-        transition: transform .5s;
-
-
-        &:hover {
-          transform: scale(1.5);
-
-        }
-      }
-
-
     }
   }
 }
