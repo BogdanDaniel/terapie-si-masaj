@@ -10,6 +10,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { HomeComponent } from '../home/home.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {BadgeModule} from 'primeng/badge';
 
 
 
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     DropdownModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    BadgeModule
   ]
 })
 export class MainModule { }

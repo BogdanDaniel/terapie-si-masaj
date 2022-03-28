@@ -9,17 +9,17 @@
           </div>
           <div class="col-12 p-0">
             <p-dropdown [options]="[]"
-              [(ngModel)]="selectedCountry"
-              placeholder="Serviciul ales"></p-dropdown>
+                        [(ngModel)]="selectedCountry"
+                        placeholder="Serviciul ales"></p-dropdown>
           </div>
           <div class="col-12 p-0">
             <p-dropdown [options]="[]"
-              placeholder="Locația mea"></p-dropdown>
+                        placeholder="Locația mea"></p-dropdown>
           </div>
           <button pButton
-            type="button"
-            class="p-button-raised"
-            label="Programează-te acum"></button>
+                  type="button"
+                  class="p-button-raised"
+                  label="Programează-te acum"></button>
         </div>
       </div>
     </div>
@@ -29,40 +29,52 @@
 <div class="container-fluid">
   <p class="heading"> Serviciile noastre
   </p>
-  <p class="sub-heading"> Masajul terapeutic este o soluție alternativă indicată în multe probleme de sănătate
+  <div class="sub-heading"> <p>
+    Masajul este o terapie care vă ajută să scăpați de: stres, oboseală, dureri musculare, senzația
+    de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
   </p>
-  <div class="row">
-    <div class="col-4">
-      <p-card>
-        <ng-template pTemplate="header">
-          Header content here
-        </ng-template>
-        Body Content
-        <ng-template pTemplate="footer">
-          Footer content here
-        </ng-template>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-auto">
+      <p-card styleClass="my-card">
+        <img alt="Card"
+             src="../../../assets/masaj_1.jpg"
+             height="300"
+             width="350">
+        <div class="my-badge">
+          <p-badge value="60-90min"></p-badge>
+        </div>
+        <div class="title">
+          <p>Masaj de relaxare</p>
+        </div>
       </p-card>
     </div>
-    <div class="col-4">
-      <p-card>
-        <ng-template pTemplate="header">
-          Header content here
-        </ng-template>
-        Body Content
-        <ng-template pTemplate="footer">
-          Footer content here
-        </ng-template>
+    <div class="col-auto">
+      <p-card styleClass="my-card">
+        <img alt="Card"
+             src="../../../assets/drenaj.jpg"
+             height="300"
+             width="350">
+        <div class="my-badge">
+          <p-badge value="60-90min"></p-badge>
+        </div>
+        <div class="title">
+          <p>Drenaj limfatic</p>
+        </div>
       </p-card>
     </div>
-    <div class="col-4">
-      <p-card>
-        <ng-template pTemplate="header">
-          Header content here
-        </ng-template>
-        Body Content
-        <ng-template pTemplate="footer">
-          Footer content here
-        </ng-template>
+    <div class="col-auto">
+      <p-card styleClass="my-card">
+        <img alt="Card"
+             src="../../../assets/masaj_1.jpg"
+             height="300"
+             width="350">
+        <div class="my-badge">
+          <p-badge value="60-90min"></p-badge>
+        </div>
+        <div class="title">
+          <p>Fitness masaj</p>
+        </div>
       </p-card>
     </div>
   </div>
@@ -72,7 +84,7 @@
   <p class="heading"> Masaje
   </p>
   <div class="row">
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -83,7 +95,7 @@
         </ng-template>
       </p-card>
     </div>
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -94,7 +106,7 @@
         </ng-template>
       </p-card>
     </div>
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -112,7 +124,7 @@
   <p class="heading"> Drenaje
   </p>
   <div class="row">
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -123,7 +135,7 @@
         </ng-template>
       </p-card>
     </div>
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -134,7 +146,7 @@
         </ng-template>
       </p-card>
     </div>
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -152,7 +164,18 @@
   <p class="heading"> Fitness
   </p>
   <div class="row">
-    <div class="col-4">
+    <div class="col-auto">
+      <p-card>
+        <!-- <ng-template pTemplate="header">
+          Header content here
+        </ng-template> -->
+
+        <ng-template pTemplate="footer">
+          Footer content here
+        </ng-template>
+      </p-card>
+    </div>
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
@@ -163,18 +186,7 @@
         </ng-template>
       </p-card>
     </div>
-    <div class="col-4">
-      <p-card>
-        <ng-template pTemplate="header">
-          Header content here
-        </ng-template>
-        Body Content
-        <ng-template pTemplate="footer">
-          Footer content here
-        </ng-template>
-      </p-card>
-    </div>
-    <div class="col-4">
+    <div class="col-auto">
       <p-card>
         <ng-template pTemplate="header">
           Header content here
