@@ -28,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardModule,
     RouterModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    ButtonModule
   ]
 })
 export class MainModule { }
