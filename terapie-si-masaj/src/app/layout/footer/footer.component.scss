@@ -1,4 +1,88 @@
-.footer {
-    height: 400px;
-    background: gray;
+footer {
+  background: #262626;
+
+  .footer {
+    height: 100%;
+    min-height: 300px;
+    max-width: 1200px;
+    display: flex;
+    padding: 20px 0;
+    justify-content: space-evenly;
+    .about-me, .info {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      border: 3px groove #ecb100;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
+    .about-me {
+      align-items: center;
+      justify-content: space-evenly;
+      .navbar-brand {
+        color: #ecb100;
+        font-size: 1.5rem;
+        margin-left: 0.75rem;
+
+        sub {
+          font-size: 11px;
+          font-style: italic;
+          padding-left: 5px;
+        }
+      }
+
+      .sub-heading {
+        width: 450px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+
+        p {
+          font-size: 20;
+          text-transform: none;
+          font-weight: 400;
+          letter-spacing: -1px;
+          color: #ecb100;
+          text-align: center;
+          width: 630px;
+          line-height: 1.8;
+          letter-spacing: 2px;
+          word-spacing: 1px;
+        }
+      }
+
+      .social-media {
+
+        &>button {
+          transition: transform .5s;
+
+          &:hover {
+            transform: scale(1.5);
+            transform: translateZ(0);
+          }
+        }
+
+        ::ng-deep .p-button-icon {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .info {
+      .useful-info,
+      .contact-info {
+        flex: 1;
+
+        .title {
+          font-size: 1.5rem;
+          color: #ecb100;
+          text-align: center;
+        }
+      }
+
+      .useful-info {
+        border-bottom: 3px groove #ecb100;
+      }
+    }
+  }
+
 }
