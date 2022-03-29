@@ -337,3 +337,17 @@
     transition: opacity .5s;
   }
 }
+
+
+.col-auto {
+  flex: 1;
+}
+
+
+@media (max-width: 1200px) {
+    .cards-container {
+      height: 1100px;
+      flex-direction: column;
+      align-items: center;
+    }
+}
