@@ -1,0 +1,23 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { AppCardModule } from '../app-card/app-app-card.module';
+import { AppFlipCardComponent } from './app-flip-card.component';
+
+
+
+
+@NgModule({
+  declarations: [
+    AppFlipCardComponent
+  ],
+  imports: [
+    CommonModule,
+    AppCardModule
+  ],
+  providers: [],
+  exports: [
+    AppFlipCardComponent
+  ]
+})
+export class AppFlipCardModule { }

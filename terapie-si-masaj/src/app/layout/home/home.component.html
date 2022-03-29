@@ -37,46 +37,47 @@
   </div>
   <div class="row justify-content-between cards-container">
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Masaj de relaxare</p>
-        </div>
-      </p-card>
+      <app-flip-card>
+        <app-card frontCard
+          [src]="'../../../assets/masaj_1.jpg'"
+          [badge]="'60-90min'"
+          [title]="'Masaj de relaxare'"></app-card>
+        <app-card backCard
+          [description]="'Masajul este o terapie care vă ajută să scăpați
+          de:stres,oboseală,dureri musculare, senzațiade picioare grele,
+          celulită, vergeturi și aspect inestetic al pielii.'"
+          [title]="'Afla mai multe'">
+        </app-card>
+      </app-flip-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/drenaj.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Drenaj limfatic</p>
-        </div>
-      </p-card>
+      <app-flip-card>
+        <app-card frontCard
+          [src]="'../../../assets/drenaj.jpg'"
+          [badge]="'60-90min'"
+          [title]="'Drenaj limfatic'"></app-card>
+        <app-card backCard
+          [description]="'Masajul este o terapie care vă ajută să scăpați
+          de:stres,oboseală,dureri musculare, senzațiade picioare grele,
+          celulită, vergeturi și aspect inestetic al pielii.'"
+          [title]="'Afla mai multe'">
+        </app-card>
+      </app-flip-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Fitness masaj</p>
-        </div>
-      </p-card>
+      <app-flip-card>
+        <app-card frontCard
+          [src]="'../../../assets/drenaj.jpg'"
+          [badge]="'60-90min'"
+          [title]="'Fitness masaj'">
+        </app-card>
+        <app-card backCard
+          [description]="'Masajul este o terapie care vă ajută să scăpați
+          de:stres,oboseală,dureri musculare, senzațiade picioare grele,
+          celulită, vergeturi și aspect inestetic al pielii.'"
+          [title]="'Afla mai multe'">
+        </app-card>
+      </app-flip-card>
     </div>
   </div>
 </div>
@@ -91,60 +92,33 @@
   </div>
   <div class="row justify-content-between massage-cards-container">
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="110.00 lei"></p-badge>
-        </div>
-        <div class="title">
-          <p>Terapie corporala</p>
-        </div>
-      </p-card>
+      <app-card
+        [src]="'../../../assets/masaj_1.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Terapie corporala'">
+      </app-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/drenaj.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Masaj terapeutic</p>
-        </div>
-      </p-card>
+      <app-card
+        [src]="'../../../assets/drenaj.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Masaj terapeutic'">
+      </app-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Masaj facial</p>
-        </div>
-      </p-card>
+      <app-card
+        [src]="'../../../assets/drenaj.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Masaj facial'">
+      </app-card>
+
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="60-90min"></p-badge>
-        </div>
-        <div class="title">
-          <p>Masaj pe scaun</p>
-        </div>
-      </p-card>
+      <app-card
+        [src]="'../../../assets/drenaj.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Masaj pe scaun'">
+      </app-card>
     </div>
   </div>
 </div>
@@ -159,19 +133,12 @@
     </p>
   </div>
   <div class="row justify-content-center massage-cards-container">
-    <div class="col-4 mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="110.00 lei"></p-badge>
-        </div>
-        <div class="title">
-          <p>Drenaj limfatic partial</p>
-        </div>
-      </p-card>
+    <div class="col-auto d-flex justify-content-center mb-5">
+      <app-card
+        [src]="'../../../assets/masaj_1.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Drenaj limfatic partial'">
+      </app-card>
     </div>
   </div>
 </div>
@@ -186,19 +153,12 @@
     </p>
   </div>
   <div class="row justify-content-center massage-cards-container">
-    <div class="col-4 mb-5">
-      <p-card styleClass="my-card">
-        <img alt="Card"
-          src="../../../assets/masaj_1.jpg"
-          height="300"
-          width="350">
-        <div class="my-badge">
-          <p-badge value="110.00 lei"></p-badge>
-        </div>
-        <div class="title">
-          <p>Fitness masaj anticelulitic</p>
-        </div>
-      </p-card>
+    <div class="col-auto d-flex justify-content-center mb-5">
+      <app-card
+        [src]="'../../../assets/masaj_1.jpg'"
+        [badge]="'110.00 lei'"
+        [title]="'Fitness masaj anticelulitic'">
+      </app-card>
     </div>
   </div>
 </div>

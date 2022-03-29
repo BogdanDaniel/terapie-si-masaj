@@ -11,6 +11,8 @@ import { HomeComponent } from '../home/home.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BadgeModule} from 'primeng/badge';
+import { AppCardModule } from 'src/app/modules/app-card/app-app-card.module';
+import { AppFlipCardModule } from 'src/app/modules/app-flip-card/app-flip-card.module';
 
 
 
@@ -31,7 +33,9 @@ import {BadgeModule} from 'primeng/badge';
     DropdownModule,
     FormsModule,
     ButtonModule,
-    BadgeModule
+    BadgeModule,
+    AppCardModule,
+    AppFlipCardModule
   ]
 })
 export class MainModule { }
