@@ -1,8 +1,8 @@
 .header {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   .navbar {
     height: 75px;
     background-color: #262626;
-    opacity: .9;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
     .navbar-container {
@@ -29,7 +29,7 @@
       .navbar-collapse {
         .navbar-nav {
           padding-right: 25px;
-          min-width: 600px;
+          max-width: 600px;
           justify-content: space-between;
           overflow: hidden;
 
@@ -70,7 +70,13 @@
     .navbar-brand {
       color: #ecb100;
       font-size: 1.5rem;
-      margin-left: 0.75rem
+      margin-left: 0.75rem;
+
+      sub {
+        font-size: 11px;
+        font-style: italic;
+        padding-left: 5px;
+      }
     }
 
     .social-media {
