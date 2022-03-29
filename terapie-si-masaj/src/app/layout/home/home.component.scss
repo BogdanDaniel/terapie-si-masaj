@@ -206,7 +206,16 @@
 
 .container-fluid {
   max-width: 1200px;
-  padding-top: 100px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+
+  &:last-of-type {
+    padding-bottom: 150px !important;
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #ecb100;
+  }
 
   .heading {
     font-size: 44px;
@@ -235,22 +244,7 @@
       word-spacing: 1px;
     }
   }
-
 }
-
-
-.container-fluid:first-of-type,
-.container-fluid:last-of-type {
-  padding: 100px 0;
-}
-
-.container-fluid:not(:last-of-type) {
-  border-bottom: 1px solid #ecb100;
-}
-
-
-
-
 
 .img-container {
   img {
