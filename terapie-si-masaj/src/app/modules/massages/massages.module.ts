@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,6 +15,7 @@ import { MassagesComponent } from './container/massages.component';
 
 
 import { MassagesRoutingModule } from './massages-routing.module';
+import { MassagesService } from './services/massages.service';
 
 
 
@@ -32,10 +34,9 @@ import { MassagesRoutingModule } from './massages-routing.module';
     ToastModule,
     InputTextModule,
     CardModule,
-    ReactiveFormsModule,
-    FormsModule,
     ButtonModule,
+    BadgeModule
   ],
-  providers: []
+  providers: [MassagesService]
 })
 export class MassagesModule { }

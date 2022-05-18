@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,11 +7,16 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./massage-image.component.scss']
 })
 export class MassageImageComponent implements OnInit {
+    @Input() details: any;
 
-    constructor(private route: ActivatedRoute) { }
+    get src() {
+        return '../../../../../../../assets/' + this.details.imageUrl;
+    }
+
+    constructor() { }
 
     ngOnInit() {
-        this.route.params.subscribe(data => console.log(data, 'params'))
+
     }
 
     ngOnDestroy() {

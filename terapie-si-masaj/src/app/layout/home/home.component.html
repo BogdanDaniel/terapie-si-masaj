@@ -9,27 +9,30 @@
           </div>
           <div class="col-12 p-0">
             <p-dropdown [options]="[]"
-              [(ngModel)]="selectedCountry"
-              placeholder="Serviciul ales"></p-dropdown>
+                        [(ngModel)]="selectedCountry"
+                        placeholder="Serviciul ales"></p-dropdown>
           </div>
           <div class="col-12 p-0">
             <p-dropdown [options]="[]"
-              placeholder="Locația mea"></p-dropdown>
+                        placeholder="Locația mea"></p-dropdown>
           </div>
           <button pButton
-            type="button"
-            class="p-button-raised"
-            label="Programează-te acum"></button>
+                  type="button"
+                  class="p-button-raised"
+                  label="Programează-te acum"></button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid" style="padding-top: 150px;">
+<div class="container-fluid"
+     id="services"
+     style="padding-top: 150px;">
   <p class="heading"> Serviciile noastre
   </p>
-  <div class="sub-heading"> <p>
+  <div class="sub-heading">
+    <p>
       Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
       dureri musculare, senzația
       de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
@@ -39,52 +42,56 @@
     <div class="col-auto d-flex justify-content-center mb-5">
       <app-flip-card>
         <app-card frontCard
-          [src]="'../../../assets/masaj_1.jpg'"
-          [badge]="'60-90min'"
-          [title]="'Masaj de relaxare'"></app-card>
+                  [src]="'../../../assets/masaj_1.jpg'"
+                  [badge]="'60-90min'"
+                  [title]="'Masaj de relaxare'"
+                  (click)="scroll('massages')"></app-card>
         <app-card backCard
-          [description]="'Masajul este o terapie care vă ajută să scăpați
+                  [description]="'Masajul este o terapie care vă ajută să scăpați
           de:stres,oboseală,dureri musculare, senzațiade picioare grele,
           celulită, vergeturi și aspect inestetic al pielii.'"
-          [title]="'Afla mai multe'">
+                  [title]="'Afla mai multe'">
         </app-card>
       </app-flip-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
       <app-flip-card>
         <app-card frontCard
-          [src]="'../../../assets/drenaj.jpg'"
-          [badge]="'60-90min'"
-          [title]="'Drenaj limfatic'"></app-card>
+                  [src]="'../../../assets/drenaj.jpg'"
+                  [badge]="'60-90min'"
+                  [title]="'Drenaj limfatic'"
+                  (click)="scroll('drenaje')"></app-card>
         <app-card backCard
-          [description]="'Masajul este o terapie care vă ajută să scăpați
+                  [description]="'Masajul este o terapie care vă ajută să scăpați
           de:stres,oboseală,dureri musculare, senzațiade picioare grele,
           celulită, vergeturi și aspect inestetic al pielii.'"
-          [title]="'Afla mai multe'">
+                  [title]="'Afla mai multe'">
         </app-card>
       </app-flip-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
       <app-flip-card>
         <app-card frontCard
-          [src]="'../../../assets/drenaj.jpg'"
-          [badge]="'60-90min'"
-          [title]="'Fitness masaj'">
+                  [src]="'../../../assets/drenaj.jpg'"
+                  [badge]="'60-90min'"
+                  [title]="'Fitness masaj'"
+                  (click)="scroll('fitness')">
         </app-card>
         <app-card backCard
-          [description]="'Masajul este o terapie care vă ajută să scăpați
+                  [description]="'Masajul este o terapie care vă ajută să scăpați
           de:stres,oboseală,dureri musculare, senzațiade picioare grele,
           celulită, vergeturi și aspect inestetic al pielii.'"
-          [title]="'Afla mai multe'">
+                  [title]="'Afla mai multe'">
         </app-card>
       </app-flip-card>
     </div>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="massages">
   <p class="heading"> Masaje
   </p>
-  <div class="sub-heading"> <p>
+  <div class="sub-heading">
+    <p>
       Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
       dureri musculare, senzația
       de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
@@ -92,42 +99,39 @@
   </div>
   <div class="row justify-content-between massage-cards-container">
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/masaj_1.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Terapie corporala'"
-        [routerLink]="'masaje/terapie-corporala'">
+      <app-card [src]="'../../../assets/masaj_1.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Terapie corporala'"
+                [routerLink]="'masaje/terapie-corporala'">
       </app-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/drenaj.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Masaj terapeutic'">
+      <app-card [src]="'../../../assets/drenaj.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Masaj terapeutic'">
       </app-card>
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/drenaj.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Masaj facial'">
+      <app-card [src]="'../../../assets/drenaj.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Masaj facial'">
       </app-card>
 
     </div>
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/drenaj.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Masaj pe scaun'">
+      <app-card [src]="'../../../assets/drenaj.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Masaj pe scaun'">
       </app-card>
     </div>
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="drenaje">
   <p class="heading"> Drenaje
   </p>
-  <div class="sub-heading"> <p>
+  <div class="sub-heading">
+    <p>
       Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
       dureri musculare, senzația
       de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
@@ -135,19 +139,19 @@
   </div>
   <div class="row justify-content-center massage-cards-container">
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/masaj_1.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Drenaj limfatic partial'">
+      <app-card [src]="'../../../assets/masaj_1.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Drenaj limfatic partial'">
       </app-card>
     </div>
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="fitness">
   <p class="heading"> Fitness
   </p>
-  <div class="sub-heading"> <p>
+  <div class="sub-heading">
+    <p>
       Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
       dureri musculare, senzația
       de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
@@ -155,10 +159,9 @@
   </div>
   <div class="row justify-content-center massage-cards-container">
     <div class="col-auto d-flex justify-content-center mb-5">
-      <app-card
-        [src]="'../../../assets/masaj_1.jpg'"
-        [badge]="'110.00 lei'"
-        [title]="'Fitness masaj anticelulitic'">
+      <app-card [src]="'../../../assets/masaj_1.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Fitness masaj anticelulitic'">
       </app-card>
     </div>
   </div>

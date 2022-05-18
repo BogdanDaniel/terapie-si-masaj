@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,11 +7,10 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./massage-details.component.scss']
 })
 export class MassageDetailsComponent implements OnInit {
-
+    @Input() details: any;
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.route.params.subscribe(data => console.log(data, 'params'))
     }
 
     ngOnDestroy() {

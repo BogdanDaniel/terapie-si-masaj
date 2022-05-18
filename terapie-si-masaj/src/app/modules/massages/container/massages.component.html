@@ -1,10 +1,10 @@
-<div class="container h-100">
+<div class="container h-100" *ngIf="(details | async) as info">
     <div class="row">
         <div class="col-6">
-            <app-massage-image></app-massage-image>
+            <app-massage-image [details]="info"></app-massage-image>
         </div>
         <div class="col-6">
-            <app-massage-details></app-massage-details>
+            <app-massage-details [details]="info"></app-massage-details>
         </div>
     </div>
 </div>

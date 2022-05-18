@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { MassagesService } from '../services/massages.service';
 
 @Component({
   selector: 'app-massages',
@@ -7,11 +9,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./massages.component.scss']
 })
 export class MassagesComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute) { }
+  details: Observable<any> | null = null;
+  constructor(private route: ActivatedRoute, private massagesService: MassagesService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(data => console.log(data, 'params'))
+    this.details = this.route.params.pipe(
+      switchMap((params: any) => {
+        return this.massagesService.getMassage(params['id']);
+      })
+    );
+
   }
 
   ngOnDestroy() {

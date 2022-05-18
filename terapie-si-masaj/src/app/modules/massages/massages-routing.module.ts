@@ -4,14 +4,15 @@ import { MassagesComponent } from "./container/massages.component";
 
 @NgModule({
     imports: [
-        RouterModule.forChild([{
+        RouterModule.forChild([
+        {
             path: ':id',
             component: MassagesComponent,
         }
-        
-    ])
+
+        ])
     ]
 })
 export class MassagesRoutingModule {
-    
+
 }
