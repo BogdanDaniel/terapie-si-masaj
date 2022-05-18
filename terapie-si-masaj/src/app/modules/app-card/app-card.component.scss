@@ -1,5 +1,7 @@
 ::ng-deep .my-card.p-card {
   border-radius: 25px;
+  cursor: pointer;
+  pointer-events: all;
 
   .p-card-body {
     padding: 0;

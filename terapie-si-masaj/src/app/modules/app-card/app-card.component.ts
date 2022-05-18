@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -10,10 +11,22 @@ export class AppCardComponent implements OnInit {
   @Input() description: string = ''
   @Input() badge: string = '';
   @Input() title: string = '';
+  @Input() routerLink: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    console.log('click', this.routerLink, 'routerLink')
+    if (this.routerLink) {
+      this.goToRoute(this.routerLink);
+    }
+  }
+
+  goToRoute(route: string) {
+    this.router.navigate([route]);
   }
 
   ngOnDestroy() {

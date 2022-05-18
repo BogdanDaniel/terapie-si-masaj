@@ -18,7 +18,12 @@ import { MainComponent } from './main.component';
                     {
                         path: 'programare',
                         loadChildren: () => import('../../modules/appointment/appointment.module').then(mod => mod.AppointmentModule)
-                    }]
+                    },
+                    {
+                        path: 'masaje',
+                        loadChildren: () => import('../../modules/massages/massages.module').then(mod => mod.MassagesModule)
+                    }
+                ]
             }
         ])
     ],

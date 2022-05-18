@@ -4,7 +4,9 @@ app-header {
   z-index: 100;
 }
 
-section {
-  margin-top: -75px;
+section  {
+ height: calc(100% - 75px);
+ min-height: calc(100vh - 75px);
 }
+
 

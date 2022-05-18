@@ -1,0 +1,53 @@
+
+:host {
+    height: 100%;
+    display: flex;
+    font-size: 17px;
+    background: #262626;
+    color: #fff;
+    opacity: 0.9;
+    padding: 1.6rem;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 3px groove #ecb100
+}
+
+.title {
+  font-size: 1.5rem;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: #ecb100;
+  text-align: center;
+}
+
+.description {
+  text-transform: none;
+  color: #ecb100;
+  line-height: 1.8;
+  word-spacing: 5px;
+  text-align: center;
+}
+
+.appointment {
+    border-top: 1px solid #ecb100;
+
+    div, button {
+        flex: 1;
+    }
+
+    .appointment-btn, .price {
+        color: #fff;
+    }
+
+    .appointment-btn {
+        border-radius: 25px;
+    }
+}
+
+
+.col-12, .col-6 {
+    margin-bottom: 15px;
+}

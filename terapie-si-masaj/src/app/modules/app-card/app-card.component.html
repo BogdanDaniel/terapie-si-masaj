@@ -1,14 +1,18 @@
-<p-card styleClass="my-card">
+<p-card styleClass="my-card"
+        (click)="onClick()">
   <img *ngIf="src"
-    alt="Card"
-    [src]="src"
-    height="300"
-    width="350">
-  <div *ngIf="description" class="description">{{description}}</div>
-  <div *ngIf="badge" class="my-badge">
+       alt="Card"
+       [src]="src"
+       height="300"
+       width="350">
+  <div *ngIf="description"
+       class="description">{{description}}</div>
+  <div *ngIf="badge"
+       class="my-badge">
     <p-badge [value]="badge"></p-badge>
   </div>
-  <div *ngIf="title" class="title">
+  <div *ngIf="title"
+       class="title">
     <p>{{title}}</p>
   </div>
 </p-card>
