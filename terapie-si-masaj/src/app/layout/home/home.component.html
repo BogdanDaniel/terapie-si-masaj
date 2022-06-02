@@ -8,12 +8,14 @@
           <div class="title">Masajul dorit e la un pas distanță de casă ta!
           </div>
           <div class="col-12 p-0">
-            <p-dropdown [options]="[]"
-                        [(ngModel)]="selectedCountry"
+            <p-dropdown [options]="services"
+                        [(ngModel)]="selectedService"
+                        [group]="true"
                         placeholder="Serviciul ales"></p-dropdown>
           </div>
           <div class="col-12 p-0">
-            <p-dropdown [options]="[]"
+            <p-dropdown [options]="cities"
+                        [(ngModel)]="selectedCity"
                         placeholder="Locația mea"></p-dropdown>
           </div>
           <button pButton
@@ -87,7 +89,8 @@
     </div>
   </div>
 </div>
-<div class="container-fluid" id="massages">
+<div class="container-fluid"
+     id="massages">
   <p class="heading"> Masaje
   </p>
   <div class="sub-heading">
@@ -128,7 +131,8 @@
   </div>
 </div>
 
-<div class="container-fluid" id="drenaje">
+<div class="container-fluid"
+     id="drenaje">
   <p class="heading"> Drenaje
   </p>
   <div class="sub-heading">
@@ -148,7 +152,8 @@
   </div>
 </div>
 
-<div class="container-fluid" id="fitness">
+<div class="container-fluid"
+     id="fitness">
   <p class="heading"> Fitness
   </p>
   <div class="sub-heading">
