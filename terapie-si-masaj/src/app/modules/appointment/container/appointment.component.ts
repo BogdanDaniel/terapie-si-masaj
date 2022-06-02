@@ -17,19 +17,19 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit() {
       this.items = [{
-              label: 'Personal',
+              label: 'Serviciul ales',
               routerLink: 'personal'
           },
           {
-              label: 'Seat',
+              label: 'Perioada',
               routerLink: 'seat'
           },
           {
-              label: 'Payment',
+              label: 'Date personale',
               routerLink: 'payment'
           },
           {
-              label: 'Confirmation',
+              label: 'Detalii',
               routerLink: 'confirmation'
           }
       ];

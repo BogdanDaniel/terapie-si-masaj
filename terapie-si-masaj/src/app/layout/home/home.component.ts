@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { City } from 'src/app/shared/constants/city.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   cities: any[];
   services: any[];
   nr = 5
-  constructor(private utilityService: UtilityService) {
+  constructor(private utilityService: UtilityService, private router: Router) {
     this.cities = [
       { label: City.BUCURESTI, code: City.BUCURESTI },
       { label: City.ILFOV, code: City.ILFOV }
@@ -48,6 +49,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  goToAppointment() {
+    this.router.navigate(['programare/personal']);
+}
 
   scroll(id: string) {
     this.utilityService.scroll(id);

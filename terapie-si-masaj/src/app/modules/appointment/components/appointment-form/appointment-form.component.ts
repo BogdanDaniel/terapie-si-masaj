@@ -37,7 +37,7 @@ export class AppointmentFormComponent implements OnInit {
   nextPage() {
       if (this.personalInformation.firstname && this.personalInformation.lastname && this.personalInformation.age) {
         //  this.ticketService.ticketInformation.personalInformation = this.personalInformation;
-          this.router.navigate(['steps/seat']);
+          this.router.navigate(['programare/seat']);
 
           return;
       }

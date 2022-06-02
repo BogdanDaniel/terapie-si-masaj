@@ -19,7 +19,6 @@ export class AppCardComponent implements OnInit {
   }
 
   onClick() {
-    console.log('click', this.routerLink, 'routerLink')
     if (this.routerLink) {
       this.goToRoute(this.routerLink);
     }

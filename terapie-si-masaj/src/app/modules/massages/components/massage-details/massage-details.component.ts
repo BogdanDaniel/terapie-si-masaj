@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-massage-details',
@@ -8,9 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MassageDetailsComponent implements OnInit {
     @Input() details: any;
-    constructor(private route: ActivatedRoute) { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
+    }
+
+    goToAppointment() {
+        this.router.navigate(['programare']);
     }
 
     ngOnDestroy() {
