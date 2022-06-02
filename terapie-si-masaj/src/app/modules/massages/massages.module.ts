@@ -11,6 +11,7 @@ import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
 import { MassageDetailsComponent } from './components/massage-details/massage-details.component';
 import { MassageImageComponent } from './components/massage-image/massage-image.component';
+import { MassageMoreDetailsComponent } from './components/massages-more-details/massages-more-details.component';
 import { MassagesComponent } from './container/massages.component';
 
 
@@ -24,7 +25,8 @@ import { MassagesService } from './services/massages.service';
   declarations: [
     MassagesComponent,
     MassageDetailsComponent,
-    MassageImageComponent
+    MassageImageComponent,
+    MassageMoreDetailsComponent
   ],
   imports: [
     CommonModule,

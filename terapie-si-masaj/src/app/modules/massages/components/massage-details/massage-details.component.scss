@@ -15,7 +15,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-transform: none;
   font-weight: 400;
   letter-spacing: -1px;
@@ -25,10 +25,31 @@
 
 .description {
   text-transform: none;
-  color: #ecb100;
+  color: #fff;
   line-height: 1.8;
   word-spacing: 5px;
   text-align: center;
+}
+
+.benefits {
+    color: #ecb100;
+    .title {
+        font-size: 1.5rem;
+        text-transform: none;
+        font-weight: 400;
+        letter-spacing: -1px;
+        text-align: left;
+        margin-bottom: 1rem;
+        text-decoration: underline;
+    }
+
+    ul {
+        color: #fff;
+        li {
+            font-style: italic;
+            line-height: 3rem;
+        }
+    }
 }
 
 .appointment {
@@ -43,11 +64,8 @@
     }
 
     .appointment-btn {
-        border-radius: 25px;
+        height: 50px;
+        color: #262626;
+        font-size: 1.5rem;
     }
-}
-
-
-.col-12, .col-6 {
-    margin-bottom: 15px;
 }
