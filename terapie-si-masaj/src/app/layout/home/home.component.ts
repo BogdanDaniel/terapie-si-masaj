@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   goToAppointment() {
     this.router.navigate(['programare/personal']);
-}
+  }
 
   scroll(id: string) {
     this.utilityService.scroll(id);
