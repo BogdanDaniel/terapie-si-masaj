@@ -1,4 +1,4 @@
-<p-card >
+<p-card>
     <ng-template pTemplate="title">
         Programare {{service?.valueChanges | async}}
     </ng-template>
@@ -13,24 +13,44 @@
                     <span class="p-float-label">
                         <p-dropdown [options]="services"
                                     formControlName="service"
+                                    placeholder="Alege un serviciu"
                                     [ngClass]="{'ng-dirty': (service?.invalid && submitted) || (service?.dirty && service?.invalid)}"
                                     [group]="true"></p-dropdown>
                         <label for="appointmentDate">Serviciul ales</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(service?.invalid && submitted )|| (service?.dirty && service?.invalid)">Serviciul este obligatoriu</small>
+                           *ngIf="(service?.invalid && submitted )|| (service?.dirty && service?.invalid)">Serviciul
+                        este obligatoriu</small>
                 </div>
                 <div class="col-md-6 col-sm-12 mt-4">
                     <span class="p-float-label">
-                        <input id="appointmentDate"
-                               type="text"
-                               pInputText
-                               formControlName="date"
-                               [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}">
+                        <p-calendar id="appointmentDate"
+                                    formControlName="date"
+                                    dateFormat="dd-mm-yy"
+                                    inputId="touchui"
+                                    [showIcon]="true"
+                                    [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}"
+                                    [minDate]="minDate"
+                                    [maxDate]="maxDate"></p-calendar>
+
                         <label for="appointmentDate">Data programare</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este obligatorie</small>
+                           *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este
+                        obligatorie</small>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <span class="p-float-label">
+                        <p-dropdown [options]="hours"
+                                    formControlName="hour"
+                                    placeholder="Selecteaza ora"
+                                    [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}"></p-dropdown>
+                        <label for="appointmentHour">Ora programare</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(hour?.invalid && submitted )|| (hour?.dirty && hour?.invalid)">Ora este
+                        obligatorie</small>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mt-4">
@@ -44,7 +64,8 @@
                         <label for="lastName">Nume</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele este obligatoriu</small>
+                           *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele
+                        este obligatoriu</small>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mt-4">
@@ -70,7 +91,8 @@
                         <label for="phone">Telefon</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(phone?.invalid && submitted )|| (phone?.dirty && phone?.invalid)">Telefonul este obligatoriu</small>
+                           *ngIf="(phone?.invalid && submitted )|| (phone?.dirty && phone?.invalid)">Telefonul este
+                        obligatoriu</small>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
@@ -93,7 +115,8 @@
                         <label for="address">Adresa</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este obligatorie</small>
+                           *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este
+                        obligatorie</small>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
@@ -111,7 +134,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 d-flex justify-content-end">
-                    <p-button label="Salveaza programarea"
+                    <p-button label="Programeaza-te"
                               type="submit"
                               icon="pi pi-angle-right"
                               iconPos="right"></p-button>

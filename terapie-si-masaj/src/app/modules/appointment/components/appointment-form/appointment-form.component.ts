@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -6,6 +6,7 @@ import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
 import { MassageCategory } from 'src/app/shared/constants/massage-categories.const';
+import { takeWhile } from 'rxjs';
 export const calendarRo = {
   firstDayOfWeek: 1,
   dayNames: ['Duminică', 'Luni', 'Marţi', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'],
@@ -21,20 +22,26 @@ export const calendarRo = {
 @Component({
   selector: 'app-appointment-form',
   templateUrl: './appointment-form.component.html',
-  styleUrls: ['./appointment-form.component.scss']
+  styleUrls: ['./appointment-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppointmentFormComponent implements OnInit {
+export class AppointmentFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   services: any[] = [];
-
+  hours: any[] = [];
   submitted: boolean = false;
+  minDate: Date;
+
+  maxDate: Date;
   //interval: any[]
+  private alive = true;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) {
     this.form = new FormGroup({
       service: new FormControl('', [Validators.required]),
-      date: new FormControl('', [Validators.required]),
+      date: new FormControl(new Date(), [Validators.required]),
+      hour: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
@@ -64,15 +71,41 @@ export class AppointmentFormComponent implements OnInit {
         { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
       ]
     }]
+    this.hours = [
+      { label: '10:00', value: 10 },
+      { label: '11:00', value: 11 },
+      { label: '12:00', value: 12 },
+      { label: '13:00', value: 13 },
+      { label: '14:00', value: 14 },
+      { label: '15:00', value: 15 },
+      { label: '16:00', value: 16 },
+      { label: '17:00', value: 17 },
+      { label: '18:00', value: 18 },
+      { label: '19:00', value: 19 },
+      { label: '20:00', value: 20 },
+      { label: '21:00', value: 21 },
+      { label: '22:00', value: 22 },
+      { label: '23:00', value: 23 }
+    ];
+
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+
     console.log(this.services, 'services')
   }
+ 
 
   get service() {
     return this.form?.get('service') as FormControl;
-  } 
+  }
 
   get date() {
     return this.form?.get('date') as FormControl;
+  }
+
+  get hour() {
+    return this.form?.get('hour') as FormControl;
   }
 
   get firstName() {
@@ -98,16 +131,16 @@ export class AppointmentFormComponent implements OnInit {
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
     const date = new Date();
     console.log(calendarRo.dayNames[date.getDay()], ' ', calendarRo.monthNames[date.getMonth()])
-
   }
 
   onSubmit() {
     this.submitted = true;
-    if(this.form.invalid) {
+    console.log(this.form.getRawValue(), 'submit')
+
+    if (this.form.invalid) {
       return;
     }
-    console.log(this.form.getRawValue(), 'submit')
-    this.messageService.add({severity:'success', detail:'Programarea a fost salvata cu succes!'});
+    this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
 
     // if (this.personalInformation.firstname && this.personalInformation.lastname && this.personalInformation.age) {
     //   //  this.ticketService.ticketInformation.personalInformation = this.personalInformation;
@@ -116,5 +149,9 @@ export class AppointmentFormComponent implements OnInit {
     //   return;
     // }
 
+  }
+
+  ngOnDestroy(): void {
+    this.alive = false;
   }
 }

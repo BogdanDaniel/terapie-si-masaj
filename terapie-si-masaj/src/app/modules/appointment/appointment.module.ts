@@ -14,6 +14,7 @@ import { ToastModule } from 'primeng/toast';
 import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentComponent } from './container/appointment.component';
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -35,7 +36,8 @@ import { AppointmentComponent } from './container/appointment.component';
     ButtonModule,
     ReactiveFormsModule,
     DropdownModule,
-    InputTextareaModule
+    InputTextareaModule,
+    CalendarModule,
   ],
   providers: [MessageService]
 })
