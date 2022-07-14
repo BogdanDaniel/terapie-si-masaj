@@ -42,6 +42,7 @@
               font-size: 1.1rem;
               color: #ecb100;
               transition: transform .5s;
+              cursor: pointer;
 
               &::after {
                 display: block;
