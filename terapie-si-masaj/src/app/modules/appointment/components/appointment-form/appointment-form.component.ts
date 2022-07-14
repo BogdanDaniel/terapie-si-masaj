@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
@@ -30,7 +31,7 @@ export class AppointmentFormComponent implements OnInit {
   submitted: boolean = false;
   //interval: any[]
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private messageService: MessageService) {
     this.form = new FormGroup({
       service: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
@@ -101,10 +102,13 @@ export class AppointmentFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if(this.form.invalid) {
       return;
     }
     console.log(this.form.getRawValue(), 'submit')
+    this.messageService.add({severity:'success', detail:'Programarea a fost salvata cu succes!'});
+
     // if (this.personalInformation.firstname && this.personalInformation.lastname && this.personalInformation.age) {
     //   //  this.ticketService.ticketInformation.personalInformation = this.personalInformation;
     //   this.router.navigate(['programare/seat']);
@@ -112,6 +116,5 @@ export class AppointmentFormComponent implements OnInit {
     //   return;
     // }
 
-    this.submitted = true;
   }
 }
