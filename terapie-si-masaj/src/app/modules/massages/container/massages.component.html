@@ -1,15 +1,20 @@
-<div class="container h-100" *ngIf="(details | async) as info">
+<div class="container h-100"
+     *ngIf="(details | async) as info">
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12"
+             data-aos="fade-right"
+             data-aos-duration="1500">
             <app-massage-image [details]="info"></app-massage-image>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12"
+             data-aos="fade-left"
+             data-aos-duration="1500">
             <app-massage-details [details]="info"></app-massage-details>
         </div>
     </div>
     <div class="row extra-details">
         <div class="col-12">
-          <app-massages-more-details [details]="info"></app-massages-more-details>
+            <app-massages-more-details [details]="info"></app-massages-more-details>
         </div>
     </div>
 </div>
