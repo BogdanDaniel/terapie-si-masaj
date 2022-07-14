@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppointmentRoutingModule } from './appointment-routing.module';
-import { AppointmentComponent } from './container/appointment.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import {StepsModule} from 'primeng/steps';
-import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { StepsModule } from 'primeng/steps';
+import { ToastModule } from 'primeng/toast';
+
+import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
-import {InputTextModule} from 'primeng/inputtext';
-import {CardModule} from 'primeng/card';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
+import { AppointmentComponent } from './container/appointment.component';
+
 
 
 
@@ -28,9 +32,10 @@ import {ButtonModule} from 'primeng/button';
     ToastModule,
     InputTextModule,
     CardModule,
+    ButtonModule,
     ReactiveFormsModule,
-    FormsModule,
-    ButtonModule
+    DropdownModule,
+    InputTextareaModule
   ],
   providers: [MessageService]
 })

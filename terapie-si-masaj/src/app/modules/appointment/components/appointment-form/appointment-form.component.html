@@ -1,34 +1,123 @@
-<div class="stepsdemo-content">
-    <p-card>
-        <ng-template pTemplate="title">
-            Alege perioada
-        </ng-template>
-        <ng-template pTemplate="subtitle">
-            Selecteaza ziua si ora dorita
-        </ng-template>
-        <ng-template pTemplate="content">
-            <!-- <div class="p-fluid">
-                <div class="p-field">
-                    <label for="firstname">Firstname</label>
-                    <input #firstname="ngModel" id="firstname" type="text" required pInputText [(ngModel)]="personalInformation.firstname" [ngClass]="{'ng-dirty': (firstname.invalid && submitted) || (firstname.dirty && firstname.invalid)}">
-                    <small *ngIf="(firstname.invalid && submitted) || (firstname.dirty && firstname.invalid)" class="p-error">Firstname is required.</small>
+<p-card>
+    <ng-template pTemplate="title">
+        Programare {{service?.valueChanges | async}}
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Completeaza campurile necesare programarii
+    </ng-template>
+    <ng-template pTemplate="content">
+        <form [formGroup]="form"
+              (ngSubmit)="onSubmit()">
+            <div class="row p-fluid">
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <span class="p-float-label">
+                        <p-dropdown [options]="services"
+                                    formControlName="service"
+                                    [ngClass]="{'ng-dirty': (service?.invalid && submitted) || (service?.dirty && service?.invalid)}"
+                                    [group]="true"></p-dropdown>
+                        <label for="appointmentDate">Serviciul ales</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(service?.invalid && submitted )|| (service?.dirty && service?.invalid)">Serviciul este obligatoriu</small>
                 </div>
-                <div class="p-field">
-                    <label for="lastname">Lastname</label>
-                    <input #lastname="ngModel" id="lastname" type="text" required pInputText [(ngModel)]="personalInformation.lastname" [ngClass]="{'ng-dirty': (lastname.invalid && submitted) || (lastname.dirty && lastname.invalid)}">
-                    <small class="p-error" *ngIf="(lastname.invalid && submitted )|| (lastname.dirty && lastname.invalid)">Lastname is required.</small>
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <span class="p-float-label">
+                        <input id="appointmentDate"
+                               type="text"
+                               pInputText
+                               formControlName="date"
+                               [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}">
+                        <label for="appointmentDate">Data programare</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este obligatorie</small>
                 </div>
-                <div class="p-field">
-                    <label for="age">Age</label>
-                    <input #age="ngModel" id="age" type="number" required pInputText [(ngModel)]="personalInformation.age" [ngClass]="{'ng-dirty': (age.invalid && submitted) || (age.dirty && age.invalid)}">
-                    <small class="p-error" *ngIf="(age.invalid && submitted) || (age.dirty && age.invalid)">Age is required.</small>
+
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <span class="p-float-label">
+                        <input id="lastName"
+                               type="text"
+                               required
+                               pInputText
+                               formControlName="lastName"
+                               [ngClass]="{'ng-dirty': (lastName?.invalid && submitted) || (lastName?.dirty && lastName?.invalid)}">
+                        <label for="lastName">Nume</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele este obligatoriu</small>
                 </div>
-            </div> -->
-        </ng-template>
-        <ng-template pTemplate="footer">
-            <div class="d-flex flex-wrap justify-content-end">
-                <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <span class="p-float-label">
+                        <input id="firstName"
+                               type="text"
+                               pInputText
+                               formControlName="firstName"
+                               [ngClass]="{'ng-dirty': (firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)}">
+                        <label for="firstName">Prenume</label>
+                    </span>
+                    <small *ngIf="(firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)"
+                           class="p-error">Prenumele este obligatoriu</small>
+                </div>
+
+
+                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                        <input id="phone"
+                               type="text"
+                               pInputText
+                               formControlName="phone"
+                               [ngClass]="{'ng-dirty': (phone?.invalid && submitted) || (phone?.dirty && phone?.invalid)}">
+                        <label for="phone">Telefon</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(phone?.invalid && submitted )|| (phone?.dirty && phone?.invalid)">Telefonul este obligatoriu</small>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                        <input id="email"
+                               type="text"
+                               pInputText
+                               formControlName="email"
+                               [ngClass]="{'ng-dirty': (email?.invalid && submitted) || (email?.dirty && email?.invalid)}">
+                        <label for="email">Email</label>
+
+                    </span>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                        <input id="address"
+                               type="text"
+                               pInputText
+                               formControlName="address"
+                               [ngClass]="{'ng-dirty': (address?.invalid && submitted) || (address?.dirty && address?.invalid)}">
+                        <label for="address">Adresa</label>
+                    </span>
+                    <small class="p-error"
+                           *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este obligatorie</small>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                        <textarea inputId="textarea"
+                                  rows="3"
+                                  style="resize: none;"
+                                  cols="20"
+                                  formControlName="observations"
+                                  pInputTextarea
+                                  [ngClass]="{'ng-dirty': (observations?.invalid && submitted) || (observations?.dirty && observations?.invalid)}"></textarea>
+                        <label for="observations">Observatii</label>
+                    </span>
+                </div>
+
             </div>
-        </ng-template>
-    </p-card>
-</div>
+            <div class="row mt-4">
+                <div class="col-12 d-flex justify-content-end">
+                    <p-button label="Salveaza programarea"
+                              type="submit"
+                              icon="pi pi-angle-right"
+                              iconPos="right"></p-button>
+                </div>
+
+            </div>
+        </form>
+    </ng-template>
+</p-card>
