@@ -25,8 +25,8 @@
 
   ::ng-deep .booking-container {
 
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    min-height: 500px;
     background: hsla(48, 100%, 67%, .4);
     padding: 50px 40px;
     color: #fff;
