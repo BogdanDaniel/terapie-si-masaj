@@ -1,65 +1,68 @@
-        <div class="col-12"
-         *ngIf="details.benefits"
-         class="heading">
-        <div class="title">Beneficii</div>
-        <ul class="sub-heading">
-            <li class="col-6" *ngFor="let benefit of details.benefits">
-                 {{benefit}}
-            </li>
-        </ul>
-    </div>
+<p-tabView>
+   <p-tabPanel header="Informatii">
+      <p class="txt"> {{details.description}}</p>
+      <p class="benefits">Beneficii</p>
+      <ul class="sub-heading">
+         <li class="col-12"
+             *ngFor="let benefit of details.benefits">
+            {{benefit}}
+         </li>
+      </ul>
 
-        
-    <div class="col-12"
-    *ngIf="details.benefits"
-    class="heading">
-   <div class="title">Recomandari</div>
-   <ul class="sub-heading">
-       <li class="col-12" >
-        Masajul este o terapie care vă ajută să scăpați de: stres, oboseală, dureri musculare, senzația de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
-       </li>
-   </ul>
-</div>
+   </p-tabPanel>
+   <p-tabPanel header="Produse folosite">
+      <ng-template pTemplate="content">
+         <div class="row">
+            <div class="col-12">
+               <p class="txt">Produsele folosite sunt de calitate superioara si nu prezinta riscuri de iritie... Masajul de relaxare este una dintre cele mai vechi terapii și este recomandat tuturor persoanelor, indiferent de vârstă și sex, aducând îmbunătățiri atât fizice, cât și psihice corpului nostru.</p>
+            </div>
+         </div>
+         <div class="row justify-content-center product-container"
+             >
+            <div class="col-auto d-flex justify-content-center mb-5"  data-aos="fade-left"
+            data-aos-duration="500">
+               <app-flip-card>
+                  <app-card frontCard
+                            [src]="'../../../../../assets/ulei_cu_mango.jpg'"
+                            [title]="'Ulei cu avocado'">
+                  </app-card>
+                  <app-card backCard
+                            [description]="'Extractul de avocado (5%) ajută la regenerarea şi la echilibrul pielii, datorită aportului suplimentar de Vitamina E, determinând astfel o piele netedă şi suplă.
+                 Produsul se adresează tuturor tipurilor de piele şi poate fi aplicat pe ȋntregul corp.'"
+                 [title]="'Ulei cu avocado'">
+                  </app-card>
+               </app-flip-card>
+            </div>
+            <div class="col-auto d-flex justify-content-center mb-5"  data-aos="fade-left"
+            data-aos-duration="500"  data-aos-delay="250">
+               <app-flip-card>
+                  <app-card frontCard
+                            [src]="'../../../../../assets/ulei_cu_mango.jpg'"
+                            [title]="'Ulei cu avocado'">
+                  </app-card>
+                  <app-card backCard
+                            [description]="'Extractul de avocado (5%) ajută la regenerarea şi la echilibrul pielii, datorită aportului suplimentar de Vitamina E, determinând astfel o piele netedă şi suplă.
+                 Produsul se adresează tuturor tipurilor de piele şi poate fi aplicat pe ȋntregul corp.'"
+                 [title]="'Ulei cu avocado'">
+                  </app-card>
+               </app-flip-card>
+            </div>
+            <div class="col-auto d-flex justify-content-center mb-5"  data-aos="fade-left"  data-aos-delay="500"
+            data-aos-duration="500">
+               <app-flip-card>
+                  <app-card frontCard
+                            [src]="'../../../../../assets/ulei_cu_mango.jpg'"
+                            [title]="'Ulei cu avocado'">
+                  </app-card>
+                  <app-card backCard
+                            [description]="'Extractul de avocado (5%) ajută la regenerarea şi la echilibrul pielii, datorită aportului suplimentar de Vitamina E, determinând astfel o piele netedă şi suplă.
+                 Produsul se adresează tuturor tipurilor de piele şi poate fi aplicat pe ȋntregul corp.'"
+                 [title]="'Ulei cu avocado'">
+                  </app-card>
+               </app-flip-card>
+            </div>
+         </div>
+      </ng-template>
 
-    
-<div class="col-12"
-*ngIf="details.benefits"
-class="heading">
-<div class="title">Specificatii</div>
-<ul class="sub-heading">
-   <li class="col-12" >
-    Pentru comfortul psihic și fizic al clientului, masajul se efectuează la domiciliul dumneavoastră din București sau Ilfov.
-    Se vine cu masă de masaj, uleiuri speciale ( diferite arome, pentru diferite terapii), ventuză de silicon și băț de bambus (pentru anticelulitic).
-    
-   </li>
-</ul>
-</div>
-
-<div class="col-12"
-*ngIf="details.benefits"
-class="heading">
-<div class="title">Instrumente</div>
-<ul class="sub-heading">
-   <li class="col-12" >
-    Se vine cu masă de masaj, uleiuri speciale ( diferite arome, pentru diferite terapii), ventuză de silicon și băț de bambus (pentru anticelulitic).
-   </li>
-</ul>
-</div>
-
-<div class="col-12"
-*ngIf="details.benefits"
-class="heading">
-<div class="title">Bonus</div>
-<ul class="sub-heading">
-   <li class="col-12" >
-    Fiecare client va beneficia la prima ședință de-o evaluare corporală ( în funcție de ce doriți dumneavoastră să obțineți prin masaj, eu vă ofer terapia și sfaturile necesare).
-    
-   </li>
-</ul>
-</div>
-
-
-
-
-
-    
+   </p-tabPanel>
+</p-tabView>

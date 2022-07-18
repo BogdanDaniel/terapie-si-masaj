@@ -1,37 +1,85 @@
-.heading {
-    font-size: 44px;
-    text-transform: none;
-    font-weight: 400;
+.sub-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  li,
+  .txt {
+
     letter-spacing: -1px;
-    color: #ecb100;
-    text-align: center;
-    .title {
-        margin-bottom: 3rem;
-    }
-  }
-
-  .sub-heading {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    color: #a33c0f ;
     margin-bottom: 1rem;
-    list-style: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    line-height: 2rem;
+  }
+}
 
-    li {
-      font-size: 1.5rem;
-      text-transform: none;
-      font-weight: 400;
-      letter-spacing: -1px;
-      color: #ecb100;
-      text-align: left;
-      line-height: 1.8;
-      letter-spacing: 2px;
-      word-spacing: 1px;
-      text-align: center;
-      margin-bottom: 3rem;
+
+
+
+:host ::ng-deep {
+  .p-tabview {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; 
+   }
+
+  .p-tabview-panels {
+    background-color: #fff7e6;
+  }
+
+  .p-tabview-nav {
+    border-color: #f19066 !important;
+    background-color: #f19066 !important;
+  }
+
+  .p-tabview-nav {
+    padding: 0 10px;
+
+    li:not(:first-child) {
+      margin-left: 5px;
+    }
+    .p-tabview-nav-link {
+      color: #fff !important;
+      border-color: #f19066 !important;
+      font-size: 1.2rem;
+      font-weight: 400 !important;
+      background-color: #f19066 !important;
+    }
+
+    .p-highlight {
+      .p-tabview-nav-link {
+        border-color: #fff !important;
+        padding-bottom: 15px !important;
+      }
+      
+    }
+
+    .p-tabview-nav-link:focus {
+      box-shadow: unset !important;
     }
   }
 
-  .heading {
-      margin-bottom: 150px;
-  }
+
+
+}
+
+.benefits {
+  font-size: 1.3rem;
+  color: #a33c0f;
+  border-bottom: 1px solid #f19066;
+}
+
+.product-container {
+  min-height: 450px;
+  padding: 50px 25px;
+}
+
+.txt {
+  color: #a33c0f ;
+  text-align: left;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  line-height: 2rem;
+}

@@ -17,6 +17,9 @@ import { MassagesComponent } from './container/massages.component';
 
 import { MassagesRoutingModule } from './massages-routing.module';
 import { MassagesService } from './services/massages.service';
+import {TabViewModule} from 'primeng/tabview';
+import { AppFlipCardModule } from '../app-flip-card/app-flip-card.module';
+
 
 
 
@@ -37,7 +40,9 @@ import { MassagesService } from './services/massages.service';
     InputTextModule,
     CardModule,
     ButtonModule,
-    BadgeModule
+    TabViewModule,
+    BadgeModule,
+    AppFlipCardModule
   ],
   providers: [MassagesService]
 })

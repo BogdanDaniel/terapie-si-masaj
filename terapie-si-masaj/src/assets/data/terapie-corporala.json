@@ -1,6 +1,12 @@
 {
     "title": "Terapie corporala",
-    "description": "Aurul, metal pretios, este folosit in numeroase culturi, in ritualurile de infrumusetare. Considerata tratament japonez demn de o regina, masca cu aur, cu pulbere de 24 de carate se numara printre preferatele vedetelor din Beverly Hills. Ideea nu este chiar noua, aurul fiind folosit inca din Antichitate in procesele de infrumusetare. Cleopatra, regina Egiptului, obisnuia sa se culce in fiecare noapte cu o masca de aur pe fata. Nano – particulele de aur prezente in produsele cosmetice au proprietatea de bune conductoare a componentelor active, a ingredientilor, avand calitatea de a se lega de straturile cat mai adanci ale pielii.",
+    "description": "Masajul de relaxare este una dintre cele mai vechi terapii și este recomandat tuturor persoanelor, indiferent de vârstă și sex, aducând îmbunătățiri atât fizice, cât și psihice corpului nostru.Dacă vă simțiti epuizat/epuizată după o zi stresantă la serviciu, sau pur și simplu simțiți nevoia să vă relaxați, masajul este cel mai recomandat. Patul de masaj special și uleiurile aromate, vor oferi o plăcere deosebită, iar o simplă ședință de 60/90 de minute vă poate încărca cu energie pentru întreaga săptămână.",
     "price": "250 Lei cu TVA",
-    "imageUrl": "masaj_1.jpg"
+    "imageUrl": "masaj_1.jpg",
+    "benefits": [
+        "Eliberează toxinele și îndepărtează stratul de celule moarte",
+        "Inlătura stresul, având un efect calmant, chiar sedativ în cazul diverselor nevralgii",
+        "Stimulează circulația și tonifiaza mușchii faciali",
+        "Ajută la intinerirea procesului de îmbătrânire"
+    ]
 }
