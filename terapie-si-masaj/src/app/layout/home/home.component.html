@@ -53,7 +53,7 @@
         <app-card frontCard
                   [src]="'../../../assets/masaj_1.jpg'"
                   [badge]="'60-90min'"
-                  [title]="'Masaj de relaxare'"
+                  [title]="'Masaje de relaxare'"
                   (click)="scroll('massages')"></app-card>
         <app-card backCard
                   [description]="'Masajul este o terapie care vă ajută să scăpați
@@ -63,7 +63,7 @@
         </app-card>
       </app-flip-card>
     </div>
-    <div class="col-auto d-flex justify-content-center mb-5"
+    <!-- <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
       <app-flip-card>
@@ -79,7 +79,7 @@
                   [title]="'Afla mai multe'">
         </app-card>
       </app-flip-card>
-    </div>
+    </div> -->
     <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
@@ -87,7 +87,7 @@
         <app-card frontCard
                   [src]="'../../../assets/drenaj.jpg'"
                   [badge]="'60-90min'"
-                  [title]="'Fitness masaj'"
+                  [title]="'Masaje de recuperare'"
                   (click)="scroll('fitness')">
         </app-card>
         <app-card backCard
@@ -104,7 +104,7 @@
      data-aos="fade-down"
      data-aos-duration="1000"
      id="massages">
-  <p class="heading"> Masaje
+  <p class="heading"> Masaje de relaxare
   </p>
   <div class="sub-heading">
     <p>
@@ -119,17 +119,28 @@
          data-aos-duration="1000">
       <app-card [src]="'../../../assets/masaj_1.jpg'"
                 [badge]="'110.00 lei'"
-                [title]="'Terapie corporala'"
+                [title]="'Masaj de relaxare'"
                 [routerLink]="'masaje/terapie-corporala'">
       </app-card>
     </div>
+    <!-- <div class="col-auto d-flex justify-content-center mb-5"
+         data-aos="zoom-in"
+         data-aos-duration="1000">
+      <app-card [src]="'../../../assets/masaj_1.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Terapie corporala'"
+                [routerLink]="'masaje/terapie-corporala'">
+      </app-card>
+    </div> -->
     <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
       <app-card [src]="'../../../assets/drenaj.jpg'"
                 [badge]="'110.00 lei'"
-                [title]="'Masaj terapeutic'">
+                [title]="'Masaj capilar'"
+                [routerLink]="'masaje/masaj-facial'">
       </app-card>
+
     </div>
     <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
@@ -141,14 +152,14 @@
       </app-card>
 
     </div>
-    <div class="col-auto d-flex justify-content-center mb-5"
+    <!-- <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
       <app-card [src]="'../../../assets/drenaj.jpg'"
                 [badge]="'110.00 lei'"
                 [title]="'Masaj pe scaun'">
       </app-card>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -156,7 +167,7 @@
      data-aos="fade-down"
      data-aos-duration="1000"
      id="drenaje">
-  <p class="heading"> Drenaje
+  <p class="heading"> Masaje de recuperare
   </p>
   <div class="sub-heading">
     <p>
@@ -166,6 +177,14 @@
     </p>
   </div>
   <div class="row justify-content-center massage-cards-container">
+    <div class="col-auto d-flex justify-content-center mb-5"
+         data-aos="zoom-in"
+         data-aos-duration="1000">
+      <app-card [src]="'../../../assets/drenaj.jpg'"
+                [badge]="'110.00 lei'"
+                [title]="'Masaj terapeutic'">
+      </app-card>
+    </div>
     <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
@@ -174,29 +193,12 @@
                 [title]="'Drenaj limfatic partial'">
       </app-card>
     </div>
-  </div>
-</div>
-
-<div class="container-fluid"
-     data-aos="fade-down"
-     data-aos-duration="1000"
-     id="fitness">
-  <p class="heading"> Fitness
-  </p>
-  <div class="sub-heading">
-    <p>
-      Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
-      dureri musculare, senzația
-      de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
-    </p>
-  </div>
-  <div class="row justify-content-center massage-cards-container">
     <div class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
       <app-card [src]="'../../../assets/masaj_1.jpg'"
                 [badge]="'110.00 lei'"
-                [title]="'Fitness masaj anticelulitic'">
+                [title]="'Masaj anticelulitic'">
       </app-card>
     </div>
   </div>
