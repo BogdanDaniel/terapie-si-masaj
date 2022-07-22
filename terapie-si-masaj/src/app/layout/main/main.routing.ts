@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { PriceListContainerComponent } from 'src/app/modules/price-list/container/price-list-container.component';
 
 import { HomeComponent } from '../home/home.component';
 import { MainComponent } from './main.component';
@@ -22,6 +23,10 @@ import { MainComponent } from './main.component';
                     {
                         path: 'masaje',
                         loadChildren: () => import('../../modules/massages/massages.module').then(mod => mod.MassagesModule)
+                    },
+                    {
+                        path: 'tarife',
+                        component: PriceListContainerComponent
                     }
                 ]
             }

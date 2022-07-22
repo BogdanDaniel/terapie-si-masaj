@@ -1,0 +1,69 @@
+.container {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.border {
+    padding: 3rem 3rem 5rem 3rem;
+  &::after {
+    content: '';
+    width: 160px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../../../assets/price-list.svg");
+    background-color: #fff7e6;
+    position: absolute;
+    top: 127px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+}
+
+.title {
+  margin-top: 3rem;
+  font-size: 2.25rem;
+  letter-spacing: -.025em;
+  line-height: 1.5;
+  font-weight: 800;
+  color: #4a69bd;
+}
+
+.item {
+  margin: 2rem 0;
+  flex-wrap: nowrap !important;
+
+  .img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 9999px;
+    margin-right: 2rem;
+  }
+
+  .txt {
+    font-weight: 600;
+    color: rgba(26, 32, 44, 1);
+  }
+
+
+  .sub-txt {
+    font-size: .875rem;
+    color: rgba(160, 174, 192, 1);
+  }
+
+  .price, .time {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a69bd;
+  }
+  .price-sm {
+    max-width: 150px;
+  }
+
+  .price-xl {
+    max-width: 275px;
+  }
+}

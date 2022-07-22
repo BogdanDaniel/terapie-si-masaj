@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BadgeModule} from 'primeng/badge';
 import { AppCardModule } from 'src/app/modules/app-card/app-app-card.module';
 import { AppFlipCardModule } from 'src/app/modules/app-flip-card/app-flip-card.module';
+import { PriceListModule } from 'src/app/modules/price-list/price-list.module';
 
 
 
@@ -35,7 +36,8 @@ import { AppFlipCardModule } from 'src/app/modules/app-flip-card/app-flip-card.m
     ButtonModule,
     BadgeModule,
     AppCardModule,
-    AppFlipCardModule
+    AppFlipCardModule,
+    PriceListModule
   ]
 })
 export class MainModule { }
