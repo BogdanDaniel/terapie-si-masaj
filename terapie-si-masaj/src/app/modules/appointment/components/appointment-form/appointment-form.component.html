@@ -44,7 +44,7 @@
                     <span class="p-float-label">
                         <p-dropdown [options]="hours"
                                     formControlName="hour"
-                                    placeholder="Selecteaza ora"
+                                    emptyMessage="Nu este niciun interval disponibil in aceasta zi!"
                                     [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}"></p-dropdown>
                         <label for="appointmentHour">Ora programare</label>
                     </span>

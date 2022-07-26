@@ -5,14 +5,15 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyA1QUv9lhI5ShVajIaJDqGhhBI-Y3Qj75A",
-    authDomain: "terapie-si-masaj.firebaseapp.com",
-    projectId: "terapie-si-masaj",
-    storageBucket: "terapie-si-masaj.appspot.com",
-    messagingSenderId: "382368879127",
-    appId: "1:382368879127:web:9fe6d78e818caec2284252",
-    measurementId: "G-JMSZ0ZS0P4"
+    apiKey: "AIzaSyA-RAcLvBtGszD453VV1qGJIITBhb9RVYs",
+    authDomain: "terapie-si-masaj-14c4e.firebaseapp.com",
+    projectId: "terapie-si-masaj-14c4e",
+    storageBucket: "terapie-si-masaj-14c4e.appspot.com",
+    messagingSenderId: "332732618862",
+    appId: "1:332732618862:web:5dbc8f02481fa55569ee7f",
+    measurementId: "G-0BGCJWE8Z1"
   }
+
 };
 
 /*
