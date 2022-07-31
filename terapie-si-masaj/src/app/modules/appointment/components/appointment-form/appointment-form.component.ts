@@ -144,17 +144,16 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
     const form = this.form.getRawValue();
     const payload = {
       ...form,
       date: new Date(form.date).toLocaleDateString()
     }
     this.databaseService.addItem(payload);
-
-    this.submitted = true;
-    if (this.form.invalid) {
-      return;
-    }
     this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
 
   }
