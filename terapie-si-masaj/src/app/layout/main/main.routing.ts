@@ -27,6 +27,10 @@ import { MainComponent } from './main.component';
                     {
                         path: 'tarife',
                         component: PriceListContainerComponent
+                    },
+                    {
+                        path: 'auth',
+                        loadChildren: () => import('../../modules/user/user.module').then(mod => mod.UserModule)
                     }
                 ]
             }

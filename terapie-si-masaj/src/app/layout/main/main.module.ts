@@ -14,6 +14,7 @@ import {BadgeModule} from 'primeng/badge';
 import { AppCardModule } from 'src/app/modules/app-card/app-app-card.module';
 import { AppFlipCardModule } from 'src/app/modules/app-flip-card/app-flip-card.module';
 import { PriceListModule } from 'src/app/modules/price-list/price-list.module';
+import { UserModule } from 'src/app/modules/user/user.module';
 
 
 
@@ -37,7 +38,8 @@ import { PriceListModule } from 'src/app/modules/price-list/price-list.module';
     BadgeModule,
     AppCardModule,
     AppFlipCardModule,
-    PriceListModule
+    PriceListModule,
+    UserModule
   ]
 })
 export class MainModule { }

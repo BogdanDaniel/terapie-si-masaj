@@ -1,0 +1,53 @@
+<div class="login">
+    <div class="container row">
+        <div class="parentlogin col-md-12 col-lg-6">
+            <form>
+                <div class="title">
+                    <h1>Intra in cont</h1>
+                    <!-- <div class="icon">
+                            <div class="social"> <a href="#" class="social-icon"><span class="fa fa-facebook"></span></a></div>
+                            <div class="social">   <a href="#" class="social-icon"><span class="fa fa-twitter"></span></a></div>
+                        </div> -->
+                </div>
+                <span class="p-float-label">
+                    <input type="text"
+                           id="inputtext"
+                           pInputText
+                           autocomplete="off">
+                    <label class="label"
+                           for="name">Email</label>
+                </span>
+                <span class="p-float-label mt-4">
+                    <input type="password" autocomplete="off">
+                    <label class="label"
+                           for="password">Parola</label>
+                </span>
+
+                <input type="submit"
+                       class="submit"
+                       value="Autentificare">
+                <div class="extra">
+                    <div class="checkbox">
+                        <label>
+                            <p-checkbox [(ngModel)]="checked"
+                                        [binary]="true"
+                                        inputId="binary"></p-checkbox>Tine-ma minte
+                        </label>
+
+                    </div>
+                    <div class="forget">
+                        <a href="#">Recuperare parola</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="parentdesc col-md-12 col-lg-6">
+            <div class="description">
+                <h2>Bun venit la Terapie si Masaj</h2>
+                <p>Nu ai cont?</p>
+                <a href="#">Inregistreza-te acum</a>
+            </div>
+        </div>
+    </div>
+
+</div>
