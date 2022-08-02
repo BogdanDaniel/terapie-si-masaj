@@ -84,7 +84,6 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 7);
 
-    console.log(this.services, 'services')
   }
 
 
@@ -122,7 +121,6 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
     const date = new Date();
-    console.log(calendarRo.dayNames[date.getDay()], ' ', calendarRo.monthNames[date.getMonth()]);
     this.getHours();
     this.date.patchValue(new Date());
 

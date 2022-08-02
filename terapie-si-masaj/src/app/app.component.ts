@@ -10,7 +10,6 @@ import * as Aos from 'aos';
 export class AppComponent {
   title = 'terapie-si-masaj';
   constructor(firestore: AngularFirestore) {
-     firestore.collection('roles').valueChanges().subscribe(data => console.log(data, 'data'));
      Aos.init();
   }
 }
