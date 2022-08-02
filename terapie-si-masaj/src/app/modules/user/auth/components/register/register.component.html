@@ -1,0 +1,69 @@
+<div class="login">
+    <div class="container row">
+        <div class="parentlogin col-md-12 col-lg-6">
+            <form [formGroup]="form"
+                  (ngSubmit)="register()">
+                <div class="title">
+                    <h1>Inregistrare</h1>
+                </div>
+                <span class="p-float-label">
+                    <input type="text"
+                           id="inputtext"
+                           formControlName="name"
+                           pInputText
+                           autocomplete="off"
+                           >
+                    <label class="label"
+                           for="name">Nume</label>
+                </span>
+                <small id="name-required"  *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched" class="p-error block">Numele este obligatoriu</small>
+
+                <span class="p-float-label mt-4">
+                    <input type="text"
+                           id="inputtext"
+                           pInputText
+                           formControlName="email"
+                           autocomplete="off">
+                    <label class="label"
+                           for="email">Email</label>
+                </span>
+                <small id="email-required"  *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched" class="p-error block">Emailul este obligatoriu</small>
+                <small id="email-wrong"  *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched" class="p-error block">Introduceti o adresa de email valida</small>
+
+                <span class="p-float-label mt-4">
+                    <input type="password"
+                           pInputText
+                           formControlName="password"
+                           autocomplete="off">
+                    <label class="label"
+                           for="password">Parola</label>
+                </span>
+                <small id="password-required"  *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched" class="p-error block">Parola este obligatoriu</small>
+
+
+                <button pButton
+                        type="submit"
+                        label="Inregistreza-te acum"> </button>
+                <div class="extra">
+                    <div class="checkbox">
+                        <label>
+                            <p-checkbox formControlName="checked"
+                                        [binary]="true"
+                                        inputId="binary"></p-checkbox>Sunt de acord cu Termenii si conditiile de
+                            utilizare ale site-ului
+                        </label>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="parentdesc col-md-12 col-lg-6">
+            <div class="description">
+                <h2>Bun venit la Terapie si Masaj</h2>
+                <p>Ai deja cont?</p>
+                <a [routerLink]="['/auth']">Conecteaza-te</a>
+            </div>
+        </div>
+    </div>
+
+</div>
