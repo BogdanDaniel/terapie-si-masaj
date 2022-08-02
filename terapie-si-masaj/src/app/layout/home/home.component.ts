@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 import { City } from 'src/app/shared/constants/city.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
@@ -12,12 +13,23 @@ import { UtilityService } from 'src/app/shared/services/utility.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedCity = null;
   selectedService = null;
   cities: any[];
   services: any[];
   nr = 5
+
+
+  @HostListener('window:scroll', ['$event.target']) scrolling(ev: any) {
+    const scroll = $(ev).scrollTop();
+    console.log(scroll);
+    if (scroll && scroll > 75) {
+      $('.navbar').addClass('custom');
+    } else {
+      $('.navbar').removeClass('custom');
+    }
+  }
   constructor(private utilityService: UtilityService, private router: Router) {
     this.cities = [
       { label: City.BUCURESTI, code: City.BUCURESTI },
@@ -50,6 +62,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+
+    $('.navbar').removeClass('custom');
+
+  }
+
   goToAppointment() {
     this.router.navigate(['programare/personal']);
   }
@@ -57,4 +75,10 @@ export class HomeComponent implements OnInit {
   scroll(id: string) {
     this.utilityService.scroll(id);
   }
+
+  ngOnDestroy(): void {
+    $('.navbar').addClass('custom');
+
+  }
+
 }

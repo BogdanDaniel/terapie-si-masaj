@@ -1,25 +1,25 @@
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Lato", Arial, sans-serif;
 }
+
 body {
   background-color: #e5e5e5;
 }
 
 .login {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    max-width: 900px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-width: 900px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .parentdesc,
@@ -42,7 +42,7 @@ body {
 }
 
 .description {
- padding: 0 50px;
+  padding: 0 50px;
 }
 
 .description h2 {
@@ -50,11 +50,13 @@ body {
   color: #fff;
   font-weight: 900;
 }
+
 .description p {
   margin-bottom: 30px;
   font-size: 14px;
   color: #fff;
 }
+
 .description a {
   text-decoration: none;
   color: #fff;
@@ -64,29 +66,34 @@ body {
 }
 
 form {
- width: 100%;
- height: 100%;
- padding: 100px 50px;
+  width: 100%;
+  height: 100%;
+  padding: 100px 50px;
 }
+
 .title {
   display: flex;
   position: relative;
   width: 100%;
 }
+
 .title h1 {
   width: 100%;
   color: #ecb100;
- // text-shadow: 1px 1px #c3cbd5;
+  // text-shadow: 1px 1px #c3cbd5;
 }
+
 .title .icon {
   width: 75%;
   display: flex;
 }
+
 .title .icon .social {
   position: relative;
   width: 32%;
   justify-content: flex-end !important;
 }
+
 .title .icon .social .social-icon {
   display: block;
   width: 40px;
@@ -100,6 +107,7 @@ form {
   border-radius: 50%;
   text-decoration: none;
 }
+
 .title .icon .social .social-icon:hover {
   color: #f75959;
 }
@@ -107,6 +115,7 @@ form {
 form h1 {
   margin-bottom: 45px;
 }
+
 .label {
   font-size: 12px;
   text-transform: uppercase;
@@ -151,7 +160,7 @@ input.ng-touched.ng-invalid+label {
   color: #f44336;
 }
 
-::ng-deep .p-button {
+:host ::ng-deep .p-button {
   width: 100%;
   height: 40px;
   background-color: #ecb100;
@@ -179,15 +188,18 @@ input.ng-touched.ng-invalid+label {
   font-size: 15px;
   border-radius: 50px;
 }
+
 .extra {
   position: relative;
   display: flex;
   justify-content: space-evenly;
 }
+
 .checkbox {
   text-align: left;
   width: 50%;
 }
+
 .checkbox label {
   display: block;
   position: relative;
@@ -198,7 +210,8 @@ input.ng-touched.ng-invalid+label {
   font-weight: 500;
   color: #ecb100;
 }
-::ng-deep .checkbox .p-checkbox {
+
+:host ::ng-deep .checkbox .p-checkbox {
   position: absolute;
   cursor: pointer;
   left: 0;
@@ -209,10 +222,8 @@ input.ng-touched.ng-invalid+label {
     border: 2px solid #ecb100;
   }
 }
+
 .forget a {
   text-decoration: none;
   color: #ecb100;
 }
-
-
-

@@ -1,7 +1,7 @@
 <header>
   <div class="header">
     <div class="container-fluid p-0">
-      <nav class="navbar sticky-top navbar-expand-md navbar-light ">
+      <nav class="navbar sticky-top custom navbar-expand-md navbar-light ">
         <div class="container-fluid navbar-container p-0">
           <a class="navbar-brand"
              routerLink="/">Terapie și Masaj<sub class="subscript">by Ionuț Duță</sub></a>
@@ -25,11 +25,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link"
-                (click)="scroll('services')" >Servicii</a>
+                   (click)="scroll('services')">Servicii</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"
-                (click)="goTo('tarife')" >Preturi</a>
+                   (click)="goTo('tarife')">Preturi</a>
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link"
@@ -54,6 +54,13 @@
                       class="p-button-rounded p-button-text"></button>
 
             </form>
+            <div class="d-flex login">
+              <a class="auth"
+                 routerLink="/auth">Autentificare</a>
+              <div class="border-left"></div>
+              <a class="register"
+                 routerLink="/auth/register">Inregistrare</a>
+            </div>
           </div>
         </div>
       </nav>

@@ -160,7 +160,7 @@ input.ng-touched.ng-invalid+label {
   color: #f44336;
 }
 
-::ng-deep .p-button {
+:host ::ng-deep .p-button {
   width: 100%;
   height: 40px;
   background-color: #ecb100;
@@ -192,7 +192,7 @@ input.ng-touched.ng-invalid+label {
   color: #ecb100;
 }
 
-::ng-deep .checkbox .p-checkbox {
+:host ::ng-deep .checkbox .p-checkbox {
   position: absolute;
   cursor: pointer;
   left: 0;
