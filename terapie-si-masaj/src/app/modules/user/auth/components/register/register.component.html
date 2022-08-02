@@ -11,12 +11,13 @@
                            id="inputtext"
                            formControlName="name"
                            pInputText
-                           autocomplete="off"
-                           >
+                           autocomplete="off">
                     <label class="label"
                            for="name">Nume</label>
                 </span>
-                <small id="name-required"  *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched" class="p-error block">Numele este obligatoriu</small>
+                <small id="name-required"
+                       *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched"
+                       class="p-error block">Te rugăm să-ți introduci numele</small>
 
                 <span class="p-float-label mt-4">
                     <input type="text"
@@ -27,8 +28,12 @@
                     <label class="label"
                            for="email">Email</label>
                 </span>
-                <small id="email-required"  *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched" class="p-error block">Emailul este obligatoriu</small>
-                <small id="email-wrong"  *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched" class="p-error block">Introduceti o adresa de email valida</small>
+                <small id="email-required"
+                       *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched"
+                       class="p-error block">Te rugăm să-ți introduci adresa de e-mail </small>
+                <small id="email-wrong"
+                       *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched"
+                       class="p-error block">Adresa de e-mail nu este valida</small>
 
                 <span class="p-float-label mt-4">
                     <input type="password"
@@ -38,7 +43,12 @@
                     <label class="label"
                            for="password">Parola</label>
                 </span>
-                <small id="password-required"  *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched" class="p-error block">Parola este obligatoriu</small>
+                <small id="password-required"
+                       *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched"
+                       class="p-error block">Te rugăm să-ți introduci parola</small>
+                <small id="password-length"
+                       *ngIf="form.get('password')?.errors?.['minlength'] || form.get('password')?.errors?.['maxlength'] && form.get('password')?.touched"
+                       class="p-error block">Parola trebuie să aibă minimum 6 și maximum 20 de caractere</small>
 
 
                 <button pButton
