@@ -1,5 +1,5 @@
 <header>
-  <div class="header">
+  <div class="header header-absolute">
     <div class="container-fluid p-0">
       <nav class="navbar sticky-top custom navbar-expand-md navbar-light ">
         <div class="container-fluid navbar-container p-0">
@@ -54,7 +54,7 @@
                       class="p-button-rounded p-button-text"></button>
 
             </form>
-            <div class="d-flex login">
+            <div *ngIf="!(userService.isAuthenticated | async)" class="d-flex login">
               <a class="auth"
                  routerLink="/auth">Autentificare</a>
               <div class="border-left"></div>

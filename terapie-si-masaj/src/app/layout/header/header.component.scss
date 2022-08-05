@@ -1,9 +1,4 @@
  .header {
-   position: absolute;
-   top: 0;
-   right: 0;
-   left: 0;
-   bottom: 0;
 
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -202,4 +197,12 @@
 
  .border-left {
    border-left: 1px solid #ecb100;
+ }
+
+ .header-aboslute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
  }

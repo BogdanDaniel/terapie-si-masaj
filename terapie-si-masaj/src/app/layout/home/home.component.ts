@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll', ['$event.target']) scrolling(ev: any) {
     const scroll = $(ev).scrollTop();
-    console.log(scroll);
     if (scroll && scroll > 75) {
       $('.navbar').addClass('custom');
     } else {
@@ -63,7 +62,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-
+    $('.header').addClass('header-aboslute');
     $('.navbar').removeClass('custom');
 
   }
@@ -77,6 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    $('.header').removeClass('header-aboslute');
     $('.navbar').addClass('custom');
 
   }

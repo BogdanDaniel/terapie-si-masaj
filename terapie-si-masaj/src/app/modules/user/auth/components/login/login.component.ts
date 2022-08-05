@@ -34,7 +34,7 @@ export class LoginComponent {
         }
 
         this.authService.login(this.getCredentiales(form)).subscribe((res: UserResponse) => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/my-account']);
         });
 
     }

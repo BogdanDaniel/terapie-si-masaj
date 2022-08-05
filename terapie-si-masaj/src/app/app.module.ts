@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
@@ -13,7 +13,13 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ToastModule } from 'primeng/toast';
+import { UserService } from './shared/services/user.service';
 
+export function loadConfigurations(userService: UserService) {
+  return () => {
+    userService.onAppInit();
+  };
+}
 @NgModule({
   declarations: [
     AppComponent
@@ -31,7 +37,14 @@ import { ToastModule } from 'primeng/toast';
     AngularFireDatabaseModule,
     ToastModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadConfigurations,
+      deps: [UserService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { difference, filter, isEmpty } from 'lodash';
+import { filter, isEmpty } from 'lodash';
 import { map, Observable } from 'rxjs';
 
-import { hours } from '../constants/schedule.const';
 import { AppointmentModel } from '../models/appointment.model';
 
 

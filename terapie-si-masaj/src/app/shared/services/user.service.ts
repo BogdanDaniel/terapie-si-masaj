@@ -1,7 +1,9 @@
-import { Injectable } from "@angular/core";
-import { isEmpty } from "lodash";
-import { BehaviorSubject, shareReplay, Subject } from "rxjs";
-import { User } from "../models/user.model";
+import { Injectable } from '@angular/core';
+import { isEmpty } from 'lodash';
+import { BehaviorSubject, map, shareReplay } from 'rxjs';
+
+import { User } from '../models/user.model';
+import { StorageService } from './storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,18 +11,25 @@ import { User } from "../models/user.model";
 export class UserService {
     private _user = new BehaviorSubject<User | null>(null);
 
-    constructor() {
-
+    constructor(private storageService: StorageService) {
     }
     get user() {
         return this._user.asObservable().pipe(shareReplay());
     }
 
-    setUser(user: User) {
-        this._user.next(user);
+    get isAuthenticated() {
+        return this.user.pipe(map(user => !isEmpty(user)), shareReplay());
     }
 
-    isLoggedIn() {
-        return !isEmpty(this._user.value);
+    onAppInit() {
+        const token = this.storageService.getItem('access-token');
+        if (token) {
+            const decoded: Partial<User> = this.storageService.decodeAccessToken(token);
+            this.setUser(new User(decoded));
+        }
+    }
+
+    setUser(user: User) {
+        this._user.next(user);
     }
 }

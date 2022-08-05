@@ -8,7 +8,7 @@ import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
 import { MassageCategory } from 'src/app/shared/constants/massage-categories.const';
-import { schedule } from 'src/app/shared/constants/schedule.const';
+import { SCHEDULE } from 'src/app/shared/constants/schedule.const';
 import { DatabaseService } from 'src/app/shared/services/database.service';
 
 export const calendarRo = {
@@ -130,7 +130,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     this.date.valueChanges.pipe(
       switchMap(date => {
         return this.databaseService.getAvailableHours(new Date(date).toLocaleDateString()).pipe(
-          map(hours => schedule.filter(s => !hours.find(h => h === s.value))),
+          map(hours => SCHEDULE.filter(s => !hours.find(h => h === s.value))),
           tap(hours => {
             this.hours = hours;
             this.hour.patchValue(head(this.hours));

@@ -1,4 +1,4 @@
-export const schedule = [
+export const SCHEDULE = [
   { label: '8:00', value: '8' },
   { label: '9:00', value: '9' },
   { label: '10:00', value: '10' },
@@ -17,7 +17,7 @@ export const schedule = [
   { label: '23:00', value: '23' }
 ];
 
-export const hours = [
+export const HOURS = [
   '8',
   '9',
   '10',

@@ -9,6 +9,10 @@ import { PriceListContainerComponent } from 'src/app/modules/price-list/containe
             {
                 path: '',
                 loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)
+            },
+            {
+                path: 'my-account',
+                loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
             }
         ])
     ],

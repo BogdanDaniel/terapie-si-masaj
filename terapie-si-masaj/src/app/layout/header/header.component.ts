@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UtilityService } from 'src/app/shared/services/utility.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private utilityService: UtilityService, private router: Router) { }
+  constructor(private utilityService: UtilityService, private router: Router, public userService: UserService) { }
 
   ngOnInit(): void {
   }

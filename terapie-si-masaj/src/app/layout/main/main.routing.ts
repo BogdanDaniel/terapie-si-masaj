@@ -31,6 +31,10 @@ import { MainComponent } from './main.component';
                     {
                         path: 'auth',
                         loadChildren: () => import('../../modules/user/user.module').then(mod => mod.UserModule)
+                    },
+                    {
+                        path: 'my-account',
+                        loadChildren: () => import('../../modules/user/account/account.module').then(mod => mod.AccountModule)
                     }
                 ]
             }
