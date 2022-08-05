@@ -35,9 +35,9 @@ export class DatabaseService {
     }
 
     getAvailableHours(date: string) {
-        return this.angularFirestore.collection('appointments', (ref) => ref.where('date', '==', date)).snapshotChanges().pipe(
-            map(changes => changes.map(a => (a.payload.doc.data() as AppointmentModel).hour)
-            )).pipe(map(unavailableHours => filter(unavailableHours, hour => !isEmpty(hour))))
+        // return this.angularFirestore.collection('appointments', (ref) => ref.where('date', '==', date)).snapshotChanges().pipe(
+        //     map(changes => changes.map(a => (a.payload.doc.data() as AppointmentModel).hour)
+        //     )).pipe(map(unavailableHours => filter(unavailableHours, hour => !isEmpty(hour))))
     }
 
     addItem(item: AppointmentModel) {

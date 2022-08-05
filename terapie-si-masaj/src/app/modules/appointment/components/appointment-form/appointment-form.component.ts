@@ -121,25 +121,25 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
     const date = new Date();
-    this.getHours();
+   // this.getHours();
     this.date.patchValue(new Date());
 
   }
 
-  getHours() {
-    this.date.valueChanges.pipe(
-      switchMap(date => {
-        return this.databaseService.getAvailableHours(new Date(date).toLocaleDateString()).pipe(
-          map(hours => SCHEDULE.filter(s => !hours.find(h => h === s.value))),
-          tap(hours => {
-            this.hours = hours;
-            this.hour.patchValue(head(this.hours));
-            this.cdr.markForCheck();
-          })
-        )
-      })
-    ).subscribe();
-  }
+  // getHours() {
+  //   this.date.valueChanges.pipe(
+  //     switchMap(date => {
+  //       return this.databaseService.getAvailableHours(new Date(date).toLocaleDateString()).pipe(
+  //         map(hours => SCHEDULE.filter(s => !hours.find(h => h === s.value))),
+  //         tap(hours => {
+  //           this.hours = hours;
+  //           this.hour.patchValue(head(this.hours));
+  //           this.cdr.markForCheck();
+  //         })
+  //       )
+  //     })
+  //   ).subscribe();
+  // }
 
   onSubmit() {
     this.submitted = true;

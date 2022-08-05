@@ -8,14 +8,14 @@ export class AppointmentDefinitionService {
 
 
     getScheduleDefinition(date: string) {
-        return this.http.get('/api/schedule?date=' + date);
+        return this.http.get('/api/scheduleDefinition?date=' + date);
     }
 
     updateScheduleDefinition(id: string, payload: any) {
-        return this.http.put('/api/schedule/' + id, payload);
+        return this.http.put('/api/scheduleDefinition/' + id, payload);
     }
 
     saveScheduleDefinition(payload: any) {
-        return this.http.post('/api/schedule', payload);
+        return this.http.post('/api/scheduleDefinition', payload);
     }
 }
