@@ -3,8 +3,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { catchError, of, switchMap } from 'rxjs';
 import { HOURS, SCHEDULE } from 'src/app/shared/constants/schedule.const';
+import { dateFormat, getFormattedDate } from 'src/app/shared/constants/utility.const';
 
-import { AppointmentDefinitionService } from '../../services/appointment-definition.service';
+import { AppointmentDefinitionService } from '../../../../../shared/services/appointment-definition.service';
 
 @Component({
     selector: 'app-appointment-definition',
@@ -59,7 +60,7 @@ export class AppointmentDefinitionComponent implements OnInit, OnDestroy {
 
     getScheduleOptions() {
         this.date.valueChanges.pipe(
-            switchMap((date: string) => this.appointmentDefinitionService.getScheduleDefinition(moment(date).format('DD.MM.YYYY'))),
+            switchMap((date: string) => this.appointmentDefinitionService.getScheduleDefinition(getFormattedDate(date))),
             catchError((err: any) => {
                 this.selectSchedule(this.getHours());
                 return of(null)

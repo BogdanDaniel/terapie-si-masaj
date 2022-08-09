@@ -2,14 +2,16 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { head } from 'lodash';
+import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
-import { map, switchMap, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
-import { MassageCategory } from 'src/app/shared/constants/massage-categories.const';
-import { SCHEDULE } from 'src/app/shared/constants/schedule.const';
-import { DatabaseService } from 'src/app/shared/services/database.service';
+import { getFormattedDate, nonEmptyProperties } from 'src/app/shared/constants/utility.const';
+import { AppointmentDefinitionService } from 'src/app/shared/services/appointment-definition.service';
+
+import { AppointmentService } from '../../services/appointment.service';
 
 export const calendarRo = {
   firstDayOfWeek: 1,
@@ -33,6 +35,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   services: any[] = [];
+  durationOptions: any[] = [];
   hours: any[] = [];
   submitted: boolean = false;
   minDate: Date;
@@ -43,40 +46,35 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private messageService: MessageService, private databaseService: DatabaseService, private cdr: ChangeDetectorRef) {
+    private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private cdr: ChangeDetectorRef) {
     this.form = new FormGroup({
-      service: new FormControl('', [Validators.required]),
+      massage: new FormControl('', [Validators.required]),
+      duration: new FormControl(60, Validators.required),
       date: new FormControl('', [Validators.required]),
       hour: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required]),
       email: new FormControl('', []),
       address: new FormControl('', [Validators.required]),
-      observations: new FormControl('', [])
-
-    })
-    this.services = [{
-      label: MassageCategory.MasajDeRelaxare, value: MassageCategory.MasajDeRelaxare,
-      items: [
-        { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
-        { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
-        { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
-        { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun }
-      ]
+      observation: new FormControl('', [])
+    });
+    this.durationOptions = [{
+      label: '60 minute',
+      value: 60
     },
     {
-      label: MassageCategory.DrenajLimfatic, value: MassageCategory.DrenajLimfatic,
-      items: [
-        { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
-      ]
-    },
-    {
-      label: MassageCategory.FitnessMasaj, value: MassageCategory.FitnessMasaj,
-      items: [
-        { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
-      ]
-    }];
+      label: '90 minute',
+      value: 90
+    }]
+    this.services = [
+      { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
+      { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
+      { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
+      { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun },
+      { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
+      { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic }
+    ];
 
 
 
@@ -87,8 +85,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
 
-  get service() {
-    return this.form?.get('service') as FormControl;
+  get massage() {
+    return this.form?.get('massage') as FormControl;
   }
 
   get date() {
@@ -105,8 +103,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   get lastName() {
     return this.form?.get('lastName') as FormControl;
   }
-  get phone() {
-    return this.form?.get('phone') as FormControl;
+  get phoneNumber() {
+    return this.form?.get('phoneNumber') as FormControl;
   }
   get email() {
     return this.form?.get('email') as FormControl;
@@ -114,32 +112,30 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   get address() {
     return this.form?.get('address') as FormControl;
   }
-  get observations() {
-    return this.form?.get('observations') as FormControl;
+  get observation() {
+    return this.form?.get('observation') as FormControl;
   }
 
   ngOnInit() {
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
     const date = new Date();
-   // this.getHours();
+    this.getHours();
     this.date.patchValue(new Date());
+    this.hour.valueChanges.subscribe(data => console.log(data, 'houuuuuurrdsa'))
 
   }
 
-  // getHours() {
-  //   this.date.valueChanges.pipe(
-  //     switchMap(date => {
-  //       return this.databaseService.getAvailableHours(new Date(date).toLocaleDateString()).pipe(
-  //         map(hours => SCHEDULE.filter(s => !hours.find(h => h === s.value))),
-  //         tap(hours => {
-  //           this.hours = hours;
-  //           this.hour.patchValue(head(this.hours));
-  //           this.cdr.markForCheck();
-  //         })
-  //       )
-  //     })
-  //   ).subscribe();
-  // }
+  getHours() {
+    this.date.valueChanges.pipe(
+      switchMap((date: string) => this.appointmentDefinitionService.getAvailableSchedule(getFormattedDate(date)))
+    ).subscribe((hours: number[]) => {
+      this.hours = hours;
+      console.log(head(hours), 'head')
+      this.hour.patchValue(head(hours));
+     // this.hour.updateValueAndValidity();
+     // this.cdr.markForCheck();
+    });
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -147,12 +143,15 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       return;
     }
     const form = this.form.getRawValue();
+    const { date } = form;
     const payload = {
       ...form,
-      date: new Date(form.date).toLocaleDateString()
+      date: moment(date).format('DD.MM.YYYY')
     }
-    this.databaseService.addItem(payload);
-    this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
+    this.appointmentService.saveAppointment(nonEmptyProperties(payload)).pipe().subscribe((res) => {
+      this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
+      this.router.navigate(['/']);
+    });
 
   }
 

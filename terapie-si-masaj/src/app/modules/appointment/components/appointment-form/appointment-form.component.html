@@ -1,6 +1,6 @@
 <p-card>
     <ng-template pTemplate="title">
-        Programare {{service?.valueChanges | async}}
+        Programare {{massage?.valueChanges | async}}
     </ng-template>
     <ng-template pTemplate="subtitle">
         Completeaza campurile necesare programarii
@@ -12,15 +12,22 @@
                 <div class="col-md-6 col-sm-12 mt-4">
                     <span class="p-float-label">
                         <p-dropdown [options]="services"
-                                    formControlName="service"
+                                    formControlName="massage"
                                     placeholder="Alege un serviciu"
-                                    [ngClass]="{'ng-dirty': (service?.invalid && submitted) || (service?.dirty && service?.invalid)}"
-                                    [group]="true"></p-dropdown>
+                                    [ngClass]="{'ng-dirty': (massage?.invalid && submitted) || (massage?.dirty && massage?.invalid)}"></p-dropdown>
                         <label for="appointmentDate">Serviciul ales</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(service?.invalid && submitted )|| (service?.dirty && service?.invalid)">Serviciul
+                           *ngIf="(massage?.invalid && submitted )|| (massage?.dirty && massage?.invalid)">Serviciul
                         este obligatoriu</small>
+                </div>
+                <div class="col-md-6 col-sm-12 mt4">
+                        <label>&nbsp;</label>
+                        <p-selectButton id="duration"
+                                        [options]="durationOptions"
+                                        formControlName="duration"
+                                        optionLabel="label"
+                                        optionValue="value"></p-selectButton>
                 </div>
                 <div class="col-md-6 col-sm-12 mt-4">
                     <span class="p-float-label">
@@ -45,7 +52,8 @@
                         <p-dropdown [options]="hours"
                                     formControlName="hour"
                                     emptyMessage="Nu este niciun interval disponibil in aceasta zi!"
-                                    [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}"></p-dropdown>
+                                    [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}">
+                        </p-dropdown>
                         <label for="appointmentHour">Ora programare</label>
                     </span>
                     <small class="p-error"
@@ -83,15 +91,16 @@
 
 
                 <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
-                        <input id="phone"
+                        <input id="phoneNumber"
                                type="text"
                                pInputText
-                               formControlName="phone"
-                               [ngClass]="{'ng-dirty': (phone?.invalid && submitted) || (phone?.dirty && phone?.invalid)}">
-                        <label for="phone">Telefon</label>
+                               formControlName="phoneNumber"
+                               [ngClass]="{'ng-dirty': (phoneNumber?.invalid && submitted) || (phoneNumber?.dirty && phoneNumber?.invalid)}">
+                        <label for="phoneNumber">Telefon</label>
                     </span>
                     <small class="p-error"
-                           *ngIf="(phone?.invalid && submitted )|| (phone?.dirty && phone?.invalid)">Telefonul este
+                           *ngIf="(phoneNumber?.invalid && submitted )|| (phoneNumber?.dirty && phoneNumber?.invalid)">Telefonul
+                        este
                         obligatoriu</small>
                 </div>
 
@@ -124,10 +133,10 @@
                                   rows="3"
                                   style="resize: none;"
                                   cols="20"
-                                  formControlName="observations"
+                                  formControlName="observation"
                                   pInputTextarea
-                                  [ngClass]="{'ng-dirty': (observations?.invalid && submitted) || (observations?.dirty && observations?.invalid)}"></textarea>
-                        <label for="observations">Observatii</label>
+                                  [ngClass]="{'ng-dirty': (observation?.invalid && submitted) || (observation?.dirty && observation?.invalid)}"></textarea>
+                        <label for="observation">Observatii</label>
                     </span>
                 </div>
 

@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -14,6 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ToastModule } from 'primeng/toast';
 import { UserService } from './shared/services/user.service';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 export function loadConfigurations(userService: UserService) {
   return () => {
@@ -44,6 +45,8 @@ export function loadConfigurations(userService: UserService) {
       deps: [UserService],
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

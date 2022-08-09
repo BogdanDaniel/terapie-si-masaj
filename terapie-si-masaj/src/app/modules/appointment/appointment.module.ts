@@ -4,21 +4,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
-
 import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentComponent } from './container/appointment.component';
-import { CalendarModule } from 'primeng/calendar';
-
-
-
-
+import { AppointmentService } from './services/appointment.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +35,8 @@ import { CalendarModule } from 'primeng/calendar';
     DropdownModule,
     InputTextareaModule,
     CalendarModule,
+    SelectButtonModule
   ],
-  providers: [MessageService]
+  providers: [MessageService, AppointmentService]
 })
 export class AppointmentModule { }

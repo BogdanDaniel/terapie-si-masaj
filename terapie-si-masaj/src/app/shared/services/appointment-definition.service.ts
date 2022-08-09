@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AppointmentDefinitionService {
 
     constructor(private http: HttpClient) { }
@@ -17,5 +19,9 @@ export class AppointmentDefinitionService {
 
     saveScheduleDefinition(payload: any) {
         return this.http.post('/api/scheduleDefinition', payload);
+    }
+
+    getAvailableSchedule(date: string) {
+        return this.http.get<number[]>('/api/scheduleDefinition/availableHours?date=' + date);
     }
 }

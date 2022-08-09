@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
+import { ListboxModule } from 'primeng/listbox';
 
 import { AccountRoutingModule } from './account.routing';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { AccountNavComponent } from './components/account-nav/account-nav.component';
 import { AppointmentDefinitionComponent } from './components/appointment-definition/appointment-definition.component';
 import { AccountContainerComponent } from './container/account-container.component';
-import { ListboxModule } from 'primeng/listbox';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { AppointmentDefinitionService } from './services/appointment-definition.service';
 
 
 
@@ -31,7 +30,7 @@ import { AppointmentDefinitionService } from './services/appointment-definition.
         ButtonModule
 
     ],
-    providers: [AppointmentDefinitionService],
+    providers: [],
     bootstrap: []
 })
 export class AccountModule { }
