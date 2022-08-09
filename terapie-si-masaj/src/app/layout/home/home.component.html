@@ -12,12 +12,11 @@
           <div class="col-12 p-0">
             <p-dropdown [options]="services"
                         [(ngModel)]="selectedService"
-                        [group]="true"
                         placeholder="Serviciul ales"></p-dropdown>
           </div>
           <div class="col-12 p-0">
-            <p-dropdown [options]="cities"
-                        [(ngModel)]="selectedCity"
+            <p-dropdown [options]="counties"
+                        [(ngModel)]="selectedCounty"
                         placeholder="Locația mea"></p-dropdown>
           </div>
           <button pButton

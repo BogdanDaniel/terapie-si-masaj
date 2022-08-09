@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { head } from 'lodash';
+import { ActivatedRoute, Router } from '@angular/router';
+import { find, head, toNumber } from 'lodash';
 import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
-import { switchMap } from 'rxjs';
+import { switchMap, takeWhile } from 'rxjs';
+import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
@@ -36,6 +37,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   services: any[] = [];
   durationOptions: any[] = [];
+  counties: any[];
   hours: any[] = [];
   submitted: boolean = false;
   minDate: Date;
@@ -46,7 +48,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private cdr: ChangeDetectorRef) {
+    private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private route: ActivatedRoute) {
     this.form = new FormGroup({
       massage: new FormControl('', [Validators.required]),
       duration: new FormControl(60, Validators.required),
@@ -56,6 +58,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       lastName: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', [Validators.required]),
       email: new FormControl('', []),
+      county: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       observation: new FormControl('', [])
     });
@@ -75,7 +78,15 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
       { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic }
     ];
+    this.counties = [
+      { label: 'Sectorul 1', value: County.SECTOR_1 },
+      { label: 'Sectorul 2', value: County.SECTOR_2, },
+      { label: 'Sectorul 3', value: County.SECTOR_3, },
+      { label: 'Sectorul 4', value: County.SECTOR_4, },
+      { label: 'Sectorul 5', value: County.SECTOR_5, },
+      { label: 'Sectorul 6', value: County.SECTOR_6, }
 
+    ];
 
 
     this.minDate = new Date();
@@ -109,6 +120,9 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   get email() {
     return this.form?.get('email') as FormControl;
   }
+  get county() {
+    return this.form?.get('county') as FormControl;
+  }
   get address() {
     return this.form?.get('address') as FormControl;
   }
@@ -118,10 +132,14 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
+    this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe(params => {
+      const { massage, location } = params;
+      this.county.patchValue(location ? toNumber(location) : '');
+      this.massage.patchValue(massage || '');
+    })
     const date = new Date();
     this.getHours();
     this.date.patchValue(new Date());
-    this.hour.valueChanges.subscribe(data => console.log(data, 'houuuuuurrdsa'))
 
   }
 
@@ -132,8 +150,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       this.hours = hours;
       console.log(head(hours), 'head')
       this.hour.patchValue(head(hours));
-     // this.hour.updateValueAndValidity();
-     // this.cdr.markForCheck();
+      // this.hour.updateValueAndValidity();
+      // this.cdr.markForCheck();
     });
   }
 

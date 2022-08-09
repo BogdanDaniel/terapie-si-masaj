@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
-import { City } from 'src/app/shared/constants/city.const';
+import { SelectItem } from 'primeng/api';
+import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
@@ -14,9 +15,9 @@ import { UtilityService } from 'src/app/shared/services/utility.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  selectedCity = null;
+  selectedCounty!: SelectItem;
   selectedService = null;
-  cities: any[];
+  counties: any[];
   services: any[];
   nr = 5
 
@@ -30,32 +31,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   constructor(private utilityService: UtilityService, private router: Router) {
-    this.cities = [
-      { label: City.BUCURESTI, code: City.BUCURESTI },
-      { label: City.ILFOV, code: City.ILFOV }
+    this.counties = [
+      { label: 'Sectorul 1', value: County.SECTOR_1 },
+      { label: 'Sectorul 2', value: County.SECTOR_2, },
+      { label: 'Sectorul 3', value: County.SECTOR_3, },
+      { label: 'Sectorul 4', value: County.SECTOR_4, },
+      { label: 'Sectorul 5', value: County.SECTOR_5, },
+      { label: 'Sectorul 6', value: County.SECTOR_6, }
+
     ];
 
-    this.services = [{
-      label: MassageCategory.MasajDeRelaxare, value: MassageCategory.MasajDeRelaxare,
-      items: [
-        { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
-        { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
-        { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
-        { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun }
-      ]
-    },
-    {
-      label: MassageCategory.DrenajLimfatic, value: MassageCategory.DrenajLimfatic,
-      items: [
-        { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
-      ]
-    },
-    {
-      label: MassageCategory.FitnessMasaj, value: MassageCategory.FitnessMasaj,
-      items: [
-        { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
-      ]
-    }]
+    this.services = [
+      { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
+      { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
+      { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
+      { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun },
+      { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
+      { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
+    ]
   }
 
   ngOnInit(): void {
@@ -68,7 +61,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToAppointment() {
-    this.router.navigate(['programare/personal']);
+    this.router.navigate(['programare/personal'], { queryParams: { massage: this.selectedService, location: this.selectedCounty } });
   }
 
   scroll(id: string) {
