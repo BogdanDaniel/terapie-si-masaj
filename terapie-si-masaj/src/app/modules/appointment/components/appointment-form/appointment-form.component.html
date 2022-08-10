@@ -1,169 +1,378 @@
-<p-card>
-    <ng-template pTemplate="title">
-        Programare {{massage?.valueChanges | async}}
-    </ng-template>
-    <ng-template pTemplate="subtitle">
-        Completeaza campurile necesare programarii
-    </ng-template>
-    <ng-template pTemplate="content">
+<div class="container">
+    <div class="massage-card">
+        <div class="massage-card-img ">
+            <img src="../../../../../assets/masaj_1.jpg">
+        </div>
+        <div class="massage-card-content">
+
+            <p class="heading"> {{massage.value || 'Programare'}}
+            </p>
+            <div class="sub-heading">
+                <p>
+                    Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
+                    dureri musculare, senzația
+                    de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
+                </p>
+            </div>
+            <form [formGroup]="form"
+            (ngSubmit)="onSubmit()">
+          <div class="row p-fluid">
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <span class="p-float-label">
+                      <p-dropdown [options]="services"
+                                  formControlName="massage"
+                                  placeholder="Alege un serviciu"
+                                  [ngClass]="{'ng-dirty': (massage?.invalid && submitted) || (massage?.dirty && massage?.invalid)}">
+                      </p-dropdown>
+                      <label for="appointmentDate">Serviciul ales</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(massage?.invalid && submitted )|| (massage?.dirty && massage?.invalid)">Serviciul
+                      este obligatoriu</small>
+              </div>
+              <div class="col-md-6 col-sm-12 mt4">
+                  <label>&nbsp;</label>
+                  <p-selectButton id="duration"
+                                  [options]="durationOptions"
+                                  formControlName="duration"
+                                  optionLabel="label"
+                                  optionValue="value"></p-selectButton>
+              </div>
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <span class="p-float-label">
+                      <p-calendar id="appointmentDate"
+                                  formControlName="date"
+                                  dateFormat="dd-mm-yy"
+                                  inputId="touchui"
+                                  [showIcon]="true"
+                                  [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}"
+                                  [minDate]="minDate"
+                                  [maxDate]="maxDate"></p-calendar>
+      
+                      <label for="appointmentDate">Data programare</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este
+                      obligatorie</small>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <span class="p-float-label">
+                      <p-dropdown [options]="hours"
+                                  formControlName="hour"
+                                  emptyMessage="Nu este niciun interval disponibil in aceasta zi!"
+                                  [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}">
+                      </p-dropdown>
+                      <label for="appointmentHour">Ora programare</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(hour?.invalid && submitted )|| (hour?.dirty && hour?.invalid)">Ora este
+                      obligatorie</small>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <span class="p-float-label">
+                      <input id="lastName"
+                             type="text"
+                             required
+                             pInputText
+                             formControlName="lastName"
+                             [ngClass]="{'ng-dirty': (lastName?.invalid && submitted) || (lastName?.dirty && lastName?.invalid)}">
+                      <label for="lastName">Nume</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele
+                      este obligatoriu</small>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <span class="p-float-label">
+                      <input id="firstName"
+                             type="text"
+                             pInputText
+                             formControlName="firstName"
+                             [ngClass]="{'ng-dirty': (firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)}">
+                      <label for="firstName">Prenume</label>
+                  </span>
+                  <small *ngIf="(firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)"
+                         class="p-error">Prenumele este obligatoriu</small>
+              </div>
+      
+      
+              <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                      <input id="phoneNumber"
+                             type="text"
+                             pInputText
+                             formControlName="phoneNumber"
+                             [ngClass]="{'ng-dirty': (phoneNumber?.invalid && submitted) || (phoneNumber?.dirty && phoneNumber?.invalid)}">
+                      <label for="phoneNumber">Telefon</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(phoneNumber?.invalid && submitted )|| (phoneNumber?.dirty && phoneNumber?.invalid)">Telefonul
+                      este
+                      obligatoriu</small>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                      <input id="email"
+                             type="text"
+                             pInputText
+                             formControlName="email"
+                             [ngClass]="{'ng-dirty': (email?.invalid && submitted) || (email?.dirty && email?.invalid)}">
+                      <label for="email">Email</label>
+      
+                  </span>
+              </div>
+              <div class="col-md-6 col-sm-12 mt-4">
+                  <div class="col-12 p-0">
+                      <span class="p-float-label">
+                          <p-dropdown [options]="counties"
+                                      formControlName="county"
+                                      placeholder="Selecteaza sectorul"></p-dropdown>
+                          <label for="appointmentDate">Sector</label>
+                      </span>
+                      <small class="p-error"
+                             *ngIf="(county?.invalid && submitted )|| (county?.dirty && county?.invalid)">Judetul
+                          este obligatoriu</small>
+                  </div>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                      <input id="address"
+                             type="text"
+                             pInputText
+                             formControlName="address"
+                             [ngClass]="{'ng-dirty': (address?.invalid && submitted) || (address?.dirty && address?.invalid)}">
+                      <label for="address">Adresa</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este
+                      obligatorie</small>
+              </div>
+      
+              <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                      <textarea inputId="textarea"
+                                rows="3"
+                                style="resize: none;"
+                                cols="20"
+                                formControlName="observation"
+                                pInputTextarea
+                                [ngClass]="{'ng-dirty': (observation?.invalid && submitted) || (observation?.dirty && observation?.invalid)}"></textarea>
+                      <label for="observation">Observatii</label>
+                  </span>
+              </div>
+      
+          </div>
+          <div class="row mt-4">
+              <div class="col-12 d-flex justify-content-end">
+                  <p-button label="Programeaza-te"
+                            type="submit"
+                            icon="pi pi-angle-right"
+                            iconPos="right"></p-button>
+              </div>
+      
+          </div>
+      </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <p class="heading"> Programare
+    </p>
+    <div class="sub-heading">
+        <p>
+            Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
+            dureri musculare, senzația
+            de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
+        </p>
+    </div>
+
+</div> -->
+ <!-- <div class="custom">
+    <div class="container">
         <form [formGroup]="form"
-              (ngSubmit)="onSubmit()">
-            <div class="row p-fluid">
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <span class="p-float-label">
-                        <p-dropdown [options]="services"
-                                    formControlName="massage"
-                                    placeholder="Alege un serviciu"
-                                    [ngClass]="{'ng-dirty': (massage?.invalid && submitted) || (massage?.dirty && massage?.invalid)}">
-                        </p-dropdown>
-                        <label for="appointmentDate">Serviciul ales</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(massage?.invalid && submitted )|| (massage?.dirty && massage?.invalid)">Serviciul
-                        este obligatoriu</small>
-                </div>
-                <div class="col-md-6 col-sm-12 mt4">
-                    <label>&nbsp;</label>
-                    <p-selectButton id="duration"
-                                    [options]="durationOptions"
-                                    formControlName="duration"
-                                    optionLabel="label"
-                                    optionValue="value"></p-selectButton>
-                </div>
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <span class="p-float-label">
-                        <p-calendar id="appointmentDate"
-                                    formControlName="date"
-                                    dateFormat="dd-mm-yy"
-                                    inputId="touchui"
-                                    [showIcon]="true"
-                                    [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}"
-                                    [minDate]="minDate"
-                                    [maxDate]="maxDate"></p-calendar>
-
-                        <label for="appointmentDate">Data programare</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este
-                        obligatorie</small>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <span class="p-float-label">
-                        <p-dropdown [options]="hours"
-                                    formControlName="hour"
-                                    emptyMessage="Nu este niciun interval disponibil in aceasta zi!"
-                                    [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}">
-                        </p-dropdown>
-                        <label for="appointmentHour">Ora programare</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(hour?.invalid && submitted )|| (hour?.dirty && hour?.invalid)">Ora este
-                        obligatorie</small>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <span class="p-float-label">
-                        <input id="lastName"
-                               type="text"
-                               required
-                               pInputText
-                               formControlName="lastName"
-                               [ngClass]="{'ng-dirty': (lastName?.invalid && submitted) || (lastName?.dirty && lastName?.invalid)}">
-                        <label for="lastName">Nume</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele
-                        este obligatoriu</small>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <span class="p-float-label">
-                        <input id="firstName"
-                               type="text"
-                               pInputText
-                               formControlName="firstName"
-                               [ngClass]="{'ng-dirty': (firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)}">
-                        <label for="firstName">Prenume</label>
-                    </span>
-                    <small *ngIf="(firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)"
-                           class="p-error">Prenumele este obligatoriu</small>
-                </div>
-
-
-                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
-                        <input id="phoneNumber"
-                               type="text"
-                               pInputText
-                               formControlName="phoneNumber"
-                               [ngClass]="{'ng-dirty': (phoneNumber?.invalid && submitted) || (phoneNumber?.dirty && phoneNumber?.invalid)}">
-                        <label for="phoneNumber">Telefon</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(phoneNumber?.invalid && submitted )|| (phoneNumber?.dirty && phoneNumber?.invalid)">Telefonul
-                        este
-                        obligatoriu</small>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
-                        <input id="email"
-                               type="text"
-                               pInputText
-                               formControlName="email"
-                               [ngClass]="{'ng-dirty': (email?.invalid && submitted) || (email?.dirty && email?.invalid)}">
-                        <label for="email">Email</label>
-
-                    </span>
-                </div>
-                <div class="col-md-6 col-sm-12 mt-4">
-                    <div class="col-12 p-0">
-                        <span class="p-float-label">
-                            <p-dropdown [options]="counties"
-                                        formControlName="county"
-                                        placeholder="Selecteaza sectorul"></p-dropdown>
-                            <label for="appointmentDate">Sector</label>
-                        </span>
-                        <small class="p-error"
-                               *ngIf="(county?.invalid && submitted )|| (county?.dirty && county?.invalid)">Judetul
-                            este obligatoriu</small>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
-                        <input id="address"
-                               type="text"
-                               pInputText
-                               formControlName="address"
-                               [ngClass]="{'ng-dirty': (address?.invalid && submitted) || (address?.dirty && address?.invalid)}">
-                        <label for="address">Adresa</label>
-                    </span>
-                    <small class="p-error"
-                           *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este
-                        obligatorie</small>
-                </div>
-
-                <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
-                        <textarea inputId="textarea"
-                                  rows="3"
-                                  style="resize: none;"
-                                  cols="20"
-                                  formControlName="observation"
-                                  pInputTextarea
-                                  [ngClass]="{'ng-dirty': (observation?.invalid && submitted) || (observation?.dirty && observation?.invalid)}"></textarea>
-                        <label for="observation">Observatii</label>
-                    </span>
-                </div>
-
-            </div>
-            <div class="row mt-4">
-                <div class="col-12 d-flex justify-content-end">
-                    <p-button label="Programeaza-te"
-                              type="submit"
-                              icon="pi pi-angle-right"
-                              iconPos="right"></p-button>
-                </div>
-
-            </div>
-        </form>
-    </ng-template>
-</p-card>
+        (ngSubmit)="onSubmit()">
+      <div class="row p-fluid">
+          <div class="col-md-6 col-sm-12 mt-4">
+              <span class="p-float-label">
+                  <p-dropdown [options]="services"
+                              formControlName="massage"
+                              placeholder="Alege un serviciu"
+                              [ngClass]="{'ng-dirty': (massage?.invalid && submitted) || (massage?.dirty && massage?.invalid)}">
+                  </p-dropdown>
+                  <label for="appointmentDate">Serviciul ales</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(massage?.invalid && submitted )|| (massage?.dirty && massage?.invalid)">Serviciul
+                  este obligatoriu</small>
+          </div>
+          <div class="col-md-6 col-sm-12 mt4">
+              <label>&nbsp;</label>
+              <p-selectButton id="duration"
+                              [options]="durationOptions"
+                              formControlName="duration"
+                              optionLabel="label"
+                              optionValue="value"></p-selectButton>
+          </div>
+          <div class="col-md-6 col-sm-12 mt-4">
+              <span class="p-float-label">
+                  <p-calendar id="appointmentDate"
+                              formControlName="date"
+                              dateFormat="dd-mm-yy"
+                              inputId="touchui"
+                              [showIcon]="true"
+                              [ngClass]="{'ng-dirty': (date?.invalid && submitted) || (date?.dirty && date?.invalid)}"
+                              [minDate]="minDate"
+                              [maxDate]="maxDate"></p-calendar>
+  
+                  <label for="appointmentDate">Data programare</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(date?.invalid && submitted )|| (date?.dirty && date?.invalid)">Data este
+                  obligatorie</small>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4">
+              <span class="p-float-label">
+                  <p-dropdown [options]="hours"
+                              formControlName="hour"
+                              emptyMessage="Nu este niciun interval disponibil in aceasta zi!"
+                              [ngClass]="{'ng-dirty': (hour?.invalid && submitted) || (hour?.dirty && hour?.invalid)}">
+                  </p-dropdown>
+                  <label for="appointmentHour">Ora programare</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(hour?.invalid && submitted )|| (hour?.dirty && hour?.invalid)">Ora este
+                  obligatorie</small>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4">
+              <span class="p-float-label">
+                  <input id="lastName"
+                         type="text"
+                         required
+                         pInputText
+                         formControlName="lastName"
+                         [ngClass]="{'ng-dirty': (lastName?.invalid && submitted) || (lastName?.dirty && lastName?.invalid)}">
+                  <label for="lastName">Nume</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(lastName?.invalid && submitted )|| (lastName?.dirty && lastName?.invalid)">Numele
+                  este obligatoriu</small>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4">
+              <span class="p-float-label">
+                  <input id="firstName"
+                         type="text"
+                         pInputText
+                         formControlName="firstName"
+                         [ngClass]="{'ng-dirty': (firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)}">
+                  <label for="firstName">Prenume</label>
+              </span>
+              <small *ngIf="(firstName?.invalid && submitted) || (firstName?.dirty && firstName?.invalid)"
+                     class="p-error">Prenumele este obligatoriu</small>
+          </div>
+  
+  
+          <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                  <input id="phoneNumber"
+                         type="text"
+                         pInputText
+                         formControlName="phoneNumber"
+                         [ngClass]="{'ng-dirty': (phoneNumber?.invalid && submitted) || (phoneNumber?.dirty && phoneNumber?.invalid)}">
+                  <label for="phoneNumber">Telefon</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(phoneNumber?.invalid && submitted )|| (phoneNumber?.dirty && phoneNumber?.invalid)">Telefonul
+                  este
+                  obligatoriu</small>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                  <input id="email"
+                         type="text"
+                         pInputText
+                         formControlName="email"
+                         [ngClass]="{'ng-dirty': (email?.invalid && submitted) || (email?.dirty && email?.invalid)}">
+                  <label for="email">Email</label>
+  
+              </span>
+          </div>
+          <div class="col-md-6 col-sm-12 mt-4">
+              <div class="col-12 p-0">
+                  <span class="p-float-label">
+                      <p-dropdown [options]="counties"
+                                  formControlName="county"
+                                  placeholder="Selecteaza sectorul"></p-dropdown>
+                      <label for="appointmentDate">Sector</label>
+                  </span>
+                  <small class="p-error"
+                         *ngIf="(county?.invalid && submitted )|| (county?.dirty && county?.invalid)">Judetul
+                      este obligatoriu</small>
+              </div>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                  <input id="address"
+                         type="text"
+                         pInputText
+                         formControlName="address"
+                         [ngClass]="{'ng-dirty': (address?.invalid && submitted) || (address?.dirty && address?.invalid)}">
+                  <label for="address">Adresa</label>
+              </span>
+              <small class="p-error"
+                     *ngIf="(address?.invalid && submitted )|| (address?.dirty && address?.invalid)">Adresa este
+                  obligatorie</small>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 mt-4"><span class="p-float-label">
+                  <textarea inputId="textarea"
+                            rows="3"
+                            style="resize: none;"
+                            cols="20"
+                            formControlName="observation"
+                            pInputTextarea
+                            [ngClass]="{'ng-dirty': (observation?.invalid && submitted) || (observation?.dirty && observation?.invalid)}"></textarea>
+                  <label for="observation">Observatii</label>
+              </span>
+          </div>
+  
+      </div>
+      <div class="row mt-4">
+          <div class="col-12 d-flex justify-content-end">
+              <p-button label="Programeaza-te"
+                        type="submit"
+                        icon="pi pi-angle-right"
+                        iconPos="right"></p-button>
+          </div>
+  
+      </div>
+  </form>
+    </div>
+</div> -->
