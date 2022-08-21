@@ -12,7 +12,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(err => {
-                this.messageService.add({ severity: 'error', detail: 'Ceva nu a funcționat. Te rugăm să încerci din nou.' });
+                if(!err?.isHandled) {
+                    this.messageService.add({ severity: 'error', detail: 'Ceva nu a funcționat. Te rugăm să încerci din nou.' });
+                }
                 return throwError(() => new Error(err?.error));
             })
         );

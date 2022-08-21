@@ -22,14 +22,15 @@ export class UserService {
     }
 
     onAppInit() {
-        const token = this.storageService.getItem('access-token');
-        if (token) {
-            const decoded: Partial<User> = this.storageService.decodeAccessToken(token);
-            this.setUser(new User(decoded));
-        }
+        const user: Partial<User> = this.storageService.getUser();
+        this.setUser(new User(user));
     }
 
     setUser(user: User) {
         this._user.next(user);
+    }
+
+    clear() {
+        this._user.next(null);
     }
 }

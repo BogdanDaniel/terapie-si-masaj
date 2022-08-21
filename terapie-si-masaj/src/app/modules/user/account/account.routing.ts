@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthenticatedGuard } from 'src/app/shared/guards/auth.guard';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { AppointmentDefinitionComponent } from './components/appointment-definition/appointment-definition.component';
 
@@ -22,7 +23,8 @@ import { AccountContainerComponent } from './container/account-container.compone
                         component: AccountDetailsComponent
 
                     },
-                ]
+                ],
+                canActivate: [AuthenticatedGuard]
             },
         ])
     ],

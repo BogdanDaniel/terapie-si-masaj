@@ -15,6 +15,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ToastModule } from 'primeng/toast';
 import { UserService } from './shared/services/user.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 export function loadConfigurations(userService: UserService) {
   return () => {
@@ -45,7 +46,12 @@ export function loadConfigurations(userService: UserService) {
       deps: [UserService],
       multi: true,
     },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
 
   ],
   bootstrap: [AppComponent]

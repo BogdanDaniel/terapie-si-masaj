@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { AuthenticatedGuard } from "src/app/shared/guards/auth.guard";
 import { AppointmentFormComponent } from "./components/appointment-form/appointment-form.component";
 import { AppointmentComponent } from "./container/appointment.component";
 
@@ -13,7 +14,8 @@ import { AppointmentComponent } from "./container/appointment.component";
                     path: 'personal',
                     component: AppointmentFormComponent
                 }
-            ]
+            ],
+            canActivate: [AuthenticatedGuard]
         }
         
     ])

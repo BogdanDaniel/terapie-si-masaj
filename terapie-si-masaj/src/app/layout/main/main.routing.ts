@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PriceListContainerComponent } from 'src/app/modules/price-list/container/price-list-container.component';
+import { AuthenticatedGuard } from 'src/app/shared/guards/auth.guard';
 
 import { HomeComponent } from '../home/home.component';
 import { MainComponent } from './main.component';
@@ -34,7 +35,12 @@ import { MainComponent } from './main.component';
                     },
                     {
                         path: 'my-account',
-                        loadChildren: () => import('../../modules/user/account/account.module').then(mod => mod.AccountModule)
+                        loadChildren: () => import('../../modules/user/account/account.module').then(mod => mod.AccountModule),
+                        canLoad: [AuthenticatedGuard]
+                    },
+                    {
+                        path: '**',
+                        redirectTo: '/'
                     }
                 ]
             }
