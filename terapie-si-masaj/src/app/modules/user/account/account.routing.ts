@@ -18,17 +18,18 @@ import { AccountContainerComponent } from './container/account-container.compone
                 },
                 children: [
                     {
+                        path: '',
+                        component: AccountDetailsComponent
+
+                    },
+                    {
                         path: 'appointment-definition',
                         component: AppointmentDefinitionComponent,
                         data: {
                             title: 'Definire program'
                         }
                     },
-                    {
-                        path: ':id',
-                        component: AccountDetailsComponent
 
-                    },
                 ],
                 canActivate: [AuthenticatedGuard]
             },

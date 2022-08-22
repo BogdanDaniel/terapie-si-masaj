@@ -1,0 +1,71 @@
+form {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding: 0;
+}
+
+
+
+.label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ecb100;
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 7px 2px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid gray;
+  color: #ecb100ff;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  border: 1px solid #ecb100;
+  border-radius: 50px;
+
+  &:focus {
+    outline-color: #ecb100;
+    outline-width: 5px;
+  }
+
+  &.ng-invalid.ng-dirty:focus {
+    box-shadow: 0 0 3px 0.2rem #fa3e3e;
+  }
+
+  &.ng-touched.ng-invalid {
+    border-color: #f44336;
+  }
+}
+
+input.ng-touched.ng-invalid+label {
+  color: #f44336;
+}
+
+:host ::ng-deep .p-button {
+  width: 100%;
+  height: 40px;
+  background-color: #ecb100;
+  border: 1px solid #ecb100;
+  margin-top: 25px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 50px;
+  margin-bottom: 7px;
+
+  .p-button-label {
+    color: #fff !important;
+  }
+}

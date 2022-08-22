@@ -12,6 +12,7 @@ import { AppointmentDefinitionComponent } from './components/appointment-definit
 import { AccountContainerComponent } from './container/account-container.component';
 
 import {SelectButtonModule} from 'primeng/selectbutton';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -29,7 +30,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
         CalendarModule,
         ListboxModule,
         ButtonModule,
-        SelectButtonModule
+        SelectButtonModule,
+        InputTextModule
 
     ],
     providers: [],

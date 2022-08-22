@@ -1,1 +1,47 @@
-WORKS DETAILS
+<div class="container h-100">
+    <form [formGroup]="form"
+          class="d-flex justify-content-center p-4 mt-4"
+          (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-12">
+                <span class="p-float-label">
+                    <input type="text"
+                           id="inputtext"
+                           formControlName="name"
+                           pInputText
+                           autocomplete="off">
+                    <label class="label"
+                           for="name">Nume</label>
+                </span>
+                <small id="name-required"
+                       *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched"
+                       class="p-error block">Te rugăm să-ți introduci numele</small>
+            </div>
+            <div class="col-12">
+                <span class="p-float-label mt-4">
+                    <input type="text"
+                           id="inputtext"
+                           pInputText
+                           formControlName="email"
+                           autocomplete="off">
+                    <label class="label"
+                           for="email">Email</label>
+                </span>
+                <small id="email-required"
+                       *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched"
+                       class="p-error block">Te rugăm să-ți introduci adresa de e-mail </small>
+                <small id="email-wrong"
+                       *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched"
+                       class="p-error block">Adresa de e-mail nu este valida</small>
+
+            </div>
+            <div class="col-12 d-flex justify-content-end p-2">
+                <p-button label="Salveaza datele"
+                          class="p-button-raised"
+                          type="submit"></p-button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
