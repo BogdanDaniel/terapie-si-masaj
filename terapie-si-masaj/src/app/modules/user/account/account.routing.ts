@@ -13,10 +13,16 @@ import { AccountContainerComponent } from './container/account-container.compone
             {
                 path: '',
                 component: AccountContainerComponent,
+                data: {
+                    title: 'Contul meu'
+                },
                 children: [
                     {
-                        path: '',
-                        component: AppointmentDefinitionComponent
+                        path: 'appointment-definition',
+                        component: AppointmentDefinitionComponent,
+                        data: {
+                            title: 'Definire program'
+                        }
                     },
                     {
                         path: ':id',

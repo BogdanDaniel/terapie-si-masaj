@@ -11,6 +11,7 @@ import { AccountNavComponent } from './components/account-nav/account-nav.compon
 import { AppointmentDefinitionComponent } from './components/appointment-definition/appointment-definition.component';
 import { AccountContainerComponent } from './container/account-container.component';
 
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 
 
@@ -27,7 +28,8 @@ import { AccountContainerComponent } from './container/account-container.compone
         ReactiveFormsModule,
         CalendarModule,
         ListboxModule,
-        ButtonModule
+        ButtonModule,
+        SelectButtonModule
 
     ],
     providers: [],

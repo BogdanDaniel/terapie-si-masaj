@@ -1,0 +1,30 @@
+:host ::ng-deep {
+  .p-listbox {
+    background: inherit;
+    border: unset;
+
+    .p-listbox-header {
+      background: inherit;
+      border: 1px solid #ccc;
+      border-bottom: unset;
+    }
+
+    .p-listbox-list {
+      padding: 0;
+
+
+    }
+
+    .p-listbox-list-wrapper {
+      border: 1px solid #ccc;
+    }
+  }
+
+  .p-button-label, .p-button-icon {
+    font-size: 1.5rem;
+    color: #0a3d62;
+  }
+  .p-button-icon {
+    margin-right: 1rem;
+  }
+}

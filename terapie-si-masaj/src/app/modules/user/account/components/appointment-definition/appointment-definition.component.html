@@ -11,16 +11,23 @@
                            [multiple]="true"
                            [listStyle]="{'max-height':'250px'}">
                     <ng-template pTemplate="header">
-                        <label>Selecteaza data: </label>
-                        <p-calendar id="appointmentDate"
-                                    formControlName="date"
-                                    dateFormat="dd-mm-yy"
-                                    inputId="touchui"
-                                    [showIcon]="true"
-                                    [ngClass]="{'ng-dirty': (date?.invalid) || (date?.dirty && date?.invalid)}"
-                                    class="mx-4"
-                                    [minDate]="minDate"
-                                    [maxDate]="maxDate"></p-calendar>
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Selecteaza data: </label>
+                                <p-calendar id="appointmentDate"
+                                            formControlName="date"
+                                            dateFormat="dd-mm-yy"
+                                            inputId="touchui"
+                                            [showIcon]="true"
+                                            [ngClass]="{'ng-dirty': (date?.invalid) || (date?.dirty && date?.invalid)}"
+                                            class="mx-4"
+                                            [minDate]="minDate"
+                                            [maxDate]="maxDate"></p-calendar>
+                            </div>
+                            <div class="col-12 mt-4"> <label>Selecteaza orele disponibile din ziua <b>{{date.value |
+                                        date:'d-MM-YYYY'}}</b> : </label>
+                            </div>
+                        </div>
 
                     </ng-template>
                     <ng-template let-group
@@ -31,8 +38,10 @@
                     </ng-template>
                     <ng-template pTemplate="footer">
                         <div class="row mt-4">
-                            <div class="col-12 d-flex justify-content-end">
+                            <div class="col-12 d-flex justify-content-end p-4">
                                 <p-button label="Salveaza programul"
+                                          class="p-button-raised"
+                                          icon="far fa-calendar"
                                           type="submit"></p-button>
                             </div>
 
