@@ -39,6 +39,29 @@
                 <a class="nav-link"
                    routerLink="/despre-mine">Despre mine</a>
               </li>
+              <li class="d-flex justify-content-center align-items-center account-button">
+                <button pButton
+                        pRipple
+                        icon="far fa-user-circle"
+                        class=" p-button-rounded p-button-text"
+                        (click)="handleMyAccountClick(op, $event)"></button>
+
+                <p-overlayPanel #op
+                                styleClass="account">
+                  <ng-template pTemplate>
+                    <ul class="my-account-list">
+                      <li> <a class="nav-link"
+                           routerLink="/my-account"
+                           (click)="op.hide()">Contul meu</a></li>
+                      <li> <a class="nav-link"
+                           routerLink="/my-account"
+                           (click)="op.hide()">Programarile mele</a></li>
+                      <li> <a class="nav-link"
+                           (click)="onSignOut(op)">Delogare</a></li>
+                    </ul>
+                  </ng-template>
+                </p-overlayPanel>
+              </li>
             </ul>
             <form class="d-flex social-media">
               <button pButton
@@ -54,13 +77,6 @@
                       class="p-button-rounded p-button-text"></button>
 
             </form>
-            <div *ngIf="!(userService.isAuthenticated | async)" class="d-flex login">
-              <a class="auth"
-                 routerLink="/auth">Autentificare</a>
-              <div class="border-left"></div>
-              <a class="register"
-                 routerLink="/auth/register">Inregistrare</a>
-            </div>
           </div>
         </div>
       </nav>

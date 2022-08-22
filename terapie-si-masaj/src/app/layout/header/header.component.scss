@@ -35,7 +35,6 @@
 
        .navbar-collapse {
          .navbar-nav {
-           margin-right: 25px;
            max-width: 800px;
            justify-content: space-between;
            overflow: hidden;
@@ -87,8 +86,8 @@
        }
      }
 
-     .social-media {
-       margin-right: 25px;
+     .social-media,
+     .account-button {
 
        &>button {
          transition: transform .5s;
@@ -96,6 +95,10 @@
          &:hover {
            transform: scale(1.5);
            transform: translateZ(0);
+         }
+
+         &:focus {
+           box-shadow: unset !important;
          }
        }
 
@@ -200,9 +203,48 @@
  }
 
  .header-aboslute {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+   position: absolute;
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+ }
+
+ .my-account-list {
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin: 0;
+   padding: 0;
+
+   li {
+     min-height: 30px;
+     color: #ecb100;
+     padding: 10px 20px;
+     cursor: pointer;
+     &:hover {
+      font-weight: 600;
+     }
+   }
+ }
+
+ ::ng-deep {
+   .account.p-overlaypanel {
+     width: 200px;
+     background-color: #fff7e6;
+     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+     &::after {
+       display: none !important;
+     }
+
+     &::before {
+       display: none !important;
+     }
+
+     .p-overlaypanel-content {
+       padding: 0 !important;
+     }
+   }
  }

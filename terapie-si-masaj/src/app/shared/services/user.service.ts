@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { isEmpty } from 'lodash';
+import { Observable } from 'rxjs';
 import { BehaviorSubject, map, shareReplay } from 'rxjs';
 
 import { User } from '../models/user.model';
@@ -17,13 +18,15 @@ export class UserService {
         return this._user.asObservable().pipe(shareReplay());
     }
 
-    get isAuthenticated() {
-        return this.user.pipe(map(user => !isEmpty(user)), shareReplay());
+    get isAuthenticated(): Observable<boolean> {
+        return this.user.pipe(map((user: User | null) => !isEmpty(user)), shareReplay());
     }
 
     onAppInit() {
         const user: Partial<User> = this.storageService.getUser();
-        this.setUser(new User(user));
+        if(!isEmpty(user)) {
+            this.setUser(new User(user));
+        }
     }
 
     setUser(user: User) {
