@@ -1,7 +1,7 @@
 <div class="container h-100">
     <div class="row py-4">
         <div class="col-12">
-            <app-table [data]="appointmentsList" [grid]="grid" [isLoading]="isLoading" [pagination]="pagination" [filter]="true" (onLoadLazy)="onLoadLazy($event)" [scrollHeight]="'500px'" ></app-table>
+            <app-table [data]="appointmentsList" [grid]="grid" [isLoading]="isLoading" [pagination]="pagination" [filter]="true" (onLoadLazy)="onLoadLazy($event)" [scrollHeight]="'500px'" [emptyMessage]="'Nu exista programari'" ></app-table>
         </div>
     </div>
 </div>

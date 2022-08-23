@@ -15,6 +15,7 @@ export class TableComponent {
     @Input() grid!: any[];
     @Input() filter: boolean = false;
     @Input() scrollHeight: string = '';
+    @Input() emptyMessage: string = 'Nu sunt inregistrari';
     @Output() onLoadLazy = new EventEmitter();
     first = 0;
     globalFilter!: string;
