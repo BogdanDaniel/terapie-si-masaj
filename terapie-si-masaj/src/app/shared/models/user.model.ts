@@ -1,5 +1,5 @@
 export class User {
-    readonly _id: string | undefined;
+    readonly _id?: string | undefined;
     name: string | undefined;
     email: string | undefined;
 

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { isEmpty } from 'lodash';
 import { Observable } from 'rxjs';
@@ -12,7 +13,7 @@ import { StorageService } from './storage.service';
 export class UserService {
     private _user = new BehaviorSubject<User | null>(null);
 
-    constructor(private storageService: StorageService) {
+    constructor(private storageService: StorageService, private http: HttpClient) {
     }
     get user() {
         return this._user.asObservable().pipe(shareReplay());
@@ -24,13 +25,17 @@ export class UserService {
 
     onAppInit() {
         const user: Partial<User> = this.storageService.getUser();
-        if(!isEmpty(user)) {
+        if (!isEmpty(user)) {
             this.setUser(new User(user));
         }
     }
 
     setUser(user: User) {
         this._user.next(user);
+    }
+
+    update(id?: string, payload?: Partial<User>) {
+        return this.http.put<User>('/api/users/' + id, payload);
     }
 
     clear() {
