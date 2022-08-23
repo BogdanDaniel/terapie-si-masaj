@@ -42,7 +42,7 @@ import { MainRoutingModule } from './main.routing';
     AppFlipCardModule,
     PriceListModule,
     UserModule,
-    OverlayPanelModule
+    OverlayPanelModule,
   ]
 })
 export class MainModule { }

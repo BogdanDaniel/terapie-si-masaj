@@ -37,7 +37,7 @@ export function loadConfigurations(userService: UserService) {
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [
     {

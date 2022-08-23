@@ -8,4 +8,5 @@ export interface AppointmentModel {
     phoneNumber: string;
     address: string;
     observation: string;
+    userId: string;
 }

@@ -4,13 +4,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { find, head, toNumber } from 'lodash';
 import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
-import { switchMap, takeWhile } from 'rxjs';
+import { switchMap, takeWhile, take } from 'rxjs';
 import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
 import { getFormattedDate, nonEmptyProperties } from 'src/app/shared/constants/utility.const';
+import { User } from 'src/app/shared/models/user.model';
 import { AppointmentDefinitionService } from 'src/app/shared/services/appointment-definition.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 import { AppointmentService } from '../../services/appointment.service';
 
@@ -43,12 +45,13 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   minDate: Date;
 
   maxDate: Date;
+  userId: string | undefined;
   //interval: any[]
   private alive = true;
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private route: ActivatedRoute) {
+    private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private route: ActivatedRoute, private userService: UserService) {
     this.form = new FormGroup({
       massage: new FormControl('', [Validators.required]),
       duration: new FormControl(60, Validators.required),
@@ -92,6 +95,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     this.minDate = new Date();
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 7);
+
+    this.userService.user.pipe(take(1)).subscribe((user: User | null) => this.userId = user?._id)
 
   }
 
@@ -164,6 +169,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     const { date } = form;
     const payload = {
       ...form,
+      userId: this.userId,
       date: moment(date).format('DD.MM.YYYY')
     }
     this.appointmentService.saveAppointment(nonEmptyProperties(payload)).pipe().subscribe((res) => {

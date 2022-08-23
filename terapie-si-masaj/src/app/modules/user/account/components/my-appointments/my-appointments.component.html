@@ -1,0 +1,7 @@
+<div class="container h-100">
+    <div class="row py-4">
+        <div class="col-12">
+            <app-table [data]="appointmentsList" [grid]="grid" [isLoading]="isLoading" [pagination]="pagination" (onLoadLazy)="onLoadLazy($event)"></app-table>
+        </div>
+    </div>
+</div>

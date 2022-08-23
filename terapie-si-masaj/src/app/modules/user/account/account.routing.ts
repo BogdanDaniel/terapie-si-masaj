@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { AuthenticatedGuard } from 'src/app/shared/guards/auth.guard';
 import { AccountDetailsComponent } from './components/account-details/account-details.component';
 import { AppointmentDefinitionComponent } from './components/appointment-definition/appointment-definition.component';
+import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 
 import { AccountContainerComponent } from './container/account-container.component';
 
@@ -29,6 +30,13 @@ import { AccountContainerComponent } from './container/account-container.compone
                             title: 'Definire program'
                         }
                     },
+                    {
+                        path: 'my-appointments',
+                        component: MyAppointmentsComponent,
+                        data: {
+                            title: 'Programarile mele'
+                        }
+                    }
 
                 ],
                 canActivate: [AuthenticatedGuard]

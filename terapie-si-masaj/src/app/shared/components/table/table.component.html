@@ -1,0 +1,25 @@
+<p-table [value]="data"
+         [paginator]="true"
+         [columns]="grid"
+         [loading]="isLoading"
+         [rows]="pagination.limit"
+         responsiveLayout="scroll"
+         [rowsPerPageOptions]="[10,25,50]"
+         [(first)]="first"
+         [lazy]="true"
+         [totalRecords]="pagination.total"
+         (onLazyLoad)="onLazyLoad($event)">
+    <ng-template pTemplate="header"
+                 let-columns>
+        <tr>
+            <th *ngFor="let col of columns">{{col?.text}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body"
+                 let-rowData
+                 let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">{{rowData[col?.dataKey]}}</td>
+        </tr>
+    </ng-template>
+</p-table>

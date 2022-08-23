@@ -13,7 +13,9 @@ import { AccountContainerComponent } from './container/account-container.compone
 
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { InputTextModule } from 'primeng/inputtext';
+import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 
+import { AppTableModule } from 'src/app/shared/components/table/table.module';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { InputTextModule } from 'primeng/inputtext';
         AccountContainerComponent,
         AccountNavComponent,
         AccountDetailsComponent,
-        AppointmentDefinitionComponent
+        AppointmentDefinitionComponent,
+        MyAppointmentsComponent
     ],
     imports: [
         CommonModule,
@@ -31,8 +34,8 @@ import { InputTextModule } from 'primeng/inputtext';
         ListboxModule,
         ButtonModule,
         SelectButtonModule,
-        InputTextModule
-
+        InputTextModule,
+        AppTableModule
     ],
     providers: [],
     bootstrap: []
