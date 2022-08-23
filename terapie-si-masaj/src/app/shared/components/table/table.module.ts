@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 import { TableComponent } from './table.component';
-
-import {TableModule} from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-
-
-
 
 
 @NgModule({
@@ -17,7 +14,8 @@ import { ButtonModule } from 'primeng/button';
     imports: [
         CommonModule,
         TableModule,
-         ButtonModule
+        ButtonModule,
+        InputTextModule
     ],
     providers: [],
     exports: [TableComponent]

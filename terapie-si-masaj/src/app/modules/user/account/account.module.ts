@@ -16,6 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 
 import { AppTableModule } from 'src/app/shared/components/table/table.module';
+import { AppointmentsHistoryComponent } from './components/appointments-history/appointments-history.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AppTableModule } from 'src/app/shared/components/table/table.module';
         AccountNavComponent,
         AccountDetailsComponent,
         AppointmentDefinitionComponent,
-        MyAppointmentsComponent
+        MyAppointmentsComponent,
+        AppointmentsHistoryComponent
     ],
     imports: [
         CommonModule,

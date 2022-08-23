@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { catchError, of, switchMap, take, tap } from 'rxjs';
 import { AppointmentService } from 'src/app/modules/appointment/services/appointment.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { catchError, of, switchMap, take } from 'rxjs';
-import { User } from 'src/app/shared/models/user.model';
 import { AppointmentModel } from 'src/app/shared/models/appointment.model';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
     selector: 'app-my-appointments',
@@ -35,9 +35,12 @@ export class MyAppointmentsComponent {
     }
 
     getMyAppointments(payload?: any) {
-        this.isLoading = true;
         this.userService.user.pipe(
             take(1),
+            tap(() => {
+                this.isLoading = true;
+                this.cdr.markForCheck();
+            }),
             switchMap((user: User | null) => this.appointmentService.getAllByUserId({ id: user?._id, page: payload?.pagination?.page || this.pagination?.page, limit: payload?.pagination?.limit || this.pagination?.limit }).pipe(
                 catchError(error => {
                     this.appointmentsList = [];

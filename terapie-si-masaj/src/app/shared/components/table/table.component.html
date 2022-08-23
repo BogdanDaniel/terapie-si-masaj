@@ -1,4 +1,5 @@
-<p-table [value]="data"
+<p-table #dt
+         [value]="data"
          [paginator]="true"
          [columns]="grid"
          [loading]="isLoading"
@@ -6,9 +7,27 @@
          responsiveLayout="scroll"
          [rowsPerPageOptions]="[10,25,50]"
          [(first)]="first"
+         [scrollable]="true"
          [lazy]="true"
+         [scrollHeight]="scrollHeight"
          [totalRecords]="pagination.total"
          (onLazyLoad)="onLazyLoad($event)">
+    <ng-template *ngIf="filter" pTemplate="caption">
+        <div class="d-flex justify-content-between">
+            <button pButton
+                    label="Sterge filtrele"
+                    class="p-button-outlined"
+                    icon="pi pi-filter-slash"
+                    (click)="clear(dt)"></button>
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText
+                       type="text"
+                       (input)="filterGlobal($event)"
+                       placeholder="Cauta" />
+            </span>
+        </div>
+    </ng-template>
     <ng-template pTemplate="header"
                  let-columns>
         <tr>

@@ -9,5 +9,5 @@ export const dateFormat = 'DD.MM.YYYY';
 
 
 export function nonEmptyProperties(obj: { [key: string]: any }) {
-    return pickBy(obj, val => isNumber(val) ? val : !isEmpty(val))
+    return pickBy(obj, val => isNumber(val) ? val || val === 0 : !isEmpty(val))
 }

@@ -5,6 +5,7 @@ form {
 
 .container {
   padding: 0;
+  max-width: 500px;
 }
 
 
@@ -69,3 +70,4 @@ input.ng-touched.ng-invalid+label {
     color: #fff !important;
   }
 }
+
