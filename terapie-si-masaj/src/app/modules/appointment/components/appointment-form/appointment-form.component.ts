@@ -59,7 +59,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       hour: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       email: new FormControl('', []),
       county: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),

@@ -2,7 +2,7 @@ export interface AppointmentModel {
     id: string
     massage: string;
     date: string;
-    hour: string;
+    hour: number;
     lastName: string;
     firstName: string;
     phoneNumber: string;

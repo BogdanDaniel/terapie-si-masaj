@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { isNumber, isString, split, toNumber } from 'lodash';
+import { isString, split, toNumber } from 'lodash';
 import { catchError, of, tap } from 'rxjs';
 import { AppointmentService } from 'src/app/modules/appointment/services/appointment.service';
 import { nonEmptyProperties } from 'src/app/shared/constants/utility.const';
@@ -30,13 +30,18 @@ export class AppointmentsHistoryComponent {
                 dataKey: 'firstName'
             },
             {
-                text: 'Telefon',
-                dataKey: 'phoneNumber'
-            },
-            {
                 text: 'Data programare',
                 dataKey: 'date'
             },
+            {
+                text: 'Ora',
+                dataKey: 'hour'
+            },
+            {
+                text: 'Telefon',
+                dataKey: 'phoneNumber'
+            },
+
             {
                 text: 'Masaj',
                 dataKey: 'massage'
