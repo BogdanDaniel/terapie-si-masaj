@@ -15,7 +15,6 @@ import { AppointmentComponent } from "./container/appointment.component";
                     component: AppointmentFormComponent
                 }
             ],
-            canActivate: [AuthenticatedGuard]
         }
         
     ])
