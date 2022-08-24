@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import jwt_decode from "jwt-decode";
 
 const TOKEN_KEY = 'access-token';
 const REFRESHTOKEN_KEY = 'refresh-token';
@@ -40,6 +41,11 @@ export class StorageService {
         if (user.id) {
             this.saveUser({ ...user, accessToken: token });
         }
+    }
+
+    public decodeToken(): any {
+        const token = this.getToken();
+        return token ? jwt_decode(token) : null;
     }
 
     public saveRefreshToken(token: string): void {

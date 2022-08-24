@@ -18,7 +18,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userService.isAuthenticated.pipe(takeWhile(() => this.alive)).subscribe((isAuthenticated: boolean) => {
       this.isAuthenticated = isAuthenticated;
-    })
+    });
+  }
+
+  get isAdmin() {
+    return this.userService.isAdmin;
   }
 
   scroll(id: string) {

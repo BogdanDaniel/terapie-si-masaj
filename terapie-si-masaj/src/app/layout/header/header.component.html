@@ -50,18 +50,38 @@
                                 styleClass="account">
                   <ng-template pTemplate>
                     <ul class="my-account-list">
-                      <li> <a class="nav-link"
+                      <li>
+                        <a class="nav-link"
                            routerLink="/my-account"
-                           (click)="op.hide()">Contul meu</a></li>
-                      <li> <a class="nav-link"
-                           routerLink="/my-account/appointment-definition"
-                           (click)="op.hide()">Definire program</a></li>
-                      <li> <a class="nav-link"
-                           routerLink="/my-account/my-appointments"
-                           (click)="op.hide()">Programarile mele</a></li>
-                      <li> <a class="nav-link"
-                           routerLink="/my-account/appointments-history"
-                           (click)="op.hide()">Istoric programari</a></li>
+                           (click)="op.hide()">
+                          Contul meu
+                        </a>
+                      </li>
+                      <ng-container *ngIf="isAdmin else userLinks">
+                        <li>
+                          <a class="nav-link"
+                             routerLink="/my-account/appointment-definition"
+                             (click)="op.hide()">
+                            Definire program
+                          </a>
+                        </li>
+                        <li>
+                          <a class="nav-link"
+                             routerLink="/my-account/appointments-history"
+                             (click)="op.hide()">
+                            Istoric programari
+                          </a>
+                        </li>
+                      </ng-container>
+                      <ng-template #userLinks>
+                        <li>
+                          <a class="nav-link"
+                             routerLink="/my-account/my-appointments"
+                             (click)="op.hide()">
+                            Programarile mele
+                          </a>
+                        </li>
+                      </ng-template>
                       <li> <a class="nav-link"
                            (click)="onSignOut(op)">Delogare</a></li>
                     </ul>

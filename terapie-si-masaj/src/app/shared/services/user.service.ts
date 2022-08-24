@@ -23,6 +23,12 @@ export class UserService {
         return this.user.pipe(map((user: User | null) => !isEmpty(user)), shareReplay());
     }
 
+    get isAdmin(): boolean {
+        const user = this.storageService.decodeToken();
+        return user ? user?.isAdmin : false;
+    }
+
+
     onAppInit() {
         const user: Partial<User> = this.storageService.getUser();
         if (!isEmpty(user)) {
