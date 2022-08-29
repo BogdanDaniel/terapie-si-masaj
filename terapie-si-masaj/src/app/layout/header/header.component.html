@@ -37,7 +37,7 @@
               </li> -->
               <li class="nav-item">
                 <a class="nav-link"
-                   routerLink="/despre-mine">Despre mine</a>
+                   (click)="scroll('about-me')">Despre mine</a>
               </li>
               <li class="d-flex justify-content-center align-items-center account-button">
                 <button pButton
@@ -94,7 +94,8 @@
                       pRipple
                       type="button"
                       icon="fab fa-facebook-f"
-                      class="p-button-rounded p-button-text"></button>
+                      class="p-button-rounded p-button-text"
+                      (click)="goToFacebook()"></button>
 
               <button pButton
                       pRipple

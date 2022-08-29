@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs';
+import { API } from 'src/app/shared/constants/api.const';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { UtilityService } from 'src/app/shared/services/utility.service';
@@ -46,6 +47,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userService.clear();
     this.router.navigate(['/']);
     op.hide();
+  }
+
+  goToFacebook() {
+    window.open(API.FACEBOOK, '_blank');
   }
 
   ngOnDestroy() {

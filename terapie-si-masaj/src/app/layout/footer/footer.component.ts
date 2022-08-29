@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { API } from 'src/app/shared/constants/api.const';
 
 @Component({
   selector: 'app-footer',
@@ -10,6 +11,10 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  goToFacebook() {
+    window.open(API.FACEBOOK, '_blank');
   }
 
 }

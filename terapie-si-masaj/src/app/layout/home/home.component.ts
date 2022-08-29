@@ -8,6 +8,8 @@ import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
 import { MassageCategory } from 'src/app/shared/constants/massage-categories.const';
 import { UtilityService } from 'src/app/shared/services/utility.service';
+import VanillaTilt from 'vanilla-tilt';
+
 
 @Component({
   selector: 'app-home',
@@ -52,6 +54,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    VanillaTilt.init(document.querySelector(".profile_container") as any, {
+      max: 15,
+      speed: 200,
+      glare: true,
+      "max-glare": 0.2,
+      "glare-prerender": false
+    });
+    
   }
 
   ngAfterViewInit(): void {
