@@ -357,6 +357,35 @@
 
     }
   }
+  .profile_container {
+    height: 650px !important;
+  }
+
+  .wraps {
+    display: flex;
+    flex-direction: column;
+
+    .profile_img_wrapper,
+    .profile_details {
+      width: 100% !important;
+    }
+
+
+    .profile_img {
+      position: relative !important;
+      clip-path: ellipse(80% 100% at 50% 0%) !important;
+      background: url(../../../assets/me.png) !important;
+      background-size: 450px 300px !important;
+      background-position-x: center !important;
+      background-position-y: center !important;
+      width: 100% !important;
+    }
+
+    .profile_details {
+      position: relative !important;
+    }
+
+  }
 }
 
 
