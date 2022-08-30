@@ -8,17 +8,25 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
 export class CarouselComponent implements AfterViewInit {
     certifications: any[];
     showCertifications: any[] = [];
-
+    isSmDevice: boolean = false;
 
     @HostListener('mousedown', ['$event']) onMouseDown(event: any) {
-        this.doDown(event);
+        if (!this.isSmDevice) {
+            this.doDown(event);
+        }
     }
 
-    @HostListener('mouseup', ['$event']) onMouseUp() {
-        this.doUp(event);
+    @HostListener('mouseup', ['$event']) onMouseUp(event: any) {
+        if (!this.isSmDevice) {
+            this.doUp(event);
+        }
 
     }
-
+    @HostListener('window:resize', ['$event'])
+    onResize() {
+        this.isSmDevice = window.innerWidth < 576;
+        console.log(this.isSmDevice, 'this.isSmDevice')
+    }
     state = { downX: 0 };
     selected: any;
 
@@ -53,6 +61,7 @@ export class CarouselComponent implements AfterViewInit {
     }
 
     showMore() {
+        console.log('dsadsa')
         this.showCertifications = this.certifications;
     }
 
@@ -62,8 +71,8 @@ export class CarouselComponent implements AfterViewInit {
 
 
     ngAfterViewInit(): void {
+        this.isSmDevice = window.innerWidth < 576;
         this.selected = $(".selected")[0];
-        console.log(this.selected, 'se');
         this.reorder();
 
     }
@@ -106,13 +115,15 @@ export class CarouselComponent implements AfterViewInit {
     //     return false;
     // }
     select(e: any) {
-        console.log(`select: ${e}`);
         let tgt = e.target;
-        while (!tgt.parentElement.classList.contains('carousel')) {
-            tgt = tgt.parentElement;
+        if (tgt?.parentElement) {
+            while (!tgt?.parentElement?.classList?.contains('carousel')) {
+                tgt = tgt?.parentElement;
+            }
+
+            this.move(tgt);
         }
 
-        this.move(tgt);
 
     }
     // previous(e: any) {
@@ -122,11 +133,9 @@ export class CarouselComponent implements AfterViewInit {
     //     this.move('next');
     // }
     doDown(e: any) {
-        console.log(`down: ${e.x}`);
         this.state.downX = e.x;
     }
     doUp(e: any) {
-        console.log(`up: ${e.x}`);
         let direction = 0,
             velocity = 0;
 
@@ -152,9 +161,7 @@ export class CarouselComponent implements AfterViewInit {
         let selected = el;
 
         if (typeof el === "string") {
-            console.log(`got string: ${el}`);
             selected = (el == "next") ? $(".selected")[0].nextElementSibling : $(".selected")[0].previousElementSibling;
-            console.dir(selected);
         }
 
         let curpos = parseInt(this.selected.dataset.pos);
@@ -202,7 +209,6 @@ export class CarouselComponent implements AfterViewInit {
     reorder() {
         let childcnt = $("#carousel").children().length;
         let childs = $("#carousel").children();
-        console.log(childs, 'childs')
 
         for (let j = 0; j < childcnt; j++) {
             childs[j].dataset['pos'] = `${j}`;

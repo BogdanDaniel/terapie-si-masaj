@@ -114,6 +114,13 @@
 
 }
 
+@media (min-width: 577px) {
+  .carousel-sm {
+    display: none;
+  }
+
+}
+
 
 .carousel-sm {
   img {
@@ -133,5 +140,6 @@
     text-decoration-line: none !important;
     font-weight: 400;
     font-size: 1.2rem;
+    cursor: pointer;
   }
 }
