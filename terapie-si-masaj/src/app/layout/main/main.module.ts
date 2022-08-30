@@ -11,6 +11,7 @@ import { AppCardModule } from 'src/app/modules/app-card/app-app-card.module';
 import { AppFlipCardModule } from 'src/app/modules/app-flip-card/app-flip-card.module';
 import { PriceListModule } from 'src/app/modules/price-list/price-list.module';
 import { UserModule } from 'src/app/modules/user/user.module';
+import { CarouseModule } from 'src/app/shared/components/carousel/carousel.module';
 
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
@@ -43,6 +44,7 @@ import { MainRoutingModule } from './main.routing';
     PriceListModule,
     UserModule,
     OverlayPanelModule,
+    CarouseModule
   ]
 })
 export class MainModule { }

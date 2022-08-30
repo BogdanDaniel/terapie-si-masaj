@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedService = null;
   counties: any[];
   services: any[];
+  responsiveOptions: any[];
   nr = 5
 
 
@@ -50,13 +51,31 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun },
       { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
       { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
-    ]
+    ];
+
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 2,
+          numScroll: 2
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
   }
 
   ngOnInit(): void {
     VanillaTilt.init(document.querySelector(".profile_container") as any, {
-      max: 15,
-      speed: 200,
+      max: 5,
+      speed: 100,
       glare: true,
       "max-glare": 0.2,
       "glare-prerender": false
