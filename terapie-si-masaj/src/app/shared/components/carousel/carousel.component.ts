@@ -25,7 +25,6 @@ export class CarouselComponent implements AfterViewInit {
     @HostListener('window:resize', ['$event'])
     onResize() {
         this.isSmDevice = window.innerWidth < 576;
-        console.log(this.isSmDevice, 'this.isSmDevice')
     }
     state = { downX: 0 };
     selected: any;
@@ -61,7 +60,6 @@ export class CarouselComponent implements AfterViewInit {
     }
 
     showMore() {
-        console.log('dsadsa')
         this.showCertifications = this.certifications;
     }
 
