@@ -6,6 +6,8 @@ import { AfterViewInit, Component, HostListener } from '@angular/core';
     styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements AfterViewInit {
+    certifications: any[];
+    showCertifications: any[] = [];
 
 
     @HostListener('mousedown', ['$event']) onMouseDown(event: any) {
@@ -21,8 +23,43 @@ export class CarouselComponent implements AfterViewInit {
     selected: any;
 
     constructor() {
-
+        this.certifications = [
+            {
+                name: 'Tehnician Maseur',
+                image: 'tehnician_maseur'
+            },
+            {
+                name: 'Anticelulitic',
+                image: 'anticelulitic'
+            },
+            {
+                name: 'Masaj Terapeutic',
+                image: 'masaj_terapeutic'
+            },
+            {
+                name: 'Masaj Reflexogen',
+                image: 'masaj_reflexogen'
+            },
+            {
+                name: 'Drenaj Limfatic',
+                image: 'drenaj_limfatic'
+            },
+            {
+                name: 'Masaj Somatic',
+                image: 'masaj_somatic'
+            }
+        ];
+        this.showLess();
     }
+
+    showMore() {
+        this.showCertifications = this.certifications;
+    }
+
+    showLess() {
+        this.showCertifications = [this.certifications[0]];
+    }
+
 
     ngAfterViewInit(): void {
         this.selected = $(".selected")[0];

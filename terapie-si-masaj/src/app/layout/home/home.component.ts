@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedService = null;
   counties: any[];
   services: any[];
+  certifications!: any[];
   responsiveOptions: any[];
   nr = 5
 
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
     ];
 
+ 
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
