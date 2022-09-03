@@ -1,6 +1,7 @@
 .banner {
   position: relative;
   height: 100vh;
+  min-height: 800px;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-image: url("../../../assets/background4.jpg");
@@ -304,6 +305,7 @@
 
   .info-page {
     padding: 105px 0;
+    width: 100%;
 
     .info-details {
       flex: 0;
