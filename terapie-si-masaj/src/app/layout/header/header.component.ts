@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs';
 import { API } from 'src/app/shared/constants/api.const';
+import { User } from 'src/app/shared/models/user.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { UtilityService } from 'src/app/shared/services/utility.service';
@@ -13,6 +14,7 @@ import { UtilityService } from 'src/app/shared/services/utility.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated!: boolean;
+  user: User | null = null;
   private alive = true;
   constructor(private utilityService: UtilityService, private router: Router, public userService: UserService, private storageService: StorageService) { }
 
@@ -20,6 +22,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userService.isAuthenticated.pipe(takeWhile(() => this.alive)).subscribe((isAuthenticated: boolean) => {
       this.isAuthenticated = isAuthenticated;
     });
+    this.userService.user.pipe(takeWhile(() => this.alive)).subscribe((user: User | null) => {
+      this.user = user;
+    });
+
   }
 
   get isAdmin() {

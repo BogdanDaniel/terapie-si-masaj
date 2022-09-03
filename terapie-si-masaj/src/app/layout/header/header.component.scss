@@ -223,8 +223,9 @@
      color: #ecb100;
      padding: 10px 20px;
      cursor: pointer;
+
      &:hover {
-      font-weight: 600;
+       font-weight: 600;
      }
    }
  }
@@ -248,4 +249,20 @@
        padding: 0 !important;
      }
    }
+ }
+
+ .custom-account-button {
+   width: 23px;
+   height: 23px;
+   margin-left: 10px;
+   border: 2px solid #ecb100;
+   color: #ecb100;
+   border-radius: 50%;
+   font-weight: 700;
+   text-transform: uppercase;
+   text-decoration: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
  }

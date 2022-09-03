@@ -39,13 +39,10 @@
                 <a class="nav-link"
                    (click)="scroll('about-me')">Despre mine</a>
               </li>
-              <li class="d-flex justify-content-center align-items-center account-button">
-                <button pButton
-                        pRipple
-                        icon="far fa-user-circle"
-                        class=" p-button-rounded p-button-text"
-                        (click)="handleMyAccountClick(op, $event)"></button>
-
+              <li *ngIf="isAuthenticated; else unauthenticatedUser"
+                  class="d-flex justify-content-center align-items-center">
+                <a class="custom-account-button"
+                   (click)="handleMyAccountClick(op, $event)">{{user?.name | firstLetter}}</a>
                 <p-overlayPanel #op
                                 styleClass="account">
                   <ng-template pTemplate>
@@ -88,6 +85,15 @@
                   </ng-template>
                 </p-overlayPanel>
               </li>
+              <ng-template #unauthenticatedUser>
+                <li class="d-flex justify-content-center align-items-center account-button">
+                  <button pButton
+                          pRipple
+                          icon="far fa-user-circle"
+                          class=" p-button-rounded p-button-text"
+                          [routerLink]="'auth'"></button>
+                </li>
+              </ng-template>
             </ul>
             <form class="d-flex social-media">
               <button pButton

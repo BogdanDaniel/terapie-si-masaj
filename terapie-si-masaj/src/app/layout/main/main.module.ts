@@ -13,6 +13,7 @@ import { PriceListModule } from 'src/app/modules/price-list/price-list.module';
 import { UserModule } from 'src/app/modules/user/user.module';
 import { CarouseModule } from 'src/app/shared/components/carousel/carousel.module';
 import { TestimonialsModule } from 'src/app/shared/components/testimonials/testimonials.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
@@ -46,7 +47,8 @@ import { MainRoutingModule } from './main.routing';
     UserModule,
     OverlayPanelModule,
     CarouseModule,
-    TestimonialsModule
+    TestimonialsModule,
+    PipesModule
   ]
 })
 export class MainModule { }
