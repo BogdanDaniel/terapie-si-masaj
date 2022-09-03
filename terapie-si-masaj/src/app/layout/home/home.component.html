@@ -142,8 +142,8 @@
     <div class="col-12">
 
 
-<app-carousel></app-carousel>
-     
+      <app-carousel></app-carousel>
+
     </div>
   </div>
 </div>
@@ -320,4 +320,18 @@
       </app-card>
     </div>
   </div>
+</div>
+
+<div class="container-fluid"
+     data-aos="fade-down"
+     data-aos-duration="1000"
+     id="reviews">
+  <p class="heading"> Recenzii
+  </p>
+  <div class="sub-heading">
+    <p>
+      Nu ma crede pe cuvant. Vezi ce spune lumea despre mine, despre modul de lucru si despre calitatea servicilor mele
+    </p>
+  </div>
+  <app-testimonials [open]="openReviews"></app-testimonials>
 </div>

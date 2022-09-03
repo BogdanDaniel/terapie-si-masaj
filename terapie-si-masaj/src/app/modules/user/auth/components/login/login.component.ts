@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { get } from 'lodash';
+import { switchMap } from 'rxjs';
 
 import { Credentiales } from '../../models/credentiales.model';
 import { UserResponse } from '../../models/user-response.model';
@@ -13,7 +15,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
     form: FormGroup;
-    constructor(private formBuilder: FormBuilder, private readonly authService: AuthService, private router: Router) {
+    constructor(private formBuilder: FormBuilder, private readonly authService: AuthService, private router: Router, private route: ActivatedRoute) {
         this.form = this.initForm();
     }
 
@@ -33,8 +35,13 @@ export class LoginComponent {
             return;
         }
 
-        this.authService.login(this.getCredentiales(form)).subscribe((res: UserResponse) => {
-            this.router.navigate(['/my-account']);
+        this.authService.login(this.getCredentiales(form)).pipe(switchMap((res: UserResponse) => this.route.queryParams)).subscribe((params: Params) => {
+            const returnUrl = get(params, 'returnUrl');
+            if (returnUrl) {
+                this.router.navigate(['/'], { queryParams: { scrollTo: returnUrl } })
+            } else {
+                this.router.navigate(['/my-account']);
+            }
         });
 
     }

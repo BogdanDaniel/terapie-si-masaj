@@ -232,7 +232,7 @@
           text-decoration: none;
           transition: all 0.3s linear;
           margin-bottom: 1rem;
-          background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
+          background-image: radial-gradient(circle farthest-corner at 10% 20%, #df3859  0%, #f1a7b6 90.1%);
           background-size: 200% auto;
           box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
           display: block;
@@ -248,7 +248,7 @@
         align-items: center;
         justify-content: center;
         text-transform: none;
-        color: rgba(97, 186, 255, 1);
+        color: #df3859;
         text-align: center;
         line-height: 1.8;
         letter-spacing: 1px;

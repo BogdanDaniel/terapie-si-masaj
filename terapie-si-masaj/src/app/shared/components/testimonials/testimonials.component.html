@@ -1,0 +1,39 @@
+<ng-container *ngIf="reviews.length > 0; else noReviews">
+  <p-carousel [value]="reviews"
+              styleClass="custom-carousel"
+              [numVisible]="1"
+              [numScroll]="1"
+              [showIndicators]="false">
+    <!-- [circular]="true"
+            [autoplayInterval]="3000" -->
+    <ng-template pTemplate="item"
+                 let-review>
+      <div class="carousel-item active">
+        <div class="carousel-caption">
+          <p class="caption-text m-0">{{review?.text}}
+          </p>
+          <p-rating [ngModel]="review.rating"
+                    [readonly]="true"
+                    [stars]="5"
+                    [cancel]="false"></p-rating>
+          <div id="image-caption">{{review.username}}</div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</ng-container>
+<div class="row justify-content-center mt-4">
+  <p class="login-link"
+     *ngIf="showLoginMessage; else reviewMessage">Trebuie să fii putentificat pentru a lasă o recenzie.<a
+       (click)="goToLogin()">Conectează-te acum</a></p>
+  <ng-template #reviewMessage>
+    <a *ngIf="reviews.length > 0"
+       class="review-link"
+       (click)="openDialog()">Poveste-te celorlați despre experiența ta!</a>
+  </ng-template>
+
+  <ng-template #noReviews>
+    <p *ngIf="!showLoginMessage" class="no-link">Nu există încă nicio recenzie.<a (click)="openDialog()">Fii
+        primul care adaugă una!</a></p>
+  </ng-template>
+</div>

@@ -1,0 +1,104 @@
+::ng-deep .review-dialog {
+  background-color: #fff7e6;
+
+  .p-dialog-header {
+    display: none;
+  }
+
+  .p-dialog-content {
+    padding: 0;
+    background-color: #fff7e6;
+  }
+
+  .p-rating-icon {
+    font-size: 1.5rem;
+    color: #262626;
+
+    &:hover {
+      color: #df3859 !important;
+    }
+
+    &:focus {
+      box-shadow: unset !important;
+    }
+
+  }
+
+  .p-rating-icon.pi-star-fill {
+    color: #df3859;
+  }
+
+  .p-button {
+    width: 100%;
+    height: 40px;
+    background-color: #ecb100;
+    border: 1px solid #ecb100;
+    margin-top: 25px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 50px;
+    margin-bottom: 7px;
+
+    .p-button-label {
+      color: #fff !important;
+    }
+  }
+
+}
+
+.header {
+  background: #fff7e6;
+  border-bottom: 1px solid #ccc;
+
+  span {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    color: #ecb100;
+  }
+}
+
+
+input {
+  display: block;
+  width: 100%;
+  padding: 7px 2px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid gray;
+  color: #ecb100;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  border: 1px solid #ecb100;
+  border-radius: 50px;
+
+  &:focus {
+    outline-color: #ecb100;
+    outline-width: 5px;
+  }
+
+  &.ng-invalid.ng-dirty:focus {
+    box-shadow: 0 0 3px 0.2rem #fa3e3e;
+  }
+
+  &.ng-touched.ng-invalid {
+    border-color: #f44336;
+  }
+}
+
+input.ng-touched.ng-invalid+label {
+  color: #f44336;
+}
+
+p {
+  color: #6c757d;
+}
+
+.footer {
+  border-top: 1px solid #ccc;
+}

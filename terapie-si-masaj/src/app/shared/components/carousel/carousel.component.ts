@@ -20,8 +20,8 @@ export class CarouselComponent implements AfterViewInit {
         if (!this.isSmDevice) {
             this.doUp(event);
         }
-
     }
+    
     @HostListener('window:resize', ['$event'])
     onResize() {
         this.isSmDevice = window.innerWidth < 576;

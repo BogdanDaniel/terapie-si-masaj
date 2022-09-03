@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as $ from 'jquery';
+import { get } from 'lodash';
 import { SelectItem } from 'primeng/api';
+import { takeWhile } from 'rxjs';
 import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
-import { MassageCategory } from 'src/app/shared/constants/massage-categories.const';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import VanillaTilt from 'vanilla-tilt';
 
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   certifications!: any[];
   responsiveOptions: any[];
   nr = 5
+  alive = true;
+  openReviews = false;
 
 
   @HostListener('window:scroll', ['$event.target']) scrolling(ev: any) {
@@ -34,7 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       $('.navbar').removeClass('custom');
     }
   }
-  constructor(private utilityService: UtilityService, private router: Router) {
+  constructor(private utilityService: UtilityService, private router: Router,  private route: ActivatedRoute) {
     this.counties = [
       { label: 'Sectorul 1', value: County.SECTOR_1 },
       { label: 'Sectorul 2', value: County.SECTOR_2, },
@@ -82,6 +85,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       "max-glare": 0.2,
       "glare-prerender": false
     });
+
+    this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe((params: Params) => {
+      const scrollTo = get(params, 'scrollTo');
+      if(scrollTo) {
+        this.scroll('reviews');
+        this.openReviews = true;
+      }
+    })
     
   }
 
@@ -100,6 +111,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.alive = false;
     $('.header').removeClass('header-aboslute');
     $('.navbar').addClass('custom');
 

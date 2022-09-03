@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row header">
+        <span>Adaugă o recenzie</span>
+    </div>
+
+    <form [formGroup]="form"
+          (ngSubmit)="save()">
+        <div class="row my-4">
+            <div class="col-12">
+                <span class="p-float-label">
+
+                    <textarea inputId="textarea"
+                              rows="5"
+                              style="resize: none;"
+                              cols="20"
+                              minlength="80"
+                              maxlength="250"
+                              class="w-100"
+                              formControlName="text"
+                              pInputTextarea></textarea>
+                    <label for="text">Descrie experienta ta in cateva cuvinte...</label>
+                </span>
+            </div>
+            <p class="d-flex justify-content-center mt-2">Evaluează experiența</p>
+            <div class="col-12 d-flex justify-content-center">
+                <p-rating formControlName="rating"
+                          [stars]="5"
+                          [cancel]="false"></p-rating>
+            </div>
+        </div>
+
+        <div class="row justify-content-center footer">
+            <div class="col-5">
+                <button pButton
+                        type="button"
+                        label="Renunta"
+                        (click)="discard()"> </button>
+            </div>
+
+
+            <div class="col-5">
+                <button pButton
+                        type="submit"
+                        label="Salvează"> </button>
+            </div>
+        </div>
+    </form>
+</div>
