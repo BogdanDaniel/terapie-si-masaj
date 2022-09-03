@@ -286,7 +286,6 @@
 
 @media (max-width: 1200px) {
   .cards-container {
-    min-height: 1100px;
     flex-direction: column;
     align-items: center;
   }
@@ -309,7 +308,7 @@
 
     .info-details {
       flex: 0;
-      min-width: 300px;
+      min-width: 200px;
       min-height: 140px;
       padding-top: 15px;
     }
