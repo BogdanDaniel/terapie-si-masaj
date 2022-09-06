@@ -1,10 +1,11 @@
+@import '../../../../../styles/components/variables';
 :host::ng-deep {
   margin-top: 75px;
   position: relative;
 
   .img {
     height: 700px;
-    border: 3px groove #ecb100;
+    border: 3px groove $primaryColor;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     border-radius: 25px;
@@ -32,7 +33,7 @@
       width: 300px;
       font-size: 27px;
       background: #262626;
-      //   color: #FFC107;
+      //   color: $primaryColor;
       color: #fff;
       opacity: .9;
       padding: 2rem;

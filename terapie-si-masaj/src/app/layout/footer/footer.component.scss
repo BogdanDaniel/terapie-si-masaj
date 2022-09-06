@@ -1,3 +1,4 @@
+@import '../../../styles/components//variables';
 footer {
   background: #262626;
 
@@ -15,14 +16,14 @@ footer {
       margin: 20px;
       padding: 0 20px;
       align-items: center;
-       border: 3px groove #ecb100;
+       border: 3px groove $primaryColor;
        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 
     .about-me {
 
       .navbar-brand {
-        color: #ecb100;
+        color: $primaryColor;
         font-size: 1.5rem;
         margin: 20px auto;
 
@@ -42,7 +43,7 @@ footer {
           text-transform: none;
           font-weight: 400;
           letter-spacing: -1px;
-          color: #ecb100;
+          color: $primaryColor;
           min-width: 300px;
           line-height: 1.8;
           letter-spacing: 2px;
@@ -77,13 +78,13 @@ footer {
 
         .title {
           font-size: 1.5rem;
-          color: #ecb100;
+          color: $primaryColor;
           text-align: center;
         }
       }
 
       .useful-info {
-        border-bottom: 3px groove #ecb100;
+        border-bottom: 3px groove $primaryColor;
       }
     }
   }

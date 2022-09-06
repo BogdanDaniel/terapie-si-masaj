@@ -19,6 +19,7 @@ import { MassagesRoutingModule } from './massages-routing.module';
 import { MassagesService } from './services/massages.service';
 import {TabViewModule} from 'primeng/tabview';
 import { AppFlipCardModule } from '../app-flip-card/app-flip-card.module';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 
@@ -42,7 +43,9 @@ import { AppFlipCardModule } from '../app-flip-card/app-flip-card.module';
     ButtonModule,
     TabViewModule,
     BadgeModule,
-    AppFlipCardModule
+    AppFlipCardModule,
+    SelectButtonModule,
+    FormsModule
   ],
   providers: [MassagesService]
 })

@@ -1,3 +1,4 @@
+@import '../../../styles/components/variables';
 ::ng-deep .my-card.p-card {
   border-radius: 25px;
   cursor: pointer;
@@ -31,7 +32,7 @@
         width: 160px;
         font-size: 17px;
         background: #262626;
-        color: #FFC107;
+        color: $primaryColor;
         opacity: .9;
         padding: 1.6rem;
         border-radius: 10px;
@@ -46,7 +47,7 @@
       background: #262626;
       overflow: .8;
       opacity: .9;
-      color: #FFC107;
+      color: $primaryColor;
       font-size: 20px;
       display: flex;
       align-items: center;

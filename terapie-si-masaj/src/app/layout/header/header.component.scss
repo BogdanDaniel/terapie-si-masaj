@@ -1,3 +1,4 @@
+ @import '../../../styles/components/variables';
  .header {
 
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -22,7 +23,7 @@
 
          ::ng-deep .p-button-icon {
            font-size: 2rem;
-           color: #ecb100;
+           color: $primaryColor;
          }
 
          &:hover,
@@ -46,14 +47,14 @@
              .nav-link {
                text-align: center;
                font-size: 1.1rem;
-               color: #ecb100;
+               color: $primaryColor;
                transition: transform .5s;
                cursor: pointer;
 
                &::after {
                  display: block;
                  content: '';
-                 border-bottom: solid 1px #ecb100;
+                 border-bottom: solid 1px $primaryColor;
                  transform: scaleX(0);
                  transition: transform 300ms ease-in-out;
                  transform-origin: 100% 0%;
@@ -75,7 +76,7 @@
      }
 
      .navbar-brand {
-       color: #ecb100;
+       color: $primaryColor;
        font-size: 1.5rem;
        margin-left: 0.75rem;
 
@@ -162,7 +163,7 @@
        //     &::after {
        //       display: block;
        //       content: '';
-       //       border-bottom: solid 1px #ecb100;
+       //       border-bottom: solid 1px $primaryColor;
        //       transform: scaleX(0);
        //       transition: transform 500ms ease-in-out;
        //       transform-origin: 100% 0%;
@@ -179,7 +180,7 @@
    a {
      cursor: pointer;
      font-size: 1.1rem;
-     color: #ecb100;
+     color: $primaryColor;
      text-decoration: none;
      transition: transform .5s;
 
@@ -199,7 +200,7 @@
  }
 
  .border-left {
-   border-left: 1px solid #ecb100;
+   border-left: 1px solid $primaryColor;
  }
 
  .header-aboslute {
@@ -220,7 +221,7 @@
 
    li {
      min-height: 30px;
-     color: #ecb100;
+     color: $primaryColor;
      padding: 10px 20px;
      cursor: pointer;
 
@@ -255,8 +256,8 @@
    width: 23px;
    height: 23px;
    margin-left: 10px;
-   border: 2px solid #ecb100;
-   color: #ecb100;
+   border: 2px solid $primaryColor;
+   color: $primaryColor;
    border-radius: 50%;
    font-weight: 700;
    text-transform: uppercase;
@@ -266,3 +267,6 @@
    justify-content: center;
    cursor: pointer;
  }
+
+
+ 

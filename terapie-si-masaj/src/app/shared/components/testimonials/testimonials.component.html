@@ -24,7 +24,7 @@
 </ng-container>
 <div class="row justify-content-center mt-4">
   <p class="login-link"
-     *ngIf="showLoginMessage; else reviewMessage">Trebuie să fii putentificat pentru a lasă o recenzie.<a
+     *ngIf="showLoginMessage; else reviewMessage">Trebuie să fii autentificat pentru a lasă o recenzie.<a
        (click)="goToLogin()">Conectează-te acum</a></p>
   <ng-template #reviewMessage>
     <a *ngIf="reviews.length > 0"

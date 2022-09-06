@@ -1,4 +1,6 @@
 
+@import '../../../../../styles/components/variables';
+
 :host {
     height: 100%;
     display: flex;
@@ -11,7 +13,7 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border: 3px groove #ecb100
+    border: 3px groove $primaryColor
 }
 
 .title {
@@ -19,7 +21,7 @@
   text-transform: none;
   font-weight: 400;
   letter-spacing: -1px;
-  color: #ecb100;
+  color: $primaryColor;
   text-align: center;
 }
 
@@ -32,7 +34,7 @@
 }
 
 .benefits {
-    color: #ecb100;
+    color: $primaryColor;
     .title {
         font-size: 1.5rem;
         text-transform: none;
@@ -53,7 +55,7 @@
 }
 
 .appointment {
-    border-top: 1px solid #ecb100;
+    border-top: 1px solid $primaryColor;
 
     div, button {
         flex: 1;

@@ -1,6 +1,6 @@
 <div class="container h-100">
     <form [formGroup]="form"
-          class="d-flex justify-content-center p-4 mt-4"
+          class="d-flex justify-content-center p-4 pb-0 mt-4"
           (ngSubmit)="submit()">
         <div class="row">
             <div class="col-12">
@@ -35,11 +35,14 @@
                        class="p-error block">Adresa de e-mail nu este valida</small>
 
             </div>
-            <div class="col-12 d-flex justify-content-end p-2">
-                <p-button label="Actualizeaza datele"
-                          class="p-button-raised"
-                          type="submit"></p-button>
+            <div class="row justify-content-end p-2 m-0">
+                <div class="col-lg-6 col-md-12 p-0">
+                    <p-button label="Actualizeaza datele"
+                              class="p-button-raised hover hover-1 rounded no-shadow"
+                              type="submit"></p-button>
+                </div>
             </div>
+           
         </div>
 
 

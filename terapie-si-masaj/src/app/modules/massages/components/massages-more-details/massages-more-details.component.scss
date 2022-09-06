@@ -1,3 +1,4 @@
+@import '../../../../../styles/components/variables';
 .sub-heading {
   display: flex;
   flex-wrap: wrap;
@@ -29,8 +30,8 @@
   }
 
   .p-tabview-nav {
-    border-color: #df3859 !important;
-    background-color: #df3859 !important;
+    border-color: $branded-red !important;
+    background-color: $branded-red !important;
   }
 
   .p-tabview-nav {
@@ -41,10 +42,10 @@
     }
     .p-tabview-nav-link {
       color: #fff !important;
-      border-color: #df3859 !important;
+      border-color: $branded-red !important;
       font-size: 1.2rem;
       font-weight: 400 !important;
-      background-color: #df3859 !important;
+      background-color: $branded-red !important;
     }
 
     .p-highlight {
@@ -67,7 +68,7 @@
 .benefits {
   font-size: 1.3rem;
   color: #a33c0f;
-  border-bottom: 1px solid #df3859;
+  border-bottom: 1px solid $branded-red;
 }
 
 .product-container {

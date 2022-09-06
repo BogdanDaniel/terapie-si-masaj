@@ -1,21 +1,47 @@
-<div class="container h-100"
-     *ngIf="(details | async) as info">
-    <div class="row w-100">
-        <div class="col-md-6 col-sm-12"
-             data-aos="fade-right"
-             data-aos-duration="1500">
-            <app-massage-image [details]="info"></app-massage-image>
+<div class="pd-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="slider"
+                     class="owl-carousel product-slider">
+                    <div class="item">
+                        <img src="{{'../../../../../../../assets/' + (details | async)?.imageUrl}}"
+                             width="100%"
+                             height="400px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-dtl">
+                    <div class="product-info">
+                        <div class="product-name">{{(details | async)?.title}}</div>
+                        <div class="product-price-discount"><span>{{(details | async)?.price }}</span>
+                            <!-- <span class="line-through">$29.00</span> -->
+                        </div>
+                    </div>
+                    <p>{{(details | async)?.description }}</p>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mt-2">
+                            <label>Durata</label>
+                            <p-selectButton id="duration"
+                            styleClass="select-btn"
+                                            [options]="durationOptions"
+                                            [(ngModel)]="duration"
+                                            optionLabel="label"
+                                            optionValue="value"></p-selectButton>
+                        </div>
+                    </div>
+                    <div class="product-count">
+                        <button pButton
+                                class="hover hover-1"
+                                label="Programează-te acum"
+                                (click)="goToAppointment()"></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 col-sm-12"
-             data-aos="fade-left"
-             data-aos-duration="1500">
-            <app-massage-details [details]="info"></app-massage-details>
-        </div>
-    </div>
-    <div class="row extra-details w-100 m-0" data-aos="fade-up"
-    data-aos-duration="1500">
-        <div class="col-12">
-            <app-massages-more-details [details]="info"></app-massages-more-details>
+        <div class="product-info-tabs">
+            <app-massages-more-details [details]="details | async"></app-massages-more-details>
         </div>
     </div>
 </div>

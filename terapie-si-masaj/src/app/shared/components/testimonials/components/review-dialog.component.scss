@@ -1,3 +1,4 @@
+@import '../../../../../styles/components/variables';
 ::ng-deep .review-dialog {
   background-color: #fff7e6;
 
@@ -15,7 +16,7 @@
     color: #262626;
 
     &:hover {
-      color: #df3859 !important;
+      color: $branded-red !important;
     }
 
     &:focus {
@@ -25,14 +26,14 @@
   }
 
   .p-rating-icon.pi-star-fill {
-    color: #df3859;
+    color: $branded-red;
   }
 
   .p-button {
     width: 100%;
     height: 40px;
-    background-color: #ecb100;
-    border: 1px solid #ecb100;
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
     margin-top: 25px;
     color: #fff;
     font-weight: 500;
@@ -56,7 +57,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     padding: 1rem 1.5rem;
-    color: #ecb100;
+    color: $primaryColor;
   }
 }
 
@@ -67,18 +68,18 @@ input {
   padding: 7px 2px;
   margin-bottom: 7px;
   border-bottom: 1px solid gray;
-  color: #ecb100;
+  color: $primaryColor;
   font-size: 16px;
   border-radius: 50px;
   border: 1px solid transparent;
   padding-left: 20px;
   padding-right: 20px;
   font-size: 16px;
-  border: 1px solid #ecb100;
+  border: 1px solid $primaryColor;
   border-radius: 50px;
 
   &:focus {
-    outline-color: #ecb100;
+    outline-color: $primaryColor;
     outline-width: 5px;
   }
 

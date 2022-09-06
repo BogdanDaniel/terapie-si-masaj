@@ -1,10 +1,12 @@
+@import '../../../../../../styles/components/variables';
+
 h3 {
   position: relative;
-  color: #ecb100;
+  color: $primaryColor;
 
   &::before {
     content: "";
-    border-bottom: 1px solid #ecb100;
+    border-bottom: 1px solid $primaryColor;
     position: absolute;
     width: 100%;
     top: calc(100% + .5rem);

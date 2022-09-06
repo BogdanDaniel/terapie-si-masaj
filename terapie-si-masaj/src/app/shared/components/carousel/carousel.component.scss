@@ -1,6 +1,7 @@
+@import '../../../../styles/components/variables';
 #carousel {
   position: relative;
-  height: 550px;
+  height: 500px;
   top: 50%;
   transform: translateY(-50%);
   overflow: hidden;
@@ -136,7 +137,7 @@
     }
   }
   a {
-    color: #ecb100;
+    color: $primaryColor;
     text-decoration-line: none !important;
     font-weight: 400;
     font-size: 1.4rem;

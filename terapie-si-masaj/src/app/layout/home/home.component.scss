@@ -1,3 +1,5 @@
+@import '../../../styles/components/variables';
+
 .banner {
   position: relative;
   height: 100vh;
@@ -32,45 +34,42 @@
     padding: 50px 40px;
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
 
     .p-dropdown {
       min-width: 100%;
       min-height: 50px;
       box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+      border-radius: 0px;
 
+      &:hover {
+        border-color: unset;
+      }
       .p-dropdown-label {
         color: #0a3d62;
         font-size: 1.5rem;
       }
     }
 
-    .p-button-label {
-      font-size: 1.5rem;
-      color: #0a3d62;
-    }
 
     .sub-title {
       font-size: 1.3rem;
-      color: #feca57;
+      color: $primaryColor;
       font-weight: 600;
       // text-transform: uppercase;
       letter-spacing: .05rem;
-      font-family: Goudy Old Style, serif;
     }
 
     .title {
-      color: #feca57;
+      color: $primaryColor;
       font-weight: 600;
       // text-transform: uppercase;
       letter-spacing: .05rem;
-      font-family: Goudy Old Style, serif;
       // Andale Mono	Gabriola Goudy Old Style
 
-      font-size: 2.275rem;
+      font-size: 2rem;
       line-height: 2.375rem;
       padding-bottom: 20px;
-      // #00d2d3 #feca57 #fbc531 #A3CB38 #78e08f #12CBC4
+      // #00d2d3 $primaryColor #fbc531 #A3CB38 #78e08f #12CBC4
     }
   }
 }
@@ -85,7 +84,7 @@
   }
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid #ecb100;
+    border-bottom: 1px solid $primaryColor;
   }
 
   .heading {
@@ -93,19 +92,20 @@
     text-transform: none;
     font-weight: 400;
     letter-spacing: -1px;
-    color: #ecb100;
+    color: $primaryColor;
     text-align: center;
   }
 
   .sub-heading {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
+    font-size: 1.3rem;
 
     p {
       text-transform: none;
       font-weight: 400;
-      color: #ecb100;
+      color: $primaryColor;
       text-align: center;
       line-height: 1.8;
       letter-spacing: 1px;
@@ -186,7 +186,7 @@
         height: 100%;
         background-image: linear-gradient(111.1deg,
             rgba(0, 40, 70, 1) -4.8%,
-            #ecb100 82.7%,
+            $primaryColor 82.7%,
             rgba(255, 175, 123, 1) 97.2%);
         opacity: 0.16;
       }
@@ -233,7 +233,7 @@
           text-decoration: none;
           transition: all 0.3s linear;
           margin-bottom: 1rem;
-          background-image: radial-gradient(circle farthest-corner at 10% 20%, #df3859  0%, #f1a7b6 90.1%);
+          background-image: radial-gradient(circle farthest-corner at 10% 20%, $branded-red 0%, #f1a7b6 90.1%);
           background-size: 200% auto;
           box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
           display: block;
@@ -249,7 +249,7 @@
         align-items: center;
         justify-content: center;
         text-transform: none;
-        color: #df3859;
+        color: $branded-red;
         text-align: center;
         line-height: 1.8;
         letter-spacing: 1px;
@@ -315,7 +315,7 @@
 
     .icon {
       font-size: 3.5rem;
-      color: #ecb100;
+      color: $primaryColor;
       flex: 0;
     }
 
@@ -358,6 +358,7 @@
 
     }
   }
+
   .profile_container {
     height: 650px !important;
   }
@@ -388,5 +389,6 @@
 
   }
 }
+
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { MassagesService } from '../services/massages.service';
 
@@ -10,7 +10,9 @@ import { MassagesService } from '../services/massages.service';
 })
 export class MassagesComponent implements OnInit {
   details: Observable<any> | null = null;
-  constructor(private route: ActivatedRoute, private massagesService: MassagesService) { }
+  durationOptions: any[] = [];
+  duration = 60;
+  constructor(private route: ActivatedRoute, private massagesService: MassagesService, private router: Router) { }
 
   ngOnInit() {
     this.details = this.route.params.pipe(
@@ -18,9 +20,20 @@ export class MassagesComponent implements OnInit {
         return this.massagesService.getMassage(params['id']);
       })
     );
-
+      this.details.subscribe(data => console.log(data));
+      this.durationOptions = [{
+        label: '60 minute',
+        value: 60
+      },
+      {
+        label: '90 minute',
+        value: 90
+      }];
   }
 
+  goToAppointment() {
+    this.router.navigate(['programare']);
+}
   ngOnDestroy() {
   }
 

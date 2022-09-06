@@ -1,9 +1,11 @@
+@import '../../../../../styles/components/variables';
+
 .heading {
   font-size: 44px;
   text-transform: none;
   font-weight: 400;
   letter-spacing: -1px;
-  color: #ecb100;
+  color: $primaryColor;
   text-align: center;
 }
 
@@ -16,29 +18,13 @@
     width: 70%;
     text-transform: none;
     font-weight: 400;
-    color: #ecb100;
+    color: $primaryColor;
     text-align: center;
     line-height: 1.8;
     letter-spacing: 1px;
   }
 }
 
-// .container {
-//   padding: 75px 0;
-
-//   form {
-//     margin: 1rem;
-//   }
-// }
-
-// @media (max-width: 768px) {
-
-//   .sub-heading p{
-//     width: 100%;
-//   }
-
-
-// }
 
 .container {
   width: 100%;
@@ -50,15 +36,7 @@
     width: 100%;
     min-height: 460px;
     margin: 100px auto;
-    // box-shadow: 0px 8px 60px -10px rgb(13 28 39 / 60%);
-    // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-
-    // background: linear-gradient( 109.6deg,  #262626 11.2%, #ecb100 100.3% );
-   // background: linear-gradient(60deg, rgba(236,177,0,1) 0%, rgba(255,247,230,1) 50%);
-
-    // border-radius: 12px;
-    //  max-width: 700px;
     position: relative;
 
     .massage-card-img {
@@ -71,7 +49,7 @@
       overflow: hidden;
       position: relative;
       z-index: 4;
-      box-shadow: 0px 5px 50px 0px #ecb100, 0px 0px 0px 7px #ecb100;
+      box-shadow: 0px 5px 50px 0px $primaryColor, 0px 0px 0px 7px $primaryColor;
 
       img {
         display: block;
