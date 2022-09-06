@@ -22,6 +22,7 @@
     text-align: center;
     line-height: 1.8;
     letter-spacing: 1px;
+    font-size: 1.1rem;
   }
 }
 
@@ -69,7 +70,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
 
   .massage-card {
     padding: 1rem !important;
@@ -87,4 +88,10 @@
   }
 
 
+}
+:host ::ng-deep button[type=submit] {
+  width: 100%;
+  background-color: $primaryColor;
+  color: #fff !important;
+  font-weight: 500;
 }
