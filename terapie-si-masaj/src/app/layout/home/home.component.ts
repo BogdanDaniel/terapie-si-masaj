@@ -66,20 +66,25 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       "max-glare": 0.2,
       "glare-prerender": false
     });
-
-    this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe((params: Params) => {
-      const scrollTo = get(params, 'scrollTo');
-      if (scrollTo) {
-        this.scroll('reviews');
-        this.openReviews = true;
-      }
-    })
-
   }
 
   ngAfterViewInit(): void {
     $('.header').addClass('header-aboslute');
     $('.navbar').removeClass('custom');
+    this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe((params: Params) => {
+      setTimeout(() => {
+        const scrollTo = get(params, 'scrollTo');
+        if (scrollTo) {
+          if (scrollTo === 'reviews') {
+            this.scroll(scrollTo);
+            this.openReviews = true;
+          } else {
+            this.scroll(scrollTo);
+          }
+
+        }
+      }, 200)
+    })
 
   }
 

@@ -10,4 +10,9 @@ export class UtilityService {
             }
         }
     }
+
+    hasElementById(id: string): boolean {
+        return !!document.querySelector('#' + id);
+
+    }
 }

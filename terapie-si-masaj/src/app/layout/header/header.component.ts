@@ -33,7 +33,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scroll(id: string) {
-    this.utilityService.scroll(id);
+    const hasElement = this.utilityService.hasElementById(id);
+    if (hasElement) {
+      this.utilityService.scroll(id);
+    } else {
+      this.router.navigate(['/'], { queryParams: { scrollTo: id } })
+    }
+
   }
 
   goTo(url: string) {
