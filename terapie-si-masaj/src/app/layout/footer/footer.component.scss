@@ -1,92 +1,142 @@
-@import '../../../styles/components//variables';
-footer {
-  background: #262626;
+ @import '../../../styles/components//variables';
+ // footer {
+ //   background: $branded-black;
 
-  .footer {
-    height: 100%;
-    min-height: 250px;
-    display: flex;
-    justify-content: space-evenly;
+ //   .footer {
+ //     height: 100%;
+ //     min-height: 250px;
+ //     display: flex;
+ //     justify-content: space-evenly;
 
-    .about-me,
-    .info {
-      min-height: 250px;
-      display: flex;
-      flex-direction: column;
-      margin: 20px;
-      padding: 0 20px;
-      align-items: center;
-       border: 3px groove $primaryColor;
-       box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    }
+ //     .about-me,
+ //     .info {
+ //       min-height: 250px;
+ //       display: flex;
+ //       flex-direction: column;
+ //       margin: 20px;
+ //       padding: 0 20px;
+ //       align-items: center;
+ //        border: 3px groove $primaryColor;
+ //        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+ //     }
 
-    .about-me {
+ //     .about-me {
 
-      .navbar-brand {
-        color: $primaryColor;
-        font-size: 1.5rem;
-        margin: 20px auto;
+ //       .navbar-brand {
+ //         color: $primaryColor;
+ //         font-size: 1.5rem;
+ //         margin: 20px auto;
 
-        sub {
-          font-size: 11px;
-          font-style: italic;
-          padding-left: 5px;
-        }
+ //         sub {
+ //           font-size: 11px;
+ //           font-style: italic;
+ //           padding-left: 5px;
+ //         }
+ //       }
+
+ //       .sub-heading {
+ //         display: flex;
+ //         flex-wrap: wrap;        
+
+ //         div {
+ //           font-size: 20;
+ //           text-transform: none;
+ //           font-weight: 400;
+ //           letter-spacing: -1px;
+ //           color: $primaryColor;
+ //           min-width: 300px;
+ //           line-height: 1.8;
+ //           letter-spacing: 2px;
+ //           word-spacing: 1px;
+ //           margin-bottom: 1rem;
+ //         }
+
+ //       }
+
+ //       .social-media {
+
+ //         &>button {
+ //           transition: transform .5s;
+
+ //           &:hover {
+ //             transform: scale(1.5);
+ //             transform: translateZ(0);
+ //           }
+ //         }
+
+ //         ::ng-deep .p-button-icon {
+ //           font-size: 1.1rem;
+ //         }
+ //       }
+ //     }
+
+ //     .info {
+
+ //       .useful-info,
+ //       .contact-info {
+ //         flex: 1;
+
+ //         .title {
+ //           font-size: 1.5rem;
+ //           color: $primaryColor;
+ //           text-align: center;
+ //         }
+ //       }
+
+ //       .useful-info {
+ //         border-bottom: 3px groove $primaryColor;
+ //       }
+ //     }
+ //   }
+
+ // }
+ .footer {
+   background: $branded-black;
+   height: 75px;
+
+   .container {
+     margin-bottom: 0;
+
+     .navbar-brand {
+       color: $primaryColor;
+       font-size: 1.5rem;
+
+       sub {
+         font-size: 11px;
+         font-style: italic;
+         padding-left: 5px;
+       }
+     }
+
+     div {
+       text-transform: none;
+       font-weight: 600;
+       letter-spacing: -1px;
+       color: $primaryColor;
+       line-height: 1.8;
+       letter-spacing: 2px;
+       word-spacing: 1px;
+     }
+   }
+
+   .social-media {
+
+     &>button {
+       transition: transform .5s;
+
+       &:hover {
+         transform: scale(1.5);
+         transform: translateZ(0);
+       }
+       &:focus {
+        box-shadow: unset !important;
       }
+     }
 
-      .sub-heading {
-        display: flex;
-        flex-wrap: wrap;        
+     ::ng-deep .p-button-icon {
+       font-size: 1.1rem;
+     }
+   }
 
-        div {
-          font-size: 20;
-          text-transform: none;
-          font-weight: 400;
-          letter-spacing: -1px;
-          color: $primaryColor;
-          min-width: 300px;
-          line-height: 1.8;
-          letter-spacing: 2px;
-          word-spacing: 1px;
-          margin-bottom: 1rem;
-        }
-        
-      }
 
-      .social-media {
-
-        &>button {
-          transition: transform .5s;
-
-          &:hover {
-            transform: scale(1.5);
-            transform: translateZ(0);
-          }
-        }
-
-        ::ng-deep .p-button-icon {
-          font-size: 1.1rem;
-        }
-      }
-    }
-
-    .info {
-
-      .useful-info,
-      .contact-info {
-        flex: 1;
-
-        .title {
-          font-size: 1.5rem;
-          color: $primaryColor;
-          text-align: center;
-        }
-      }
-
-      .useful-info {
-        border-bottom: 3px groove $primaryColor;
-      }
-    }
-  }
-
-}
+ }

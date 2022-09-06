@@ -16,7 +16,7 @@
     position: initial;
     z-index: 10;
     padding: 3rem 8rem;
-    color: #262626;
+    color: $branded-black;
     opacity: .9;
     text-align: center;
     font-size: 1.2rem;
@@ -44,7 +44,7 @@
 
   .p-rating-icon {
     font-size: 1.5rem;
-    color: #262626;
+    color: $branded-black;
   }
 
   .p-rating-icon.pi-star-fill {

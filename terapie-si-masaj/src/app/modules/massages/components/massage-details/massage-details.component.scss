@@ -5,7 +5,7 @@
     height: 100%;
     display: flex;
     font-size: 17px;
-    background: #262626;
+    background: $branded-black;
     color: #fff;
     opacity: 0.9;
     padding: 1.6rem;
@@ -67,7 +67,7 @@
 
     .appointment-btn {
         height: 50px;
-        color: #262626;
+        color: $branded-black;
         font-size: 1.5rem;
     }
 }

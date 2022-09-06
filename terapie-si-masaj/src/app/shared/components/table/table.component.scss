@@ -1,3 +1,4 @@
+@import '../../../../styles/components/variables';
 :host ::ng-deep {
 
   table {
@@ -23,17 +24,17 @@
 
   .p-datatable-header {
     .p-button-outlined {
-        color: #262626;
+        color: $branded-black;
 
         &:hover {
-            color: #262626;
+            color: $branded-black;
         }
     }
     .p-inputtext:focus {
         outline: 0 none;
     outline-offset: 0;
     box-shadow:unset;
-    border-color: #262626;
+    border-color: $branded-black;
     }
   }
 }

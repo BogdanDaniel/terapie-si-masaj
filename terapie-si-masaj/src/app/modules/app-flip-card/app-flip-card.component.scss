@@ -57,7 +57,7 @@
     width: 350px;
     height: 300px;
     border-radius: 25px;
-    background: #262626;
+    background: $branded-black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +67,6 @@
 
   .title {
     background: $primaryColor !important;
-    color: #262626 !important;
+    color: $branded-black !important;
   }
 }
