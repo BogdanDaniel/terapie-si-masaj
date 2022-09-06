@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 export class AppCardComponent implements OnInit {
   @Input() src: string = '';
   @Input() description: string = ''
-  @Input() badge: string = '';
-  @Input() title: string = '';
+  @Input() badge: string | undefined = '';
+  @Input() title: string | undefined = '';
   @Input() routerLink: string = '';
 
   constructor(private router: Router) { }

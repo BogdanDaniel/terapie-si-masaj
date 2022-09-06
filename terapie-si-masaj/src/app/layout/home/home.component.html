@@ -12,6 +12,7 @@
           <div class="col-12 p-0">
             <p-dropdown [options]="services"
                         [(ngModel)]="selectedService"
+                        optionLabel="title"
                         placeholder="Serviciul ales"></p-dropdown>
           </div>
           <div class="col-12 p-0">
@@ -28,65 +29,10 @@
     </div>
   </div>
 </div>
+
 <div class="info">
   <div class="container-fluid h-100">
-    <div class="info-page h-100 row justify-content-center align-items-center">
-      <div class="info-item col-sm-12 col-md-4 row justify-content-center flex-nowrap">
-        <i class="icon far fa-clock col "></i>
-        <div class="info-details col row justify-content-center">
-          <h5 class="info-title">
-            Program
-          </h5>
-          <p class="info-subtitle">
-            Luni - Duminica
-          </p>
-          <p class="info-subtitle">
-            8:00 - 23:00
-          </p>
-        </div>
-      </div>
-
-      <div class="info-item col-sm-12 col-md-4 row justify-content-center flex-nowrap">
-        <i class="icon fas fa-map-marker-alt col"></i>
-        <div class="info-details col row justify-content-center">
-          <h5 class="info-title">
-            Adresa
-          </h5>
-          <p class="info-subtitle">
-            La locatia clientului
-          </p>
-          <p class="info-subtitle">
-            Bucuresti, toate sectoarele
-          </p>
-          <p class="info-subtitle"></p>
-        </div>
-      </div>
-
-      <!-- <div class="info-item col-sm-12 col-md-3 row justify-content-center flex-nowrap">
-        <i class="icon col fas fa-mobile-alt"></i>
-        <div class="info-details col row justify-content-center">
-          <h5 class="info-title">
-            Telefon
-          </h5>
-          <p class="info-subtitle">
-            07236445484
-          </p>
-          <p class="info-subtitle"></p>
-        </div>
-      </div> -->
-
-      <div class="info-item col-sm-12 col-md-4 row justify-content-center flex-nowrap">
-        <i class="icon fas fa-money-bill-wave-alt col "></i>
-        <div class="info-details col row justify-content-center">
-          <h5 class="info-title">
-            Plata
-          </h5>
-          <p class="info-subtitle">
-            Cash / Transfer bancar
-          </p>
-        </div>
-      </div>
-    </div>
+    <app-info></app-info>
   </div>
 </div>
 
@@ -96,33 +42,7 @@
      data-aos-duration="1000"
      id="about-me"
      style="padding-top: 60px;">
-  <div class="profile_container">
-    <div class="wraps">
-      <div class="profile_img_wrapper">
-        <div class="profile_img">
-          <span></span>
-        </div>
-      </div>
-      <div class="profile_details">
-        <h1 class="username">Ionuț Duță</h1>
-
-        <div class="user_info">
-          <span class="info">Tehnician Maseur</span>
-          <span class="info">Masaj Terapeutic</span>
-          <span class="info">Masaj Somatic</span>
-          <span class="info">Drenaj Limfatic</span>
-          <span class="info">Masaj Reflexogen</span>
-          <span class="info">Masaj Anticelulitic</span>
-        </div>
-
-        <div class="user_links">
-          Fiind kinetoterapeut de 4 ani, dețin cunoștințele anatomice necesare pentru cele mai bune rezultate ale
-          masajului și recuperării pacienților. Tot ce fac, fac cu placere și îmi dau tot interesul pentru acel lucru.
-
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-about-me></app-about-me>
 </div>
 
 <div class="container-fluid"
@@ -139,10 +59,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-
-
       <app-carousel></app-carousel>
-
     </div>
   </div>
 </div>
@@ -216,6 +133,8 @@
     </div>
   </div>
 </div>
+
+
 <div class="container-fluid"
      data-aos="fade-down"
      data-aos-duration="1000"
@@ -228,53 +147,18 @@
       ajută să scăpați de : stres, dureri de cap, dureri musculare, oboseală și vă conferă o stare generală bună.
     </p>
   </div>
-  <div class="row justify-content-between massage-cards-container">
-    <div class="col-auto d-flex justify-content-center mb-5"
+  <div *ngIf="relaxareMassages"
+       class="row justify-content-between massage-cards-container">
+    <div *ngFor="let massage of relaxareMassages"
+         class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
-      <app-card [src]="'../../../assets/masaj_1.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj de relaxare'"
-                [routerLink]="'masaje/terapie-corporala'">
+      <app-card [src]="'../../../assets/' + massage?.imageUrl"
+                [badge]="massage?.pricing?.[0]?.price + '.00 Lei'"
+                [title]="massage?.title"
+                [routerLink]="'masaje/' + massage?.id">
       </app-card>
     </div>
-    <!-- <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/masaj_1.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Terapie corporala'"
-                [routerLink]="'masaje/terapie-corporala'">
-      </app-card>
-    </div> -->
-    <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/drenaj.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj capilar'"
-                [routerLink]="'masaje/masaj-facial'">
-      </app-card>
-
-    </div>
-    <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/drenaj.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj facial'"
-                [routerLink]="'masaje/masaj-facial'">
-      </app-card>
-
-    </div>
-    <!-- <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/drenaj.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj pe scaun'">
-      </app-card>
-    </div> -->
   </div>
 </div>
 <div class="container-fluid"
@@ -293,29 +177,16 @@
       Anticelulitic )
     </p>
   </div>
-  <div class="row justify-content-center massage-cards-container">
-    <div class="col-auto d-flex justify-content-center mb-5"
+  <div *ngIf="recuperareMassages"
+       class="row justify-content-center massage-cards-container">
+    <div *ngFor="let massage of recuperareMassages"
+         class="col-auto d-flex justify-content-center mb-5"
          data-aos="zoom-in"
          data-aos-duration="1000">
-      <app-card [src]="'../../../assets/drenaj.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj terapeutic'">
-      </app-card>
-    </div>
-    <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/masaj_1.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Drenaj limfatic partial'">
-      </app-card>
-    </div>
-    <div class="col-auto d-flex justify-content-center mb-5"
-         data-aos="zoom-in"
-         data-aos-duration="1000">
-      <app-card [src]="'../../../assets/masaj_1.jpg'"
-                [badge]="'110.00 lei'"
-                [title]="'Masaj anticelulitic'">
+      <app-card [src]="'../../../assets/' + massage?.imageUrl"
+                [badge]="massage?.pricing?.[0]?.price + '.00 Lei'"
+                [title]="massage?.title"
+                [routerLink]="'masaje/' + massage?.id">
       </app-card>
     </div>
   </div>

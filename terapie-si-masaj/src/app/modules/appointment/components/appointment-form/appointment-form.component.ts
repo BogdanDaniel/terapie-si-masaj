@@ -4,14 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { find, head, toNumber } from 'lodash';
 import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
-import { switchMap, takeWhile, take } from 'rxjs';
+import { switchMap, takeWhile, take, withLatestFrom } from 'rxjs';
 import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
 import { getFormattedDate, nonEmptyProperties } from 'src/app/shared/constants/utility.const';
+import { Massage } from 'src/app/shared/models/massage.model';
 import { User } from 'src/app/shared/models/user.model';
 import { AppointmentDefinitionService } from 'src/app/shared/services/appointment-definition.service';
+import { MassagesService } from 'src/app/shared/services/massages.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 import { AppointmentService } from '../../services/appointment.service';
@@ -37,10 +39,11 @@ export const calendarRo = {
 export class AppointmentFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
-  services: any[] = [];
+  services: Massage[] = [];
   durationOptions: any[] = [];
   counties: any[];
   hours: any[] = [];
+  isLoading  = false;
   submitted: boolean = false;
   minDate: Date;
 
@@ -51,6 +54,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
+    private massagesService: MassagesService,
     private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private route: ActivatedRoute, private userService: UserService) {
     this.form = new FormGroup({
       massage: new FormControl('', [Validators.required]),
@@ -65,22 +69,21 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       address: new FormControl('', [Validators.required]),
       observation: new FormControl('', [])
     });
-    this.durationOptions = [{
-      label: '60 minute',
-      value: 60
-    },
-    {
-      label: '90 minute',
-      value: 90
-    }]
-    this.services = [
-      { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
-      { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
-      { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
-      { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun },
-      { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
-      { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic }
-    ];
+    this.massagesService.getAllMasages().pipe(withLatestFrom(this.route.queryParams)).subscribe(([res, params]) => {
+      if (params['massage']) {
+        this.massage.patchValue(find(res, r => r.id === params['massage']));
+      } else {
+        this.massage.patchValue(res ? res[0] : '');
+      }
+      this.services = res;
+    });
+
+    this.massage.valueChanges.pipe(
+      takeWhile(() => this.alive)
+    ).subscribe((massage: Massage) => {
+      this.durationOptions = this.getDurationOptions(massage?.pricing.map((pricing) => pricing?.duration));
+      this.duration.patchValue(this.durationOptions && this.durationOptions[0].value);
+    })
     this.counties = [
       { label: 'Sectorul 1', value: County.SECTOR_1 },
       { label: 'Sectorul 2', value: County.SECTOR_2, },
@@ -113,6 +116,10 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     return this.form?.get('hour') as FormControl;
   }
 
+  get duration() {
+    return this.form?.get('duration') as FormControl;
+  }
+
   get firstName() {
     return this.form?.get('firstName') as FormControl;
   }
@@ -136,6 +143,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.massage.valueChanges.subscribe(mass => console.log(mass, 'mass'))
     //this.personalInformation = this.ticketService.getTicketInformation().personalInformation;
     this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe(params => {
       const { massage, location } = params;
@@ -148,12 +156,20 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   }
 
+
+  getDurationOptions(values: any[]) {
+    if (!values) return [];
+    return values.map(v => ({
+      label: `${v} minute`,
+      value: v
+    }));
+  }
+
   getHours() {
     this.date.valueChanges.pipe(
       switchMap((date: string) => this.appointmentDefinitionService.getAvailableSchedule(getFormattedDate(date)))
     ).subscribe((hours: number[]) => {
       this.hours = hours;
-      console.log(head(hours), 'head')
       this.hour.patchValue(head(hours));
       // this.hour.updateValueAndValidity();
       // this.cdr.markForCheck();
@@ -161,21 +177,24 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.isLoading = true
+
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
     const form = this.form.getRawValue();
-    const { date } = form;
+    const { date, massage } = form;
     const payload = {
       ...form,
+      massage: massage?.title,
       userId: this.userId,
       date: moment(date).format('DD.MM.YYYY')
     }
-    this.appointmentService.saveAppointment(nonEmptyProperties(payload)).pipe().subscribe((res) => {
-      this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
-      this.router.navigate(['/']);
-    });
+    // this.appointmentService.saveAppointment(nonEmptyProperties(payload)).pipe().subscribe((res) => {
+    //   this.messageService.add({ severity: 'success', detail: 'Programarea a fost salvata cu succes!' });
+    //   this.router.navigate(['/']);
+    // });
 
   }
 

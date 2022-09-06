@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { MassagesService } from '../services/massages.service';
+import { Massage } from 'src/app/shared/models/massage.model';
+import { MassagesService } from 'src/app/shared/services/massages.service';
 
 @Component({
   selector: 'app-massages',
@@ -9,31 +10,36 @@ import { MassagesService } from '../services/massages.service';
   styleUrls: ['./massages.component.scss']
 })
 export class MassagesComponent implements OnInit {
-  details: Observable<any> | null = null;
+  massage: Massage | null = null;
   durationOptions: any[] = [];
   duration = 60;
   constructor(private route: ActivatedRoute, private massagesService: MassagesService, private router: Router) { }
 
   ngOnInit() {
-    this.details = this.route.params.pipe(
+    this.route.params.pipe(
       switchMap((params: any) => {
-        return this.massagesService.getMassage(params['id']);
+        return this.massagesService.getMassageById(params['id']);
       })
-    );
-      this.details.subscribe(data => console.log(data));
-      this.durationOptions = [{
-        label: '60 minute',
-        value: 60
-      },
-      {
-        label: '90 minute',
-        value: 90
-      }];
+    ).subscribe((massage: Massage | null) => {
+      this.massage = massage;
+      console.log(this.massage, 'massage')
+      this.durationOptions = this.getDurationOptions(massage?.pricing?.map(pricing => pricing.duration));
+    });
+
   }
 
   goToAppointment() {
     this.router.navigate(['programare']);
-}
+    // this.router.navigate(['programare/personal'], { queryParams: { massage: this.selectedService, duration: this.selectedCounty } });
+  }
+
+  getDurationOptions(values?: any[]) {
+    if (!values) return [];
+    return values.map(v => ({
+      label: `${v} minute`,
+      value: v
+    }));
+  }
   ngOnDestroy() {
   }
 

@@ -20,6 +20,7 @@ import { MassagesService } from './services/massages.service';
 import {TabViewModule} from 'primeng/tabview';
 import { AppFlipCardModule } from '../app-flip-card/app-flip-card.module';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 
@@ -45,7 +46,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     BadgeModule,
     AppFlipCardModule,
     SelectButtonModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   providers: [MassagesService]
 })

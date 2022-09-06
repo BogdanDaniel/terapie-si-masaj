@@ -12,6 +12,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentComponent } from './container/appointment.component';
@@ -35,7 +36,8 @@ import { AppointmentService } from './services/appointment.service';
     DropdownModule,
     InputTextareaModule,
     CalendarModule,
-    SelectButtonModule
+    SelectButtonModule,
+    PipesModule
   ],
   providers: [MessageService, AppointmentService]
 })

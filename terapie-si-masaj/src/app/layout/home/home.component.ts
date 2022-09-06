@@ -1,13 +1,15 @@
 import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as $ from 'jquery';
-import { get } from 'lodash';
-import { SelectItem } from 'primeng/api';
+import { get, orderBy } from 'lodash';
+import { Message, SelectItem } from 'primeng/api';
 import { takeWhile } from 'rxjs';
 import { County } from 'src/app/shared/constants/county.const';
 import { Drenaj } from 'src/app/shared/constants/drenaj.const';
 import { FitnessMasaj } from 'src/app/shared/constants/fitness-masaj.const';
 import { MasajDeRelaxare } from 'src/app/shared/constants/masaj-de-relaxare.const';
+import { Massage } from 'src/app/shared/models/massage.model';
+import { MassagesService } from 'src/app/shared/services/massages.service';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import VanillaTilt from 'vanilla-tilt';
 
@@ -19,14 +21,16 @@ import VanillaTilt from 'vanilla-tilt';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedCounty!: SelectItem;
-  selectedService = null;
+  selectedService: Massage | null = null;
   counties: any[];
-  services: any[];
+  services: Massage[] = [];
   certifications!: any[];
-  responsiveOptions: any[];
   nr = 5
   alive = true;
   openReviews = false;
+
+  relaxareMassages: Massage[] | null = null;
+  recuperareMassages: Massage[] | null = null;
 
 
   @HostListener('window:scroll', ['$event.target']) scrolling(ev: any) {
@@ -37,7 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       $('.navbar').removeClass('custom');
     }
   }
-  constructor(private utilityService: UtilityService, private router: Router,  private route: ActivatedRoute) {
+  constructor(private utilityService: UtilityService, private router: Router, private route: ActivatedRoute, private massagesService: MassagesService) {
     this.counties = [
       { label: 'Sectorul 1', value: County.SECTOR_1 },
       { label: 'Sectorul 2', value: County.SECTOR_2, },
@@ -45,36 +49,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       { label: 'Sectorul 4', value: County.SECTOR_4, },
       { label: 'Sectorul 5', value: County.SECTOR_5, },
       { label: 'Sectorul 6', value: County.SECTOR_6, }
-
     ];
 
-    this.services = [
-      { label: MasajDeRelaxare.TerapieCorporala, value: MasajDeRelaxare.TerapieCorporala },
-      { label: MasajDeRelaxare.MasajTerapeutic, value: MasajDeRelaxare.MasajTerapeutic },
-      { label: MasajDeRelaxare.MasajFacial, value: MasajDeRelaxare.MasajFacial },
-      { label: MasajDeRelaxare.MasajPeScaun, value: MasajDeRelaxare.MasajPeScaun },
-      { label: Drenaj.DrenajLimfaticPartial, value: Drenaj.DrenajLimfaticPartial },
-      { label: FitnessMasaj.FitnessMasajAnticelulitic, value: FitnessMasaj.FitnessMasajAnticelulitic },
-    ];
-
- 
-    this.responsiveOptions = [
-      {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
-      },
-      {
-          breakpoint: '768px',
-          numVisible: 2,
-          numScroll: 2
-      },
-      {
-          breakpoint: '560px',
-          numVisible: 1,
-          numScroll: 1
-      }
-  ];
+    this.massagesService.getAllMasages().subscribe((massages: Massage[]) => {
+      this.services = massages;
+      this.relaxareMassages = massages ? orderBy(massages.filter(massage => massage?.category === 'relaxare' && massage?.show === true), 'order') : [];
+      this.recuperareMassages = massages ? orderBy(massages.filter(massage => massage?.category === 'recuperare' && massage?.show === true), 'order') : [];
+    });
   }
 
   ngOnInit(): void {
@@ -88,12 +69,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.route.queryParams.pipe(takeWhile(() => this.alive)).subscribe((params: Params) => {
       const scrollTo = get(params, 'scrollTo');
-      if(scrollTo) {
+      if (scrollTo) {
         this.scroll('reviews');
         this.openReviews = true;
       }
     })
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -103,7 +84,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goToAppointment() {
-    this.router.navigate(['programare/personal'], { queryParams: { massage: this.selectedService, location: this.selectedCounty } });
+    this.router.navigate(['programare/personal'], { queryParams: { massage: this.selectedService?.id, location: this.selectedCounty } });
   }
 
   scroll(id: string) {

@@ -5,7 +5,7 @@
                 <div id="slider"
                      class="owl-carousel product-slider">
                     <div class="item">
-                        <img src="{{'../../../../../../../assets/' + (details | async)?.imageUrl}}"
+                        <img src="{{'../../../../../../../assets/' + massage?.imageUrl}}"
                              width="100%"
                              height="400px" />
                     </div>
@@ -14,17 +14,17 @@
             <div class="col-md-6">
                 <div class="product-dtl">
                     <div class="product-info">
-                        <div class="product-name">{{(details | async)?.title}}</div>
-                        <div class="product-price-discount"><span>{{(details | async)?.price }}</span>
+                        <div class="product-name">{{massage?.title}}</div>
+                        <div class="product-price-discount" *ngIf="massage"><span>{{massage | price:duration }} Lei</span>
                             <!-- <span class="line-through">$29.00</span> -->
                         </div>
                     </div>
-                    <p>{{(details | async)?.description }}</p>
+                    <p>{{massage?.shortDescription }}</p>
                     <div class="row">
                         <div class="col-md-6 col-sm-12 mt-2">
                             <label>Durata</label>
                             <p-selectButton id="duration"
-                            styleClass="select-btn"
+                                            styleClass="select-btn"
                                             [options]="durationOptions"
                                             [(ngModel)]="duration"
                                             optionLabel="label"
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="product-info-tabs">
-            <app-massages-more-details [details]="details | async"></app-massages-more-details>
+            <app-massages-more-details [details]="massage"></app-massages-more-details>
         </div>
     </div>
 </div>

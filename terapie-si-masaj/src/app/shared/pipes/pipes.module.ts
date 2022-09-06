@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 
 import { FirstLetterPipe } from './first-letter/first-letter.pipe';
+import { PricePipe } from './price/price.pipe';
 
 
 @NgModule({
     declarations: [
-        FirstLetterPipe
+        FirstLetterPipe,
+        PricePipe
     ],
     exports: [
-        FirstLetterPipe
+        FirstLetterPipe,
+        PricePipe
     ]
 
 })

@@ -5,23 +5,21 @@
         </div>
         <div class="massage-card-content">
 
-            <p class="heading"> {{massage.value || 'Programare'}}
+            <p class="heading"> {{massage?.value?.title || 'Programare'}}
             </p>
             <div class="sub-heading">
-                <p>
-                    Masajul este o terapie care vă ajută să scăpați de: stres, oboseală,
-                    dureri musculare, senzația
-                    de picioare grele, celulită, vergeturi și aspect inestetic al pielii.
+                <p> {{massage?.value?.shortDescription}}
                 </p>
             </div>
             <form [formGroup]="form"
                   (ngSubmit)="onSubmit()">
-                <div class="row p-fluid">
+                <div class="row p-fluid mb-4">
                     <div class="col-md-6 col-sm-12 mt-4">
                         <span class="p-float-label">
                             <p-dropdown [options]="services"
                                         formControlName="massage"
                                         placeholder="Alege un serviciu"
+                                        optionLabel="title"
                                         [ngClass]="{'ng-dirty': (massage?.invalid && submitted) || (massage?.dirty && massage?.invalid)}">
                             </p-dropdown>
                             <label for="appointmentDate">Serviciul ales</label>
@@ -174,8 +172,14 @@
                         </span>
                     </div>
 
+                    <div class="col-lg-6 col-md-12 mt-4 d-flex align-items-center justify-content-end">
+                        <span class="total">Total de plata:</span>
+                        <span class="price">{{ massage?.valueChanges | async | price:duration?.value }} Lei</span>
+                        <!-- <span class="line-through">$29.00</span> -->
+                    </div>
+
                 </div>
-                <div class="row mt-4">
+                <div class="row pt-4 border-top">
                     <div class="row justify-content-end p-2 m-0">
                         <div class="col-lg-4 col-md-6 p-0">
                             <p-button label="Programează-te"

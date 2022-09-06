@@ -1,0 +1,88 @@
+@import '../../../styles/components/variables';
+.info-page {
+    padding: 105px 0;
+    width: 100%;
+  
+    .info-details {
+      flex: 0;
+      min-width: 200px;
+      min-height: 140px;
+      padding-top: 15px;
+    }
+  
+    .icon {
+      font-size: 3.5rem;
+      color: $primaryColor;
+      flex: 0;
+    }
+  
+    .info-title {
+      //  font-family: Marcellus !important;
+      color: #ffffff !important;
+      font-size: 2rem !important;
+      font-weight: 400 !important;
+      margin-bottom: 19px !important;
+  
+    }
+  
+    .info-subtitle {
+      //  font-family: Lato !important;
+      color: #ffffff !important;
+      font-size: 1.1rem !important;
+      font-weight: 400 !important;
+      line-height: 24.252px !important;
+      margin: 0 !important;
+    }
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+  
+    .info {
+      height: 600px;
+  
+      .container-fluid {
+        padding: 50px 0 !important;
+  
+        .info-page {
+          flex-direction: column;
+          justify-content: space-evenly !important;
+          padding: 0 !important;
+  
+        }
+  
+      }
+    }
+  
+    .profile_container {
+      height: 650px !important;
+    }
+  
+    .wraps {
+      display: flex;
+      flex-direction: column;
+  
+      .profile_img_wrapper,
+      .profile_details {
+        width: 100% !important;
+      }
+  
+  
+      .profile_img {
+        position: relative !important;
+        clip-path: ellipse(80% 100% at 50% 0%) !important;
+        background: url(../../../assets/me.png) !important;
+        background-size: 450px 300px !important;
+        background-position-x: center !important;
+        background-position-y: center !important;
+        width: 100% !important;
+      }
+  
+      .profile_details {
+        position: relative !important;
+      }
+  
+    }
+  }
+  
