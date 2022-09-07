@@ -24,8 +24,8 @@ export class MassagesComponent implements OnInit {
       this.massage = massage;
       console.log(this.massage, 'massage')
       this.durationOptions = this.getDurationOptions(massage?.pricing?.map(pricing => pricing.duration));
+      this.duration = this.durationOptions && this.durationOptions[0].value;
     });
-
   }
 
   goToAppointment() {

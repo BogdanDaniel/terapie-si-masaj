@@ -2,25 +2,6 @@
     {
         "id": "TerapieCorporala",
         "title": "Terapie corporală",
-        "category": "relaxare",
-        "pricing": [
-            {
-                "duration": 60,
-                "price": 110
-            },
-            {
-                "duration": 90,
-                "price": 150
-            }
-        ],
-        "imageUrl": "price-image.jpg",
-        "shortDescription": "Reduce tensiunea musculară, îmbunătățește aspectul pielii, combate simptomele depresiei și anxietății, crește puterea de concentrare",
-        "order": 1,
-        "show": true
-    },
-    {
-        "id": "MasajTerapeutic",
-        "title": "Masaj Terapeutic",
         "category": "recuperare",
         "pricing": [
             {
@@ -32,7 +13,26 @@
                 "price": 150
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "terapie-corporala.jpg",
+        "shortDescription": "Reduce tensiunea musculară, îmbunătățește aspectul pielii, combate simptomele depresiei și anxietății, crește puterea de concentrare",
+        "order": 1,
+        "show": true
+    },
+    {
+        "id": "MasajTerapeutic",
+        "title": "Masaj Terapeutic",
+        "category": "relaxare",
+        "pricing": [
+            {
+                "duration": 60,
+                "price": 110
+            },
+            {
+                "duration": 90,
+                "price": 150
+            }
+        ],
+        "imageUrl": "masaj-terapeutic.jpg",
         "shortDescription": "Reducerea durerii musculare, refacere parțială a mobilității corpului, combaterea migrenelor",
         "order": 1,
         "show": true
@@ -51,7 +51,7 @@
                 "price": 150
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "anticelulitic.jpg",
         "shortDescription": "Tonifiere musculară, îmbunătațește circulația sanguină, ajută la eliminarea toxinelor dintre țesuturi",
         "order": 2,
         "show": true
@@ -70,7 +70,7 @@
                 "price": 150
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "drenaj.jpg",
         "shortDescription": "Intărește sistemul imunitar, reduce senzația de picioare grele, contribuie la reducerea celulitei, îmbunătățește fermitatea pielii",
         "order": 3,
         "show": true
@@ -89,7 +89,7 @@
                 "price": 150
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "drenaj+anticelulitic.jpg",
         "shortDescription": "Stimulează circulația și sistemul limfatic, reduce aspectul de coajă de portocală, îmbunătățește aspectul pielii",
         "order": 4
     },
@@ -103,7 +103,7 @@
                 "price": 60
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "masaj-facial.jpg",
         "shortDescription": "Conferă elasticitate și luminozitate pielii, având efect hidratant și anti-îmbătrânire; stimulează creșterea părului, relaxare capilară",
         "order": 2,
         "show": true
@@ -118,7 +118,7 @@
                 "price": 40
             }
         ],
-        "imageUrl": "price-image.jpg",
+        "imageUrl": "masaj-pe-scaun.jpg",
         "shortDescription": "Detensionarea musculaturii, intensificarea circulației sanguine",
         "order": 3,
         "show": true

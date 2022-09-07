@@ -81,7 +81,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             this.scroll(scrollTo);
           }
-
         }
       }, 500)
     })
