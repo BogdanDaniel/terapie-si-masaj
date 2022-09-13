@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { catchError, of, switchMap } from 'rxjs';
 import { HOURS, SCHEDULE } from 'src/app/shared/constants/schedule.const';
@@ -13,14 +13,14 @@ import { AppointmentDefinitionService } from '../../../../../shared/services/app
     styleUrls: ['./appointment-definition.component.scss']
 })
 export class AppointmentDefinitionComponent implements OnInit, OnDestroy {
-    form: FormGroup;
+    form: UntypedFormGroup;
     minDate: Date;
     scheduleOptions: any = [];
     alive = true;
     scheduleDefinition: any = null;
 
     maxDate: Date;
-    constructor(private formBuilder: FormBuilder, private appointmentDefinitionService: AppointmentDefinitionService) {
+    constructor(private formBuilder: UntypedFormBuilder, private appointmentDefinitionService: AppointmentDefinitionService) {
         this.form = this.initForm();
         this.minDate = new Date();
         this.maxDate = new Date();
@@ -31,11 +31,11 @@ export class AppointmentDefinitionComponent implements OnInit, OnDestroy {
 
 
     get date() {
-        return this.form?.get('date') as FormControl;
+        return this.form?.get('date') as UntypedFormControl;
     }
 
     get schedule() {
-        return this.form?.get('schedule') as FormControl;
+        return this.form?.get('schedule') as UntypedFormControl;
     }
 
     ngOnInit(): void {

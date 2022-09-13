@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user.service';
 import { take } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
@@ -12,9 +12,9 @@ import { StorageService } from 'src/app/shared/services/storage.service';
     styleUrls: ['./account-details.component.scss']
 })
 export class AccountDetailsComponent implements OnInit {
-    form: FormGroup;
+    form: UntypedFormGroup;
     user!: User | null;
-    constructor(private formBuilder: FormBuilder, private userService: UserService, private cdr: ChangeDetectorRef, private messageService: MessageService, private storageService: StorageService) {
+    constructor(private formBuilder: UntypedFormBuilder, private userService: UserService, private cdr: ChangeDetectorRef, private messageService: MessageService, private storageService: StorageService) {
         this.form = this.initForm();
     }
     ngOnInit(): void {

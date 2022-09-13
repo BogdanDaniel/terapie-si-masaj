@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
@@ -8,9 +8,9 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
     styleUrls: ['./review-dialog.component.scss']
 })
 export class ReviewDialogComponent {
-    form!: FormGroup;
+    form!: UntypedFormGroup;
 
-    constructor(public ref: DynamicDialogRef, private formBuilder: FormBuilder) {
+    constructor(public ref: DynamicDialogRef, private formBuilder: UntypedFormBuilder) {
         this.form = this.formBuilder.group({
             rating: [0, Validators.required],
             text: ['', Validators.required, Validators.minLength(80), Validators.maxLength(250)]

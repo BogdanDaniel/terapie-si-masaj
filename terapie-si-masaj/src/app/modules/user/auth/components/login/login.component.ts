@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { get } from 'lodash';
 import { switchMap } from 'rxjs';
@@ -14,8 +14,8 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    form: FormGroup;
-    constructor(private formBuilder: FormBuilder, private readonly authService: AuthService, private router: Router, private route: ActivatedRoute) {
+    form: UntypedFormGroup;
+    constructor(private formBuilder: UntypedFormBuilder, private readonly authService: AuthService, private router: Router, private route: ActivatedRoute) {
         this.form = this.initForm();
     }
 

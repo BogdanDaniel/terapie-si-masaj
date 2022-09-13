@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { find, head, toNumber } from 'lodash';
 import * as moment from 'moment';
@@ -37,7 +37,7 @@ export const calendarRo = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppointmentFormComponent implements OnInit, OnDestroy {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   services: Massage[] = [];
   durationOptions: any[] = [];
@@ -53,21 +53,21 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   private alive = true;
 
   constructor(private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private massagesService: MassagesService,
     private messageService: MessageService, private appointmentService: AppointmentService, private appointmentDefinitionService: AppointmentDefinitionService, private route: ActivatedRoute, private userService: UserService) {
-    this.form = new FormGroup({
-      massage: new FormControl('', [Validators.required]),
-      duration: new FormControl(60, Validators.required),
-      date: new FormControl('', [Validators.required]),
-      hour: new FormControl('', [Validators.required]),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      email: new FormControl('', []),
-      county: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      observation: new FormControl('', [])
+    this.form = new UntypedFormGroup({
+      massage: new UntypedFormControl('', [Validators.required]),
+      duration: new UntypedFormControl(60, Validators.required),
+      date: new UntypedFormControl('', [Validators.required]),
+      hour: new UntypedFormControl('', [Validators.required]),
+      firstName: new UntypedFormControl('', [Validators.required]),
+      lastName: new UntypedFormControl('', [Validators.required]),
+      phoneNumber: new UntypedFormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      email: new UntypedFormControl('', []),
+      county: new UntypedFormControl('', [Validators.required]),
+      address: new UntypedFormControl('', [Validators.required]),
+      observation: new UntypedFormControl('', [])
     });
     this.massagesService.getAllMasages().pipe(withLatestFrom(this.route.queryParams)).subscribe(([res, params]) => {
       if (params['massage']) {
@@ -105,41 +105,41 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
 
   get massage() {
-    return this.form?.get('massage') as FormControl;
+    return this.form?.get('massage') as UntypedFormControl;
   }
 
   get date() {
-    return this.form?.get('date') as FormControl;
+    return this.form?.get('date') as UntypedFormControl;
   }
 
   get hour() {
-    return this.form?.get('hour') as FormControl;
+    return this.form?.get('hour') as UntypedFormControl;
   }
 
   get duration() {
-    return this.form?.get('duration') as FormControl;
+    return this.form?.get('duration') as UntypedFormControl;
   }
 
   get firstName() {
-    return this.form?.get('firstName') as FormControl;
+    return this.form?.get('firstName') as UntypedFormControl;
   }
   get lastName() {
-    return this.form?.get('lastName') as FormControl;
+    return this.form?.get('lastName') as UntypedFormControl;
   }
   get phoneNumber() {
-    return this.form?.get('phoneNumber') as FormControl;
+    return this.form?.get('phoneNumber') as UntypedFormControl;
   }
   get email() {
-    return this.form?.get('email') as FormControl;
+    return this.form?.get('email') as UntypedFormControl;
   }
   get county() {
-    return this.form?.get('county') as FormControl;
+    return this.form?.get('county') as UntypedFormControl;
   }
   get address() {
-    return this.form?.get('address') as FormControl;
+    return this.form?.get('address') as UntypedFormControl;
   }
   get observation() {
-    return this.form?.get('observation') as FormControl;
+    return this.form?.get('observation') as UntypedFormControl;
   }
 
   ngOnInit() {

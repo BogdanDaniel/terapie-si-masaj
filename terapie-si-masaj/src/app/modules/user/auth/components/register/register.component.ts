@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { Credentiales } from "../../models/credentiales.model";
@@ -11,8 +11,8 @@ import { AuthService } from "../../services/auth.service";
     styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-    form!: FormGroup;
-    constructor(private formBuilder: FormBuilder, private readonly messageService: MessageService, private readonly authService: AuthService, private router: Router) {
+    form!: UntypedFormGroup;
+    constructor(private formBuilder: UntypedFormBuilder, private readonly messageService: MessageService, private readonly authService: AuthService, private router: Router) {
         this.form = this.initForm();
     }
 
