@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import * as Aos from 'aos';
 
 @Component({
@@ -9,7 +8,7 @@ import * as Aos from 'aos';
 })
 export class AppComponent {
   title = 'terapie-si-masaj';
-  constructor(firestore: AngularFirestore) {
+  constructor() {
      Aos.init();
   }
 }
